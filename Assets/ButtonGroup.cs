@@ -4,7 +4,7 @@ using System.Collections;
 public class ButtonGroup : MonoBehaviour {
 
 
-	//Git from PC
+	//Git from Laptop
 
 	//The button containing categories
 	private GameObject buttonGroup;
