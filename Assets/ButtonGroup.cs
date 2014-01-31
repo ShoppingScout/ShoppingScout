@@ -3,9 +3,6 @@ using System.Collections;
 
 public class ButtonGroup : MonoBehaviour {
 
-
-	//Git from PC
-
 	//The button containing categories
 	private GameObject buttonGroup;
 	//The category buttons
