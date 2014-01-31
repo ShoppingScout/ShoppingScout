@@ -1,4 +1,2 @@
 ShoppingScout
 =============
-
-ShoppingScout Unity Game
