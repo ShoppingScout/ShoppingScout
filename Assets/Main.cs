@@ -16,7 +16,7 @@
 
 using UnityEngine;
 using System.Collections;
-
+//TEST
 public class Main : MonoBehaviour {
 	public Texture btnTexture;
 	public GUIStyle myGUIStyle;
