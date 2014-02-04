@@ -1,4 +1,9 @@
-﻿public class Item{
+﻿//jesse: testing, testing
+
+using UnityEngine;
+using System.Collections;
+
+public class Item{
 	//so from baby to unknown, the categories will correspond to an int from 0 to 7
 	public int Level_1 { get; set; }
 	/*Future levels
@@ -14,8 +19,6 @@
     }//item
 }//item
 
-using UnityEngine;
-using System.Collections;
 //TEST
 public class Main : MonoBehaviour {
 	public Texture btnTexture;
