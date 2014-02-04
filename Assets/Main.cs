@@ -20,6 +20,7 @@ public class Item{
 }//item
 
 //TEST
+//mgsteinkamp
 public class Main : MonoBehaviour {
 	public Texture btnTexture;
 	public GUIStyle myGUIStyle;
