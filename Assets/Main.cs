@@ -1,16 +1,4 @@
-﻿//jesse: testing, testing
-//jesse: second test
-
-//mgsteinkamp again
-
-//jesse: third test 2
-
-
-// Emmanuel
-// Triet Test
-// chris test
-
-using UnityEngine;
+﻿using UnityEngine;
 using System.Collections;
 
 public class Item{
@@ -21,7 +9,7 @@ public class Item{
 	public int Level_Beauty { get; set; }
 	...*/
 	
-	//public string FileName { get; set; }
+	public string FileName { get; set; } //filename for image
 
     public Item(int level_1){
         Level_1 = level_1;
@@ -29,9 +17,6 @@ public class Item{
     }//item
 }//item
 
-//TEST
-//mgsteinkamp
-//mgsteinkamp
 public class Main : MonoBehaviour {
 	public Texture btnTexture;
 	public GUIStyle myGUIStyle;
@@ -43,11 +28,17 @@ public class Main : MonoBehaviour {
 			//If it is, create a data structure of Items with their image filenames and categories (int 0-7)
 			Stack items = new Stack();
 			int i = 0;
-			
+
+			Random random = new Random();
+			int r = random.Next(0, 7);
+
+			//here we would normally import info from the database
+			//but instead we'll make sure random sample products
+			//here we'll use Emmanuel filename function
 			do{
 				items.Push(new Item);
 				//items[0].Level_1 = whatever the category is 0-7
-				items.[i].Level_1 = 0;
+				items.[i].Level_1 = r;
 				//items[0].FileName = image filename
 				i++;
 			} while()
