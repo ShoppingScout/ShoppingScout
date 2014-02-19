@@ -43,7 +43,7 @@ public class Main : MonoBehaviour {
 	//============== VARIABLES =================
 	public Texture btnTexture;
 	public GUIStyle myGUIStyle;
-	
+	CategoryButtons categoryButtons;
 	private Vector3 pos1 = new Vector3 (0.5f, 0.4f, 0f),
 					pos2 = new Vector3 (0.8f, 0.32f, 0f),
 					pos3 = new Vector3 (0.8f, 0.18f, 0f),
@@ -58,6 +58,7 @@ public class Main : MonoBehaviour {
 
 	//used for outputing
 	private GUIText debugText;
+
 	private float curTouchPositionx;
 	private float curTouchPositiony;
 
@@ -66,10 +67,16 @@ public class Main : MonoBehaviour {
 	private int SCREEN_WIDTH = Screen.width;
 	private int SCREEN_HEIGHT = Screen.height;
 
+	// DEBUG
+	private bool DEBUG = true;
+
 
     //============= VARIABLES END =============
 
 	void Start(){
+		//for debug
+		debugText = GameObject.Find ("DebugText").guiText;
+
 		//pretend this is the first install, every time
 		//later we will make this value permanently set for non-first installs
 		bool first_install = true;
@@ -87,19 +94,19 @@ public class Main : MonoBehaviour {
 			//but instead we'll make sure random sample products
 			//here we'll use Emmanuel's product selection function
 			while(i < 5) {
-<<<<<<< HEAD
+
 				//items[0].Level_1 = whatever the category is 0-7
 				//items[i].Level_1 = r;
 				//items[i].name = "test";
-=======
-				items[i].Level_1 = r;		//corresponding category number
-				items[i].name = "test";		//this will be replaces by product selection function
->>>>>>> fe078ec15e17b73390559751d543ce8e99958e8f
+
+				//items[i].Level_1 = r;		//corresponding category number
+				//items[i].name = "test";		//this will be replaces by product selection function
+
 				i++;
 			}
 		}//if
 		
-		CategoryButtons categoryButtons = new CategoryButtons(6);
+		categoryButtons = new CategoryButtons(6);
 		//  (button ID, Vector3 button position)
 		categoryButtons.setPosition(0,pos1);
 		categoryButtons.setPosition(1,pos2);
@@ -139,8 +146,15 @@ public class Main : MonoBehaviour {
 		//========================= Button area =======================
 		//is there a touch on screen?
 			if (Input.touches.Length <= 0) {
-					//if no touches			
+					//if no touches	
+					categoryButtons.setPosition(0,pos1);
+					categoryButtons.setPosition(1,pos2);
+					categoryButtons.setPosition(2,pos3);
+					categoryButtons.setPosition(3,pos4);
+					categoryButtons.setPosition(4,pos5);
+					categoryButtons.setPosition(5,pos6);
 					curButton = null;
+
 			} else { //if there is touch	
 					//execute this code for current touch[0] on screen
 					
@@ -151,6 +165,10 @@ public class Main : MonoBehaviour {
 							curTouchPositiony = Input.GetTouch(0).position.y / SCREEN_HEIGHT;			
 
 							curButton = touchObject.guiTexture;				
+							if(DEBUG){
+								debugText.text = "Debug: finger pos: " + Input.GetTouch (0).position.x / Screen.width + ", " + Input.GetTouch (0).position.y / Screen.height 
+								+ "\n" + curButton.name + "\nbutton pos: " + curButton.transform.position.x + ", " + curButton.transform.position.y;
+							}
 						}
 					//================== Button movement and animation ===================
 					if (Input.GetTouch (0).phase == TouchPhase.Stationary || Input.GetTouch (0).phase == TouchPhase.Moved) {
@@ -164,27 +182,27 @@ public class Main : MonoBehaviour {
 							}
 							if(curButton.transform.position!=new Vector3 (.5f, .25f, 7f)){
 								switch (curButton.name) {
-								case "GUIMidButton0":
+								case "ButtonGroup0":
 										curButton.transform.position = new Vector3 (curButton.transform.position.x, curTouchPositiony+.02f, 7f);
 										
 										break;
-								case "GUIMidButton1":
+								case "ButtonGroup1":
 										curButton.transform.position = new Vector3 (curTouchPositionx, (BUTTON_SLOPE * curTouchPositionx) + 0.133f, 7f);
 										
 										break;	
-								case "GUIMidButton2":
+								case "ButtonGroup2":
 										curButton.transform.position = new Vector3 (curTouchPositionx, (-BUTTON_SLOPE * curTouchPositionx) + 0.366f, 7f);
 										
 										break;
-								case "GUIMidButton3":
+								case "ButtonGroup3":
 										curButton.transform.position = new Vector3 (curButton.transform.position.x, curTouchPositiony+.02f, 7f);
 										
 										break;	
-								case "GUIMidButton4":
+								case "ButtonGroup4":
 										curButton.transform.position = new Vector3 (curTouchPositionx, (BUTTON_SLOPE * curTouchPositionx) + 0.133f, 7f);
 										
 										break;
-								case "GUIMidButton5":
+								case "ButtonGroup5":
 										curButton.transform.position = new Vector3 (curTouchPositionx, (-BUTTON_SLOPE * curTouchPositionx) + 0.366f, 7f);
 										
 										break;
@@ -192,8 +210,10 @@ public class Main : MonoBehaviour {
 							}
 							
 						}
+						if(DEBUG){
 							debugText.text = "Debug: finger pos: " + Input.GetTouch (0).position.x / Screen.width + ", " + Input.GetTouch (0).position.y / Screen.height 
 							+ "\n" + curButton.name + "\nbutton pos: " + curButton.transform.position.x + ", " + curButton.transform.position.y;
+						}
 			}
 
 		//========================= Button area =======================
@@ -201,8 +221,7 @@ public class Main : MonoBehaviour {
 		{
 			if (Input.GetKey(KeyCode.Escape))
 			{
-				Application.Quit();	
-				return;
+				Application.LoadLevel(0);
 			}
 		}
 	}

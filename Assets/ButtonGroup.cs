@@ -9,7 +9,8 @@ public class ButtonGroup {
 	private GameObject cat1, cat2, cat3, cat4;
 	private GameObject [] categoryArray;
 	// Total number of button group currently active 
-	static int Total_Number_Buttons=0;
+	static int Total_Number_Buttons = 0;
+	static int Total_Button_Group = 0;
 
 	// Scale
 	private Vector3 buttonGroupScale = new Vector3(0.13f, 0.07f,0f);
@@ -20,6 +21,8 @@ public class ButtonGroup {
 		buttonGroup.AddComponent("GUITexture");
 		// Set button texture
 		buttonGroup.guiTexture.texture = (Texture2D)Resources.Load("button");
+		buttonGroup.guiTexture.name = "ButtonGroup" + Total_Button_Group;
+		Total_Button_Group++;
 		// Scale
 		setButtonGroupScale(buttonGroupScale);
 
