@@ -87,14 +87,13 @@ public class Main : MonoBehaviour {
 			//but instead we'll make sure random sample products
 			//here we'll use Emmanuel's product selection function
 			while(i < 5) {
-<<<<<<< HEAD
+
 				//items[0].Level_1 = whatever the category is 0-7
 				//items[i].Level_1 = r;
 				//items[i].name = "test";
-=======
-				items[i].Level_1 = r;		//corresponding category number
+//				items[i].Level_1 = r;		//corresponding category number
 				items[i].name = "test";		//this will be replaces by product selection function
->>>>>>> fe078ec15e17b73390559751d543ce8e99958e8f
+
 				i++;
 			}
 		}//if
@@ -201,7 +200,7 @@ public class Main : MonoBehaviour {
 		{
 			if (Input.GetKey(KeyCode.Escape))
 			{
-				Application.Quit();	
+				Application.LoadLevel(0);	
 				return;
 			}
 		}
