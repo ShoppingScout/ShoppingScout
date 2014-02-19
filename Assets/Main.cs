@@ -98,9 +98,14 @@ public class Main : MonoBehaviour {
 				//items[0].Level_1 = whatever the category is 0-7
 				//items[i].Level_1 = r;
 				//items[i].name = "test";
+<<<<<<< HEAD
 
 				//items[i].Level_1 = r;		//corresponding category number
 				//items[i].name = "test";		//this will be replaces by product selection function
+=======
+//				items[i].Level_1 = r;		//corresponding category number
+				items[i].name = "test";		//this will be replaces by product selection function
+>>>>>>> 51cd8d8e3ed9dcb85a0f94ea8a39dd074d88abfe
 
 				i++;
 			}
@@ -221,7 +226,12 @@ public class Main : MonoBehaviour {
 		{
 			if (Input.GetKey(KeyCode.Escape))
 			{
+<<<<<<< HEAD
 				Application.LoadLevel(0);
+=======
+				Application.LoadLevel(0);	
+				return;
+>>>>>>> 51cd8d8e3ed9dcb85a0f94ea8a39dd074d88abfe
 			}
 		}
 	}
