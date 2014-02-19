@@ -21,24 +21,21 @@ public class Item{
 	*/
 
 	// Field 
-	public string name;
+	public string name;		//image filename
+	public int Level_1;
 	
 	// Constructor that takes no arguments. 
 	public Item()
 	{
 		name = "unknown";
+		Level_1 = 0;
 	}
-	
-	// Constructor that takes one argument. 
-	public Item(string nm)
-	{
-		name = nm;
-	}
-	
+
 	// Method 
-	public void SetName(string newName)
+	public void SetName(string newName, int newLevel1)
 	{
 		name = newName;
+		Level_1 = newLevel1;
 	}
 }//item
 
@@ -90,9 +87,14 @@ public class Main : MonoBehaviour {
 			//but instead we'll make sure random sample products
 			//here we'll use Emmanuel's product selection function
 			while(i < 5) {
+<<<<<<< HEAD
 				//items[0].Level_1 = whatever the category is 0-7
 				//items[i].Level_1 = r;
 				//items[i].name = "test";
+=======
+				items[i].Level_1 = r;		//corresponding category number
+				items[i].name = "test";		//this will be replaces by product selection function
+>>>>>>> fe078ec15e17b73390559751d543ce8e99958e8f
 				i++;
 			}
 		}//if
