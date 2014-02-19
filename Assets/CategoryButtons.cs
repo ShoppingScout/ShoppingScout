@@ -63,9 +63,7 @@ public class CategoryButtons {
 		else if(totalCategory > 4 || totalCategory < 1)
 			throw new System.ArgumentException("setCategoryNum: Invalid totalCategory, must be between 1-4");
 		buttonGroupArray[numID].addCategory(totalCategory);
+		//set each category position
+		buttonGroupArray[numID].setCategoryPosition();
 	}
 }
-
-
-
-

@@ -73,10 +73,13 @@ public class Main : MonoBehaviour {
 
     //============= VARIABLES END =============
 
+	//=====================================================================//
+	//================ START ==============================================//
+	//=====================================================================//o
 	void Start(){
 		//for debug
 		debugText = GameObject.Find ("DebugText").guiText;
-
+		/*
 		//pretend this is the first install, every time
 		//later we will make this value permanently set for non-first installs
 		bool first_install = true;
@@ -98,19 +101,19 @@ public class Main : MonoBehaviour {
 				//items[0].Level_1 = whatever the category is 0-7
 				//items[i].Level_1 = r;
 				//items[i].name = "test";
-<<<<<<< HEAD
+
 
 				//items[i].Level_1 = r;		//corresponding category number
 				//items[i].name = "test";		//this will be replaces by product selection function
-=======
-//				items[i].Level_1 = r;		//corresponding category number
+
+				//items[i].Level_1 = r;		//corresponding category number
 				items[i].name = "test";		//this will be replaces by product selection function
->>>>>>> 51cd8d8e3ed9dcb85a0f94ea8a39dd074d88abfe
 
 				i++;
 			}
+
 		}//if
-		
+		*/
 		categoryButtons = new CategoryButtons(6);
 		//  (button ID, Vector3 button position)
 		categoryButtons.setPosition(0,pos1);
@@ -147,6 +150,9 @@ public class Main : MonoBehaviour {
 		//========= BUTTON ============
 	}
 
+	//=====================================================================//
+	//================ UPDATE =============================================//
+	//=====================================================================//
 	void Update (){
 		//========================= Button area =======================
 		//is there a touch on screen?
@@ -168,13 +174,19 @@ public class Main : MonoBehaviour {
 							//get current touch position in decimal. [0-1]
 							curTouchPositionx = Input.GetTouch (0).position.x / SCREEN_WIDTH;
 							curTouchPositiony = Input.GetTouch(0).position.y / SCREEN_HEIGHT;			
-
+							//get current touch button
 							curButton = touchObject.guiTexture;				
-							if(DEBUG){
-								debugText.text = "Debug: finger pos: " + Input.GetTouch (0).position.x / Screen.width + ", " + Input.GetTouch (0).position.y / Screen.height 
-								+ "\n" + curButton.name + "\nbutton pos: " + curButton.transform.position.x + ", " + curButton.transform.position.y;
-							}
+							
 						}
+					//================== End phase ===================
+					if (Input.GetTouch (0).phase == TouchPhase.Ended) {				
+							touchObject = hitTest.HitTest (Input.GetTouch (0).position);
+							if(DEBUG){
+									debugText.text = "Debug: finger pos: " + Input.GetTouch (0).position.x / Screen.width + ", " + Input.GetTouch (0).position.y / Screen.height 
+									+ "\n" + touchObject.guiTexture.name + "\nbutton pos: " + curButton.transform.position.x + ", " + curButton.transform.position.y;
+								}		
+						}
+					
 					//================== Button movement and animation ===================
 					if (Input.GetTouch (0).phase == TouchPhase.Stationary || Input.GetTouch (0).phase == TouchPhase.Moved) {
 							curTouchPositionx = Input.GetTouch (0).position.x / SCREEN_WIDTH;
@@ -182,8 +194,7 @@ public class Main : MonoBehaviour {
 
 							// snap the dragging button to the center if it is near.
 							if(curButton!=null && (curTouchPositionx > 0.4f && curTouchPositionx < 0.6f) &&  (curTouchPositiony > 0.155f && curTouchPositiony < 0.27f)){
-								curButton.transform.position = new Vector3 (.5f, .25f, 7f);
-								
+								curButton.transform.position = new Vector3 (.5f, .25f, 7f);				
 							}
 							if(curButton.transform.position!=new Vector3 (.5f, .25f, 7f)){
 								switch (curButton.name) {
@@ -211,27 +222,28 @@ public class Main : MonoBehaviour {
 										curButton.transform.position = new Vector3 (curTouchPositionx, (-BUTTON_SLOPE * curTouchPositionx) + 0.366f, 7f);
 										
 										break;
-								}			
+								}	
+								if(DEBUG){
+									debugText.text = "Debug: finger pos: " + Input.GetTouch (0).position.x / Screen.width + ", " + Input.GetTouch (0).position.y / Screen.height 
+									+ "\n" + curButton.name + "\nbutton pos: " + curButton.transform.position.x + ", " + curButton.transform.position.y;
+								}		
 							}
-							
 						}
-						if(DEBUG){
-							debugText.text = "Debug: finger pos: " + Input.GetTouch (0).position.x / Screen.width + ", " + Input.GetTouch (0).position.y / Screen.height 
-							+ "\n" + curButton.name + "\nbutton pos: " + curButton.transform.position.x + ", " + curButton.transform.position.y;
-						}
-			}
+					}
+
+					
+
+
 
 		//========================= Button area =======================
 		if (Application.platform == RuntimePlatform.Android)
 		{
 			if (Input.GetKey(KeyCode.Escape))
 			{
-<<<<<<< HEAD
 				Application.LoadLevel(0);
-=======
-				Application.LoadLevel(0);	
+				ButtonGroup.Total_Number_Buttons = 0;
+				ButtonGroup.Total_Button_Group = 0;	
 				return;
->>>>>>> 51cd8d8e3ed9dcb85a0f94ea8a39dd074d88abfe
 			}
 		}
 	}
