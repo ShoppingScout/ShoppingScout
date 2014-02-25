@@ -1,9 +1,16 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+<<<<<<< HEAD
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets\ButtonGroup.cs">
     <Files>
       <File FileName="Assets\Main.cs" Line="1" Column="1" />
       <File FileName="Assets\ButtonGroup.cs" Line="14" Column="42" />
+=======
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\button_touching_chris.cs">
+    <Files>
+      <File FileName="Assets\button_touching_chris.cs" Line="16" Column="29" />
+      <File FileName="Assets\button_touching_chris.cs" Line="16" Column="29" />
+>>>>>>> ffe3b0f453f036be28945a5805da01e71ec9ebea
       <File FileName="Assets\Main.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
