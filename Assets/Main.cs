@@ -194,13 +194,14 @@ public class Main : MonoBehaviour {
 
 							// snap the dragging button to the center if it is near.
 							if(curButton!=null && (curTouchPositionx > 0.4f && curTouchPositionx < 0.6f) &&  (curTouchPositiony > 0.155f && curTouchPositiony < 0.27f)){
-								curButton.transform.position = new Vector3 (.5f, .25f, 7f);				
+								curButton.transform.position = new Vector3 (.5f, .25f, 7f);	
+								//categoryButtons.transformCategory(curButton.name, curButton.transform.position.x, curTouchPositiony+0.02f);	
 							}
 							if(curButton.transform.position!=new Vector3 (.5f, .25f, 7f)){
 								switch (curButton.name) {
 								case "ButtonGroup0":
 										curButton.transform.position = new Vector3 (curButton.transform.position.x, curTouchPositiony+.02f, 7f);
-										
+										//categoryButtons.transformCategory(curButton.name, curButton.transform.position.x, curTouchPositiony+0.02f);
 										break;
 								case "ButtonGroup1":
 										curButton.transform.position = new Vector3 (curTouchPositionx, (BUTTON_SLOPE * curTouchPositionx) + 0.133f, 7f);

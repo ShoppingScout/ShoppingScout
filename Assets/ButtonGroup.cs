@@ -107,5 +107,42 @@ public class ButtonGroup {
 				categoryArray[i].guiTexture.transform.position = new Vector3(posx-spacingx,posy,posz+1);
 		}
 	}
+		// transition
+		// Set category button positions
+	public void moveCategoryPosition(float curTouchx, float curTouchy){
+		float posx = buttonGroup.guiTexture.transform.position.x;
+		float posy = buttonGroup.guiTexture.transform.position.y;
+		float posz = buttonGroup.guiTexture.transform.position.z;
+		float spacingx = 0.09f;
+		float spacingy = 0.05f;
+		if((curTouchx > 0.4f && curTouchx < 0.6f) &&  (curTouchy > 0.155f && curTouchy < 0.27f)){
+			float snapx = 0.0f;
+			float snapy = 0.25f;
+			for(int i=1; i < categoryArray.Length;i++){
+				if(i==1)
+					categoryArray[i].guiTexture.transform.position = new Vector3(snapx,snapy+spacingy,posz+1);
+				else if(i==2)
+					categoryArray[i].guiTexture.transform.position = new Vector3(snapx+spacingx,snapy,posz+1);
+				else if(i==3)
+					categoryArray[i].guiTexture.transform.position = new Vector3(snapx,snapy-spacingy,posz+1);
+				else if(i==4)
+					categoryArray[i].guiTexture.transform.position = new Vector3(snapx-spacingx,snapy,posz+1);
+			}	
+			
+		}
+		else
+		for(int i=1; i < categoryArray.Length;i++){
+			if(i==1){
+				categoryArray[i].guiTexture.transform.position = new Vector3(posx,curTouchy+spacingy,posz+1);
+			}
+
+			else if(i==2)
+				categoryArray[i].guiTexture.transform.position = new Vector3(posx+spacingx,curTouchy,posz+1);
+			else if(i==3)
+				categoryArray[i].guiTexture.transform.position = new Vector3(posx,curTouchy-spacingy,posz+1);
+			else if(i==4)
+				categoryArray[i].guiTexture.transform.position = new Vector3(posx-spacingx,curTouchy,posz+1);
+		}
+	}
 
 }

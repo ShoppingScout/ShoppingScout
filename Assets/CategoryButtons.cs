@@ -66,4 +66,57 @@ public class CategoryButtons {
 		//set each category position
 		buttonGroupArray[numID].setCategoryPosition();
 	}
+	// used for animation
+	public void transformCategory(string buttonName, float curTouchx, float curTouchy){
+		
+			switch (buttonName) {
+			case "ButtonGroup0":
+					if((curTouchx > 0.4f && curTouchx < 0.6f) &&  (curTouchy > 0.155f && curTouchy < 0.27f)){
+								//curButton.transform.position = new Vector3 (.5f, .25f, 7f);		
+								buttonGroupArray[0].moveCategoryPosition(curTouchx, curTouchy);		
+							}
+					else
+						buttonGroupArray[0].moveCategoryPosition(curTouchx, curTouchy);
+					break;
+			case "ButtonGroup1":
+					//curButton.transform.position = new Vector3 (curTouchPositionx, (BUTTON_SLOPE * curTouchPositionx) + 0.133f, 7f);
+					
+					break;	
+			case "ButtonGroup2":
+					//curButton.transform.position = new Vector3 (curTouchPositionx, (-BUTTON_SLOPE * curTouchPositionx) + 0.366f, 7f);
+					
+					break;
+			case "ButtonGroup3":
+					//curButton.transform.position = new Vector3 (curButton.transform.position.x, curTouchPositiony+.02f, 7f);
+					
+					break;	
+			case "ButtonGroup4":
+					//curButton.transform.position = new Vector3 (curTouchPositionx, (BUTTON_SLOPE * curTouchPositionx) + 0.133f, 7f);
+					
+					break;
+			case "ButtonGroup5":
+					//curButton.transform.position = new Vector3 (curTouchPositionx, (-BUTTON_SLOPE * curTouchPositionx) + 0.366f, 7f);
+					
+					break;
+				}	
+		}
+	
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
