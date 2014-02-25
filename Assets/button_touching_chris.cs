@@ -8,10 +8,13 @@ public class button_touching_chris : MonoBehaviour {
 
 	private int SCREEN_WIDTH = Screen.width;
 	private int SCREEN_HEIGHT = Screen.height;
+	private GUITexture logo;
 
 	public GUISkin myGuiSkin;
 	// Use this for initialization
 	void Start () {
+		logo = GameObject.Find ("Logo").guiTexture;
+		logo.guiTexture.transform.localScale = new Vector3(0.1f, 0.1f, 0);
 	}
 	
 	// Update is called once per frame
