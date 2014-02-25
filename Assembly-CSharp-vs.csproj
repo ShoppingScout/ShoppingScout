@@ -48,6 +48,7 @@
   <ItemGroup>
      <Compile Include="Assets\ButtonGroup.cs" />
      <Compile Include="Assets\CategoryButtons.cs" />
+     <Compile Include="Assets\Clock_Script.cs" />
      <Compile Include="Assets\Main.cs" />
      <Compile Include="Assets\Product_Selection.cs" />
      <Compile Include="Assets\button_touching_chris.cs" />
