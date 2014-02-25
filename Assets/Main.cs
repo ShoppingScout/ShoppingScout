@@ -240,7 +240,7 @@ public class Main : MonoBehaviour {
 		{
 			if (Input.GetKey(KeyCode.Escape))
 			{
-				Application.LoadLevel(0);
+				Application.LoadLevel("Menu");
 				ButtonGroup.Total_Number_Buttons = 0;
 				ButtonGroup.Total_Button_Group = 0;	
 				return;
