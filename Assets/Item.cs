@@ -17,11 +17,11 @@ public class Item {
 	}
 
 	// Accessor functions
-	void get_LID(){ return LocalID; }
-	void get_PID(){ return ProductID; }
-	void get_PName(){ return ProductName; }
-	void get_IMG(){ return Image; }
-	void get_ctg(int index){ 
+	int get_LID(){ return LocalID; }
+	int get_PID(){ return ProductID; }
+	string get_PName(){ return ProductName; }
+	string get_IMG(){ return Image; }
+	int get_ctg(int index){ 
 		if(index < 20)
 			return Category[index];
 		else

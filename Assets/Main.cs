@@ -2,6 +2,7 @@
 using System.Collections;
 using System;
 
+/*
 public class Item{
 	//so from baby to unknown, the categories will correspond to an int from 0 to 7
 	//public int Level_1 { get; set; }
@@ -9,8 +10,8 @@ public class Item{
 	/*Future levels
 	public int Level_Baby { get; set; }
 	public int Level_Beauty { get; set; }
-	...*/
-	/*
+	...
+	
 	//public string FileName { get; set; } //filename for image
 
     public Item(int level_1){
@@ -18,7 +19,7 @@ public class Item{
 		//FileName = filename;
     }//item
 
-	*/
+	
 
 	// Field 
 	public string name;		//image filename
@@ -38,6 +39,7 @@ public class Item{
 		Level_1 = newLevel1;
 	}
 }//item
+*/
 
 public class Main : MonoBehaviour {
 	//============== VARIABLES =================
