@@ -675,15 +675,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 530620687}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 05879818935a13b43886e4273980b936, type: 3}
+  m_Script: {fileID: 11500000, guid: c5839b77eafabe04eacdde4f0b9f356d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rightSide: {fileID: 2800000, guid: 8963341c6032b884eb663b85f2fe85a9, type: 3}
-  leftSide: {fileID: 2800000, guid: eb644d92ff5e6a54984191a9a53f2a44, type: 3}
-  back: {fileID: 2800000, guid: a45796ad1799f34408d097befac638a5, type: 3}
-  blocker: {fileID: 2800000, guid: a951623b608e60343ba97450eba372e8, type: 3}
-  shiny: {fileID: 2800000, guid: bdbd9777dc662954ea8de5d3a01e684c, type: 3}
-  finished: {fileID: 2800000, guid: 34873d11aaed36942b32a3d3f172a897, type: 3}
+  rightSide: {fileID: 2800000, guid: 73257ddedaed13f46aef1be4c399ad26, type: 3}
+  leftSide: {fileID: 2800000, guid: caaaa64fde55b9749a3f5d0b2dc97b14, type: 3}
+  back: {fileID: 2800000, guid: 7560283a14202de448f999cb8ed51ac1, type: 3}
+  blocker: {fileID: 2800000, guid: 423a746194ff2804dba8ba03c95d76ac, type: 3}
+  shiny: {fileID: 2800000, guid: 55de4582e8d5ee4429b3c09cb7a3e133, type: 3}
+  finished: {fileID: 2800000, guid: f8b77a6516f96ad4c8cc0d354351c829, type: 3}
 --- !u!132 &530620689
 GUIText:
   m_ObjectHideFlags: 0
@@ -1116,7 +1116,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 893e22716757172448d57e589e7e5c63, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  score: {fileID: 0}
 --- !u!114 &871643016
 MonoBehaviour:
   m_ObjectHideFlags: 0
