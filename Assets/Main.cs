@@ -82,21 +82,7 @@ public class Main : MonoBehaviour {
 		//for debug
 		debugText = GameObject.Find ("DebugText").guiText;
 		int level = 1;
-		switch (level) {
-				case 1:
-						LevelOneScript.active = true;
-						break;
-				case 2:
-						LevelTwoScript.active = true;
-						break;
-				case 3:
-						LevelThreeScript.active = true;
-						break;
-				case 4:
-						LevelFourSCript.active = true;
-						break;
-				default: LevelOneScript.active = true;
-				}
+		LoadLevelSettings(level);
 
 
 
