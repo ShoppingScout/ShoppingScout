@@ -45,13 +45,14 @@ public class Main : MonoBehaviour {
 	//============== VARIABLES =================
 	public Texture btnTexture;
 	public GUIStyle myGUIStyle;
-	CategoryButtons categoryButtons;
+	GroupButton button1, button2, button3, button4, button5, button6;
 	private Vector3 pos1 = new Vector3 (0.5f, 0.4f, 0f),
 					pos2 = new Vector3 (0.8f, 0.32f, 0f),
 					pos3 = new Vector3 (0.8f, 0.18f, 0f),
 					pos4 = new Vector3 (0.5f, 0.1f, 0f),
 					pos5 = new Vector3 (0.2f, 0.18f, 0f),
-					pos6 = new Vector3 (0.2f, 0.32f, 0f);
+					pos6 = new Vector3 (0.2f, 0.32f, 0f),
+					resetPos;
 
 	//used to detect which object is being touched
 	private GUILayer hitTest;
@@ -87,70 +88,7 @@ public class Main : MonoBehaviour {
 
 
 
-		/*
-		//pretend this is the first install, every time
-		//later we will make this value permanently set for non-first installs
-		bool first_install = true;
-
-		//First check whether or not this is the user's first install
-		if(first_install == true){
-			//If it is, create a data structure of Items with their image filenames and categories (int 0-7)
-			Item[] items = new Item[5];
-			int i = 0;
-
-			//Random random = new Random();
-			//int r = Random.Range(0, 7);
-
-			//here we would normally import info from the database
-			//but instead we'll make sure random sample products
-			//here we'll use Emmanuel's product selection function
-			while(i < 5) {
-
-				//items[0].Level_1 = whatever the category is 0-7
-				//items[i].Level_1 = r;
-				//items[i].name = "test";
-
-
-				//items[i].Level_1 = r;		//corresponding category number
-				//items[i].name = "test";		//this will be replaces by product selection function
-
-				//items[i].Level_1 = r;		//corresponding category number
-				items[i].name = "test";		//this will be replaces by product selection function
-
-				i++;
-			}
-
-		}//if
-		*/
-		categoryButtons = new CategoryButtons(6);
-		//  (button ID, Vector3 button position)
-		categoryButtons.setPosition(0,pos1);
-		categoryButtons.setPosition(1,pos2);
-		categoryButtons.setPosition(2,pos3);
-		categoryButtons.setPosition(3,pos4);
-		categoryButtons.setPosition(4,pos5);
-		categoryButtons.setPosition(5,pos6);
-		//  (button ID, int number of category)
-		categoryButtons.setCategoryNum(0,4);
-		categoryButtons.setCategoryNum(1,4);
-		categoryButtons.setCategoryNum(2,4);
-		categoryButtons.setCategoryNum(3,4);
-		categoryButtons.setCategoryNum(4,4);
-		categoryButtons.setCategoryNum(5,4);
-
 		
-		//while timer != 0
-		
-			//get current item's category
-
-			//get user input
-			
-			//check if user input is same as item's category
-				//if item category is 0, put user input into item's category
-				//else if, user input == item category execute scoring.correct
-				//else, user is wrong so execute scoring.incorrect
-				
-		//make game end when timer runs out
 		// ========= BUTTON ============
 		//used for returning the GameObject that is being touched.
 		hitTest = Camera.main.GetComponent<GUILayer> ();
@@ -166,12 +104,7 @@ public class Main : MonoBehaviour {
 		//is there a touch on screen?
 			if (Input.touches.Length <= 0) {
 					//if no touches	
-					categoryButtons.setPosition(0,pos1);
-					categoryButtons.setPosition(1,pos2);
-					categoryButtons.setPosition(2,pos3);
-					categoryButtons.setPosition(3,pos4);
-					categoryButtons.setPosition(4,pos5);
-					categoryButtons.setPosition(5,pos6);
+				
 					curButton = null;
 
 			} else { //if there is touch	
@@ -183,16 +116,18 @@ public class Main : MonoBehaviour {
 							curTouchPositionx = Input.GetTouch (0).position.x / SCREEN_WIDTH;
 							curTouchPositiony = Input.GetTouch(0).position.y / SCREEN_HEIGHT;			
 							//get current touch button
-							curButton = touchObject.guiTexture;				
+							curButton = touchObject.guiTexture;			
+							resetPos = curButton.transform.position;	
 							
 						}
 					//================== End phase ===================
 					if (Input.GetTouch (0).phase == TouchPhase.Ended) {				
 							touchObject = hitTest.HitTest (Input.GetTouch (0).position);
+							curButton.transform.position = resetPos;
 							if(DEBUG){
 									debugText.text = "Debug: finger pos: " + Input.GetTouch (0).position.x / Screen.width + ", " + Input.GetTouch (0).position.y / Screen.height 
 									+ "\n" + touchObject.guiTexture.name + "\nbutton pos: " + curButton.transform.position.x + ", " + curButton.transform.position.y;
-								}		
+								}
 						}
 					
 					//================== Button movement and animation ===================
@@ -202,32 +137,35 @@ public class Main : MonoBehaviour {
 
 							// snap the dragging button to the center if it is near.
 							if(curButton!=null && (curTouchPositionx > 0.4f && curTouchPositionx < 0.6f) &&  (curTouchPositiony > 0.155f && curTouchPositiony < 0.27f)){
-								curButton.transform.position = new Vector3 (.5f, .25f, 7f);	
+								if(curButton.name.Equals("groupButton1") || curButton.name.Equals("groupButton2") ||
+								   curButton.name.Equals("groupButton3") || curButton.name.Equals("groupButton4") ||
+								   curButton.name.Equals("groupButton4") || curButton.name.Equals("groupButton6"))
+										curButton.transform.position = new Vector3 (.5f, .25f, 7f);	
 								//categoryButtons.transformCategory(curButton.name, curButton.transform.position.x, curTouchPositiony+0.02f);	
 							}
 							if(curButton.transform.position!=new Vector3 (.5f, .25f, 7f)){
 								switch (curButton.name) {
-								case "ButtonGroup0":
+								case "groupButton1":
 										curButton.transform.position = new Vector3 (curButton.transform.position.x, curTouchPositiony+.02f, 7f);
-										//categoryButtons.transformCategory(curButton.name, curButton.transform.position.x, curTouchPositiony+0.02f);
+										//button1.transformButton("ButtonGroup1", curTouchPositionx, curTouchPositiony);
 										break;
-								case "ButtonGroup1":
+								case "groupButton2":
 										curButton.transform.position = new Vector3 (curTouchPositionx, (BUTTON_SLOPE * curTouchPositionx) + 0.133f, 7f);
-										
+		
 										break;	
-								case "ButtonGroup2":
+								case "groupButton3":
 										curButton.transform.position = new Vector3 (curTouchPositionx, (-BUTTON_SLOPE * curTouchPositionx) + 0.366f, 7f);
 										
 										break;
-								case "ButtonGroup3":
+								case "groupButton4":
 										curButton.transform.position = new Vector3 (curButton.transform.position.x, curTouchPositiony+.02f, 7f);
 										
 										break;	
-								case "ButtonGroup4":
+								case "groupButton5":
 										curButton.transform.position = new Vector3 (curTouchPositionx, (BUTTON_SLOPE * curTouchPositionx) + 0.133f, 7f);
 										
 										break;
-								case "ButtonGroup5":
+								case "groupButton6":
 										curButton.transform.position = new Vector3 (curTouchPositionx, (-BUTTON_SLOPE * curTouchPositionx) + 0.366f, 7f);
 										
 										break;
