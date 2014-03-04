@@ -7,14 +7,18 @@
 //     the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
+using UnityEngine;
+using System.Collections;
 using System;
-namespace AssemblyCSharp
-{
-		public class LevelOneScript
-		{
-				public LevelOneScript ()
+
+public class LevelOneScript : MonoBehavior {
+		private LevelOneScript ()
 				{
 				}
-		}
+			void Start(){
+			GameObject.Find("Button0").turnOn(1,3,4,2);
+			GameObject.Find("Button1").turnOn(5,7,8,6);
+			
+			}
 }
 

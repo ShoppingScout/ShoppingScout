@@ -22,10 +22,14 @@ public class Product_Stacks : MonoBehaviour {
 		// Parse product by product from CSV, placing info into Product objects
 
 		// Create a "stack" of product objects
-
-
+	}
+	
+	void startStackKnown(int Lower, Upper){
+		Item product;
 		
-
+		while( Lower <= Upper && (product = Item.Load(Lower)) != 0)
+			i++;
+			
 	}
 	
 	// Update is called once per frame
