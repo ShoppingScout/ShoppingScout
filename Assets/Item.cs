@@ -33,7 +33,7 @@ public class Item {
 		Category[index] = ctg;
 	}
 
-
+	//Item.Load(Int index) return an item
 
 
 

@@ -24,13 +24,13 @@ public class Product_Stacks : MonoBehaviour {
 		// Create a "stack" of product objects
 	}
 	
-	void startStackKnown(int Lower, Upper){
+/*	void startStackKnown(int Lower, Upper){
 		Item product;
 		
 		while( Lower <= Upper && (product = Item.Load(Lower)) != 0)
 			i++;
 			
-	}
+	}*/
 	
 	// Update is called once per frame
 	void Update () {
