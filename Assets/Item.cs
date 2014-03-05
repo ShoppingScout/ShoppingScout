@@ -13,7 +13,12 @@ public class Item {
 		ProductID = PID;
 		ProductName = PName;
 		Image = Img;
-		Category = new int[20];
+		Category = new int[5];	// Looking at the category tree, it seems most products do
+								// not go deeper than 5 categories
+	}
+
+	Item(){
+		Category = new int[5];
 	}
 
 	// Accessor functions
@@ -28,7 +33,9 @@ public class Item {
 			return Category[0];	// Index zero contains "ALL Products" Category
 	}
 
-	// Mutator for Item's categories
+	// Mutator functions
+	void set_PID(int pid){ ProductID = pid; }
+	void set_LID(int lid){ LocalID = lid; }
 	void set_ctg(int index, int ctg){
 		Category[index] = ctg;
 	}

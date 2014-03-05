@@ -11,11 +11,14 @@ public class Product_DB : MonoBehaviour {
 	
 	private Item[] known;
 	private Item[] unknown;
-	private int max_index_known, max_index_unknown; // Not sure if needed, just in case
+	private int max_index_known, max_index_unknown; 
 
 	Product_DB(){
-		known = new Item[300];	// May need to adjust sizes
-		unknown = new Item[200];
+		known = new Item[500];	// May need to adjust sizes, keep size large just in case
+		unknown = new Item[500];
+		max_index_known = 0;	// Initialize to zero
+		max_index_unknown = 0;	// After Products filled in these will contain the total number of products
+								// in each "stack"
 	}
 
 	void Start () {
@@ -25,6 +28,10 @@ public class Product_DB : MonoBehaviour {
 
 		// run while there are still rows in the csv file
 		while(reader.ReadRow (row)){
+			if(row.Count > 3){ // If row contains > 3 elements, it has some known categories for the product
+				known[max_index_known].set_PID(row[0]);		// Assign Product ID
+				knwon[max_index_known].set_LID(row[1]);		// Assign Local ID
+			}
 
 		}
 
