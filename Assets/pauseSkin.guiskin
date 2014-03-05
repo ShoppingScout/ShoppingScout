@@ -9,7 +9,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 1
   m_Script: {fileID: 12001, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: myGuiSkin
+  m_Name: pauseSkin
   m_EditorClassIdentifier: 
   m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
   m_box:
@@ -74,14 +74,14 @@ MonoBehaviour:
   m_button:
     m_Name: button
     m_Normal:
-      m_Background: {fileID: 2800000, guid: 89b5bfc39cc499c4fa0af0c5b7ac7c5b, type: 3}
+      m_Background: {fileID: 11006, guid: 0000000000000000e000000000000000, type: 0}
       m_TextColor: {r: .899999976, g: .899999976, b: .899999976, a: 1}
     m_Hover:
-      m_Background: {fileID: 2800000, guid: 3ed6b01b456fcf94385f734fd70ac6af, type: 3}
-      m_TextColor: {r: .898039222, g: .898039222, b: .898039222, a: 1}
+      m_Background: {fileID: 11003, guid: 0000000000000000e000000000000000, type: 0}
+      m_TextColor: {r: 1, g: 1, b: 1, a: 1}
     m_Active:
-      m_Background: {fileID: 2800000, guid: 3ed6b01b456fcf94385f734fd70ac6af, type: 3}
-      m_TextColor: {r: .917647064, g: .917647064, b: .227450982, a: 1}
+      m_Background: {fileID: 11002, guid: 0000000000000000e000000000000000, type: 0}
+      m_TextColor: {r: .899999976, g: .899999976, b: .899999976, a: 1}
     m_Focused:
       m_Background: {fileID: 0}
       m_TextColor: {r: 1, g: 1, b: 1, a: 1}
@@ -118,7 +118,7 @@ MonoBehaviour:
       m_Top: 0
       m_Bottom: 0
     m_Font: {fileID: 0}
-    m_FontSize: 0
+    m_FontSize: 10
     m_FontStyle: 0
     m_Alignment: 4
     m_WordWrap: 0
@@ -236,14 +236,14 @@ MonoBehaviour:
       m_Top: 0
       m_Bottom: 0
     m_Font: {fileID: 0}
-    m_FontSize: 0
+    m_FontSize: 12
     m_FontStyle: 0
     m_Alignment: 0
     m_WordWrap: 1
     m_RichText: 1
     m_TextClipping: 1
     m_ImagePosition: 0
-    m_ContentOffset: {x: 0, y: 0}
+    m_ContentOffset: {x: 50, y: 75}
     m_FixedWidth: 0
     m_FixedHeight: 0
     m_StretchWidth: 1
