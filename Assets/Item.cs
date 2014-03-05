@@ -22,11 +22,11 @@ public class Item {
 	}
 
 	// Accessor functions
-	int get_LID(){ return LocalID; }
-	int get_PID(){ return ProductID; }
-	string get_PName(){ return ProductName; }
-	string get_IMG(){ return Image; }
-	int get_ctg(int index){ 
+	public int get_LID(){ return LocalID; }
+	public int get_PID(){ return ProductID; }
+	public string get_PName(){ return ProductName; }
+	public string get_IMG(){ return Image; }
+	public int get_ctg(int index){ 
 		if(index < 20)
 			return Category[index];
 		else
@@ -34,9 +34,9 @@ public class Item {
 	}
 
 	// Mutator functions
-	void set_PID(int pid){ ProductID = pid; }
-	void set_LID(int lid){ LocalID = lid; }
-	void set_ctg(int index, int ctg){
+	public void set_PID(int pid){ ProductID = pid; }
+	public void set_LID(int lid){ LocalID = lid; }
+	public void set_ctg(int index, int ctg){
 		Category[index] = ctg;
 	}
 

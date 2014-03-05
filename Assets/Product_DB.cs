@@ -22,15 +22,15 @@ public class Product_DB : MonoBehaviour {
 	}
 
 	void Start () {
-		// Parse product by product from CSV, placing info into Product objects
+		// Parse product by product from CSV, placing info into Product objects and filling "stacks"
 		CsvFileReader reader = new CsvFileReader("Sample.csv");	// Use reader object to read in csv file
 		CsvRow row = new CsvRow();	// row will take in each row in csv file
 
 		// run while there are still rows in the csv file
 		while(reader.ReadRow (row)){
 			if(row.Count > 3){ // If row contains > 3 elements, it has some known categories for the product
-				known[max_index_known].set_PID(row[0]);		// Assign Product ID
-				knwon[max_index_known].set_LID(row[1]);		// Assign Local ID
+				known[max_index_known].set_PID(System.Convert.ToInt32(row[0]));		// Assign Product ID
+				known[max_index_known].set_LID(System.Convert.ToInt32(row[1]));		// Assign Local ID
 			}
 
 		}
