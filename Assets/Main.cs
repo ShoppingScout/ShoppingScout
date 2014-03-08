@@ -81,9 +81,9 @@ public class Main : MonoBehaviour {
 	//=====================================================================//o
 	void Start(){
 		//for debug
-		debugText = GameObject.Find ("DebugText").guiText;
+		//debugText = GameObject.Find ("DebugText").guiText;
 		int level = 1;
-		LoadLevelSettings(level);
+		LevelScript.LoadLevelSettings(level);
 
 
 
@@ -188,8 +188,8 @@ public class Main : MonoBehaviour {
 			if (Input.GetKey(KeyCode.Escape))
 			{
 				Application.LoadLevel("Menu");
-				ButtonGroup.Total_Number_Buttons = 0;
-				ButtonGroup.Total_Button_Group = 0;	
+				//ButtonGroup.Total_Number_Buttons = 0;
+			//	ButtonGroup.Total_Button_Group = 0;	
 				return;
 			}
 		}
