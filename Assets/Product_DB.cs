@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Product_Stacks : MonoBehaviour {
+public class Product_DB : MonoBehaviour {
 
 	// Use this for initialization
 	// Need to create product stacks at the beginning of the game
@@ -11,26 +11,32 @@ public class Product_Stacks : MonoBehaviour {
 	
 	private Item[] known;
 	private Item[] unknown;
-	private int max_index_known, max_index_unknown; // Not sure if needed, just in case
+	private int max_index_known, max_index_unknown; 
 
-	Product_Stacks(){
-		known = new Item[300];	// May need to adjust sizes
-		unknown = new Item[200];
+	Product_DB(){
+		known = new Item[500];	// May need to adjust sizes, keep size large just in case
+		unknown = new Item[500];
+		max_index_known = 0;	// Initialize to zero
+		max_index_unknown = 0;	// After Products filled in these will contain the total number of products
+								// in each "stack"
 	}
 
 	void Start () {
-		// Parse product by product from CSV, placing info into Product objects
+		// Parse product by product from CSV, placing info into Product objects and filling "stacks"
+		CsvFileReader reader = new CsvFileReader("Sample.csv");	// Use reader object to read in csv file
+		CsvRow row = new CsvRow();	// row will take in each row in csv file
 
-		// Create a "stack" of product objects
+		// run while there are still rows in the csv file
+		while(reader.ReadRow (row)){
+			if(row.Count > 3){ // If row contains > 3 elements, it has some known categories for the product
+				known[max_index_known].set_PID(System.Convert.ToInt32(row[0]));		// Assign Product ID
+				known[max_index_known].set_LID(System.Convert.ToInt32(row[1]));		// Assign Local ID
+			}
+
+		}
+
 	}
-	
-/*	void startStackKnown(int Lower, Upper){
-		Item product;
-		
-		while( Lower <= Upper && (product = Item.Load(Lower)) != 0)
-			i++;
-			
-	}*/
+
 	
 	// Update is called once per frame
 	void Update () {
