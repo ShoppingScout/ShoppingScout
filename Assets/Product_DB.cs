@@ -24,7 +24,7 @@ public class Product_DB : MonoBehaviour {
 	void Start () {
 		// Parse product by product from CSV, placing info into Product objects and filling "stacks"
 		CsvFileReader reader = new CsvFileReader("Sample.csv");	// Use reader object to read in csv file
-		CsvRow row = new CsvRow();	// row will take in each row in csv file
+		/*CsvRow row = new CsvRow();	// row will take in each row in csv file
 
 		// run while there are still rows in the csv file
 		while(reader.ReadRow (row)){
@@ -33,7 +33,7 @@ public class Product_DB : MonoBehaviour {
 				known[max_index_known].set_LID(System.Convert.ToInt32(row[1]));		// Assign Local ID
 			}
 
-		}
+		}*/
 
 	}
 

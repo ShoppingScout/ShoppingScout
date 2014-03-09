@@ -23,7 +23,7 @@ public class CsvFileReader : StreamReader
 	/// </summary>
 	/// <param name="row"></param>
 	/// <returns></returns>
-	public bool ReadRow(CsvRow row)
+	/*public bool ReadRow(CsvRow row)
 	{
 		row.LineText = ReadLine();
 		if (String.IsNullOrEmpty(row.LineText))
@@ -93,5 +93,5 @@ public class CsvFileReader : StreamReader
 		
 		// Return true if any columns read
 		return (row.Count > 0);
-	}
+	}*/
 }

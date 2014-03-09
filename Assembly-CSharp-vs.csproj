@@ -51,9 +51,12 @@
      <Compile Include="Assets\Item.cs" />
      <Compile Include="Assets\LevelScript.cs" />
      <Compile Include="Assets\Main.cs" />
+     <Compile Include="Assets\Pause_Menu.cs" />
+     <Compile Include="Assets\PopupText.cs" />
      <Compile Include="Assets\Product_DB.cs" />
-     <Compile Include="Assets\Product_Selection.cs" />
+     <Compile Include="Assets\Resources\CsvFileReader.cs" />
      <Compile Include="Assets\Resources\ReadWriteCsv.cs" />
+     <Compile Include="Assets\Scoring.cs" />
      <Compile Include="Assets\button_touching_chris.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

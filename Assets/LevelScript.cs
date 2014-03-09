@@ -52,5 +52,16 @@ public class LevelScript : MonoBehaviour {
 					GameObject.Find(id).transform.GetChild(i).gameObject.SetActive(false);
 				}
 			}
+			
+			private static void ShowCat(char buttonid){
+				string id = "Button" + buttonid;
+				string mid = "GUIMidButton" + buttonid + " (UnityEngine.Transform)";
+				for (int i = 0; i < GameObject.Find(id).transform.childCount; i++)
+				{	
+					if (GameObject.Find(id).transform.GetChild(i).ToString() == mid)
+						continue;
+					GameObject.Find(id).transform.GetChild(i).gameObject.SetActive(true);
+				}
+			}
 }
 
