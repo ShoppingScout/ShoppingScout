@@ -63,5 +63,13 @@ public class LevelScript : MonoBehaviour {
 					GameObject.Find(id).transform.GetChild(i).gameObject.SetActive(true);
 				}
 			}
+			public static void Deinitialize(){
+				Button0.SetActive(false);
+				Button1.SetActive(false);
+				Button2.SetActive(false);
+				Button3.SetActive(false);
+				Button4.SetActive(false);
+				Button5.SetActive(false);
+			}
 }
 
