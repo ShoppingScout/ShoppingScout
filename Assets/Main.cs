@@ -2,45 +2,6 @@
 using System.Collections;
 using System;
 
-/*
-public class Item{
-	//so from baby to unknown, the categories will correspond to an int from 0 to 7
-	//public int Level_1 { get; set; }
-	//public int Level_1;
-	/*Future levels
-	public int Level_Baby { get; set; }
-	public int Level_Beauty { get; set; }
-	...
-	
-	//public string FileName { get; set; } //filename for image
-
-    public Item(int level_1){
-        Level_1 = level_1;
-		//FileName = filename;
-    }//item
-
-	
-
-	// Field 
-	public string name;		//image filename
-	public int Level_1;
-	
-	// Constructor that takes no arguments. 
-	public Item()
-	{
-		name = "unknown";
-		Level_1 = 0;
-	}
-
-	// Method 
-	public void SetName(string newName, int newLevel1)
-	{
-		name = newName;
-		Level_1 = newLevel1;
-	}
-}//item
-*/
-
 public class Main : MonoBehaviour {
 	//============== VARIABLES =================
 	public Texture btnTexture;
@@ -81,17 +42,22 @@ public class Main : MonoBehaviour {
 	//=====================================================================//o
 	void Start(){
 		//for debug
-		//debugText = GameObject.Find ("DebugText").guiText;
-		int level = 1;
-		LevelScript.LoadLevelSettings(level);
-
-
-
-
-		
-		// ========= BUTTON ============
-		//used for returning the GameObject that is being touched.
+		debugText = GameObject.Find ("DebugText").guiText;
 		hitTest = Camera.main.GetComponent<GUILayer> ();
+
+		button1 = new GroupButton(pos1, 1);
+		button1.addCategory(3,2,4,1);
+		button2 = new GroupButton(pos2, 2);
+		button2.addCategory(3,2,4,1);
+		button3 = new GroupButton(pos3, 3);
+		button3.addCategory(3,2,4,1);
+		button4 = new GroupButton(pos4, 4);
+		button4.addCategory(3,2,4,1);
+		button5 = new GroupButton(pos5, 5);
+		button5.addCategory(3,2,4,1);
+		button6 = new GroupButton(pos6, 6);
+		button6.addCategory(3,2,4,1);
+
 
 		//========= BUTTON ============
 	}
@@ -189,7 +155,7 @@ public class Main : MonoBehaviour {
 			{
 				Application.LoadLevel("Menu");
 				//ButtonGroup.Total_Number_Buttons = 0;
-			//	ButtonGroup.Total_Button_Group = 0;	
+				//ButtonGroup.Total_Button_Group = 0;	
 				return;
 			}
 		}
