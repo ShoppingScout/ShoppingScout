@@ -33,7 +33,7 @@ public class PopupText : MonoBehaviour {
 		yield return new WaitForSeconds(delay);
 		popupText.SetActive(false);
 		this.enabled = false;
-
+		
 	}
 	
 }
