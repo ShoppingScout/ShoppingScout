@@ -5,36 +5,36 @@ using System;
 using System.IO;
 
 public class LevelScript : MonoBehaviour {
-			private static GameObject Button0;
-			private static GameObject Button1;
-			private static GameObject Button2;
-			private static GameObject Button3;
-			private static GameObject Button4;
-			private static GameObject Button5;
+			private Vector3 pos1, pos2, pos3, pos4, pos5, pos6, resetPos;
+			GroupButton Button1, Button2, Button3, Button4, Button5, Button6;
+			
+			//Default position of buttons
 			private void Awake()
 			{
-				Button0 = GameObject.Find("Button0");
-				Button1 = GameObject.Find("Button1");
-				Button2 = GameObject.Find("Button2");
-				Button3 = GameObject.Find("Button3");
-				Button4 = GameObject.Find("Button4");
-				Button5 = GameObject.Find("Button5");
-				
+				pos1 = new Vector3 (0.5f, 0.4f, 0f);
+				pos2 = new Vector3 (0.8f, 0.32f, 0f);
+				pos3 = new Vector3 (0.8f, 0.18f, 0f);
+				pos4 = new Vector3 (0.5f, 0.1f, 0f);
+				pos5 = new Vector3 (0.2f, 0.18f, 0f);
+				pos6 = new Vector3 (0.2f, 0.32f, 0f);
+			}
+			
+			void Start(){
 			}
 			
 			public LevelScript()
 			{
 			}
-			public static void LoadLevelSettings(int level){
+			
+			//Switch to determine which layout and categories to load
+			public void LoadLevelSettings(int level){
 				switch(level){
 					case 1:
-						HideCat('0');
-						HideCat('1');
-						Button3.SetActive(false);
-						Button2.SetActive(false);
-						Button4.SetActive(false);
-						Button5.SetActive(false);
-						
+					Button1 = new GroupButton(pos1, 1);
+					Button1.addCategory(3,2,4,1);
+					Button4 = new GroupButton(pos4, 4);
+					Button4.addCategory(3,2,4,1);
+					GameObject.Find("Game Object Clock").GetComponent<Clock_Script>().SetStartTime(30);
 						//GameObject.Find("Button0").turnOn(1,3,4,2);
 						//GameObject.Find("Button1").turnOn(5,7,8,6);
 						//StartStackKnown(0, 199);
@@ -42,34 +42,11 @@ public class LevelScript : MonoBehaviour {
 						break;		
 				}
 			}
-			private static void HideCat(char buttonid){
-				string id = "Button" + buttonid;
-				string mid = "GUIMidButton" + buttonid + " (UnityEngine.Transform)";
-				for (int i = 0; i < GameObject.Find(id).transform.childCount; i++)
-				{	
-					if (GameObject.Find(id).transform.GetChild(i).ToString() == mid)
-						continue;
-					GameObject.Find(id).transform.GetChild(i).gameObject.SetActive(false);
-				}
-			}
 			
-			private static void ShowCat(char buttonid){
-				string id = "Button" + buttonid;
-				string mid = "GUIMidButton" + buttonid + " (UnityEngine.Transform)";
-				for (int i = 0; i < GameObject.Find(id).transform.childCount; i++)
-				{	
-					if (GameObject.Find(id).transform.GetChild(i).ToString() == mid)
-						continue;
-					GameObject.Find(id).transform.GetChild(i).gameObject.SetActive(true);
-				}
-			}
-			public static void Deinitialize(){
-				Button0.SetActive(false);
-				Button1.SetActive(false);
-				Button2.SetActive(false);
-				Button3.SetActive(false);
-				Button4.SetActive(false);
-				Button5.SetActive(false);
+			//Function to make buttons invisible when timer runs out
+			public void Deinitialize(){
+				GroupButton.deleteGroupButtons();
+				
 			}
 }
 

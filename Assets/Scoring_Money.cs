@@ -23,7 +23,7 @@ public class Scoring_Money : MonoBehaviour
 		correct = 1;
 
 		playerBalance = GameObject.Find ("PlayerBalance").guiText;
-		PlayerPrefs.DeleteAll ();	// For testing purposes, resets balance
+		//PlayerPrefs.DeleteAll ();	// For testing purposes, resets balance
 		balance = PlayerPrefs.GetInt ("Balance", 0); // Look into an alternative for saving player's balance other than PlayerPrefs
 		myMultiplier = 1;
 		//startTime = Time.time;

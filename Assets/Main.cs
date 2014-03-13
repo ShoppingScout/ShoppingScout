@@ -6,14 +6,8 @@ public class Main : MonoBehaviour {
 	//============== VARIABLES =================
 	public Texture btnTexture;
 	public GUIStyle myGUIStyle;
-	GroupButton button1, button2, button3, button4, button5, button6;
-	private Vector3 pos1 = new Vector3 (0.5f, 0.4f, 0f),
-					pos2 = new Vector3 (0.8f, 0.32f, 0f),
-					pos3 = new Vector3 (0.8f, 0.18f, 0f),
-					pos4 = new Vector3 (0.5f, 0.1f, 0f),
-					pos5 = new Vector3 (0.2f, 0.18f, 0f),
-					pos6 = new Vector3 (0.2f, 0.32f, 0f),
-					resetPos;
+	
+
 
 	//used to detect which object is being touched
 	private GUILayer hitTest;
@@ -25,6 +19,7 @@ public class Main : MonoBehaviour {
 
 	private float curTouchPositionx;
 	private float curTouchPositiony;
+	private Vector3 resetPos;
 
 	//Constants
 	private const float BUTTON_SLOPE = (0.07f) / (0.3f);
@@ -33,6 +28,8 @@ public class Main : MonoBehaviour {
 
 	// DEBUG
 	private bool DEBUG = true;
+	private int levelGroup = 1;
+	public GameObject level;
 
 
     //============= VARIABLES END =============
@@ -42,21 +39,17 @@ public class Main : MonoBehaviour {
 	//=====================================================================//o
 	void Start(){
 		//for debug
+		print("Hello World");
 		debugText = GameObject.Find ("DebugText").guiText;
 		hitTest = Camera.main.GetComponent<GUILayer> ();
+		level = new GameObject();
+		level.AddComponent("GUITexture");
+		level.guiTexture.name = "level";
+		level.AddComponent("LevelScript");
+		level.GetComponent<LevelScript>().LoadLevelSettings(levelGroup);
+		
 
-		button1 = new GroupButton(pos1, 1);
-		button1.addCategory(3,2,4,1);
-		button2 = new GroupButton(pos2, 2);
-		button2.addCategory(3,2,4,1);
-		button3 = new GroupButton(pos3, 3);
-		button3.addCategory(3,2,4,1);
-		button4 = new GroupButton(pos4, 4);
-		button4.addCategory(3,2,4,1);
-		button5 = new GroupButton(pos5, 5);
-		button5.addCategory(3,2,4,1);
-		button6 = new GroupButton(pos6, 6);
-		button6.addCategory(3,2,4,1);
+
 
 
 		//========= BUTTON ============

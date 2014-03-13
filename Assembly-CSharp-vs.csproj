@@ -57,6 +57,7 @@
      <Compile Include="Assets\Resources\CsvFileReader.cs" />
      <Compile Include="Assets\Resources\ReadWriteCsv.cs" />
      <Compile Include="Assets\Scoring.cs" />
+     <Compile Include="Assets\Scoring_Money.cs" />
      <Compile Include="Assets\TouchButton.cs" />
      <Compile Include="Assets\button_touching_chris.cs" />
   </ItemGroup>

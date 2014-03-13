@@ -9,7 +9,7 @@ public class Clock_Script : MonoBehaviour {
     float timeRemaining;
     float percent;
     float clockFGMaxWidth; 
-
+	float callTime;
     public Texture2D rightSide;
     public Texture2D leftSide;
     public Texture2D back;
@@ -20,7 +20,8 @@ public class Clock_Script : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        startTime = 30.0f;
+        startTime = 5.0f;
+		callTime = Time.time;
 	}
 	
 	// Update is called once per frame
@@ -35,7 +36,7 @@ public class Clock_Script : MonoBehaviour {
 
     void Countdown()
     {
-        timeRemaining = startTime - Time.time;
+        timeRemaining = startTime - Time.time + callTime;
         percent = timeRemaining / startTime * 100;
         if (timeRemaining < 0)
         {
@@ -44,6 +45,11 @@ public class Clock_Script : MonoBehaviour {
             TimeIsUp();
         }
     }
+	
+	public void SetStartTime(int time)
+	{
+		startTime = time;
+	}
 
     void PauseClock() { isPaused = true; }
 
@@ -51,7 +57,7 @@ public class Clock_Script : MonoBehaviour {
 
     void TimeIsUp()
     {
-		LevelScript.Deinitialize();
+		(GameObject.Find("level").GetComponent<LevelScript>()).Deinitialize();
         //Debug.Log("Time is Up!");
     }
 

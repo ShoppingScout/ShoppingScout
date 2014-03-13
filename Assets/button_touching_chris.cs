@@ -46,6 +46,8 @@ public class button_touching_chris : MonoBehaviour {
 		} // quit game
 		
 	}
-	
+	void OnDestroy () {
+		print("Script was destroyed");
+	}
 }
 

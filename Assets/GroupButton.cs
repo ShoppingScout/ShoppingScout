@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections;
 
-public class GroupButton {
+public class GroupButton : MonoBehaviour{
 	//========================== VARIABLES ============================
 
 	// The button containing categories
@@ -13,15 +13,22 @@ public class GroupButton {
 	public static int Total_Button_Group = 0;
 
 	// Scale
-	private Vector3 groupButtonScale = new Vector3(0.13f, 0.07f,0f);
+	private Vector3 groupButtonScale = new Vector3(0.13f, 0.07f,1f);
 
 	// Debug
 	bool DEBUG = true;
+	
+	//Controller
+	private static GameObject allButtons;
+	
 
 	//========================== VARIABLES ============================
 	// Constructor
 	public GroupButton(Vector3 position, int posID){
+		if (allButtons == null)
+			allButtons = new GameObject();
 		groupButton = new GameObject();
+		groupButton.transform.parent = allButtons.transform;
 		groupButton.AddComponent("GUITexture");
 		// Set button texture
 		groupButton.guiTexture.texture = (Texture2D)Resources.Load("button");
@@ -37,8 +44,9 @@ public class GroupButton {
 
 		if(ID1 != -1){
 			cat1 = new GameObject();
+			cat1.transform.parent = groupButton.transform;
 			cat1.AddComponent("GUITexture");
-			cat1.transform.localScale = new Vector3(0.05f,0.03f,1);
+			cat1.transform.localScale = new Vector3(0.4f,0.4f,1);
 			cat1.guiTexture.texture = (Texture2D)Resources.Load("button");
 			cat1.guiTexture.name = ID1.ToString();
 			cat1.transform.position = new Vector3(groupButton.guiTexture.transform.position.x,
@@ -46,8 +54,9 @@ public class GroupButton {
 		}	
 		if(ID2 != -1){
 			cat2 = new GameObject();
+			cat2.transform.parent = groupButton.transform;
 			cat2.AddComponent("GUITexture");
-			cat2.transform.localScale = new Vector3(0.05f,0.03f,1);
+			cat2.transform.localScale = new Vector3(0.4f,0.4f,1);
 			cat2.guiTexture.texture = (Texture2D)Resources.Load("button");
 			cat2.guiTexture.name = ID2.ToString();
 			cat2.transform.position = new Vector3(groupButton.guiTexture.transform.position.x + spacingx,
@@ -55,8 +64,9 @@ public class GroupButton {
 		}	
 		if(ID3 != -1){
 			cat3 = new GameObject();
+			cat3.transform.parent = groupButton.transform;
 			cat3.AddComponent("GUITexture");
-			cat3.transform.localScale = new Vector3(0.05f,0.03f,1);
+			cat3.transform.localScale = new Vector3(0.4f,0.4f,1);
 			cat3.guiTexture.texture = (Texture2D)Resources.Load("button");
 			cat3.guiTexture.name = ID3.ToString();
 			cat3.transform.position = new Vector3(groupButton.guiTexture.transform.position.x,
@@ -64,8 +74,9 @@ public class GroupButton {
 		}	
 		if(ID4 != -1){
 			cat4 = new GameObject();
+			cat4.transform.parent = groupButton.transform;
 			cat4.AddComponent("GUITexture");
-			cat4.transform.localScale = new Vector3(0.05f,0.03f,1);
+			cat4.transform.localScale = new Vector3(0.4f,0.4f,1);
 			cat4.guiTexture.texture = (Texture2D)Resources.Load("button");
 			cat4.guiTexture.name = ID4.ToString();
 			cat4.transform.position = new Vector3(groupButton.guiTexture.transform.position.x - spacingx,
@@ -104,7 +115,14 @@ public class GroupButton {
 			}
 					
 	}
-
+	public static void deleteGroupButtons(){
+		Transform temp;
+		while (allButtons.transform.childCount > 0) {
+			temp = allButtons.transform.GetChild(0);
+			temp.parent = null;
+			Destroy(temp.gameObject);
+			}
+	}
 	// GroupButton movement
 	public GameObject getGroupButton(){
 		return groupButton;
