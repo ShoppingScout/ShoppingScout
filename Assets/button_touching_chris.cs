@@ -25,12 +25,12 @@ public class button_touching_chris : MonoBehaviour {
 	void OnGUI () {
 		GUI.skin = myGuiSkin;
 		
-		if (GUI.Button (new Rect (0.20f * SCREEN_WIDTH, 0.4f * SCREEN_HEIGHT, 0.60f * SCREEN_WIDTH, 0.1f * SCREEN_HEIGHT), "Level 1")) {
+		if (GUI.Button (new Rect (0.20f * SCREEN_WIDTH, 0.4f * SCREEN_HEIGHT, 0.60f * SCREEN_WIDTH, 0.1f * SCREEN_HEIGHT), "All Items")) {
 			Application.LoadLevel("Buttons");
 			load_number = 1;
 		} 
 		
-		if (GUI.Button (new Rect (0.20f * SCREEN_WIDTH, 0.55f * SCREEN_HEIGHT, 0.60f * SCREEN_WIDTH, 0.1f * SCREEN_HEIGHT), "Level 2")) {
+		if (GUI.Button (new Rect (0.20f * SCREEN_WIDTH, 0.55f * SCREEN_HEIGHT, 0.60f * SCREEN_WIDTH, 0.1f * SCREEN_HEIGHT), "Grocery")) {
 			Application.LoadLevel("Buttons");
 			load_number = 2;
 		} // load level 2 and set static variable
@@ -45,9 +45,6 @@ public class button_touching_chris : MonoBehaviour {
 			Application.Quit();
 		} // quit game
 		
-	}
-	void OnDestroy () {
-		print("Script was destroyed");
 	}
 }
 

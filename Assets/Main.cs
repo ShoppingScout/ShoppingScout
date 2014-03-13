@@ -39,13 +39,13 @@ public class Main : MonoBehaviour {
 	//=====================================================================//o
 	void Start(){
 		//for debug
-		print("Hello World");
 		debugText = GameObject.Find ("DebugText").guiText;
 		hitTest = Camera.main.GetComponent<GUILayer> ();
 		level = new GameObject();
 		level.AddComponent("GUITexture");
 		level.guiTexture.name = "level";
 		level.AddComponent("LevelScript");
+		levelGroup = button_touching_chris.load_number;
 		level.GetComponent<LevelScript>().LoadLevelSettings(levelGroup);
 		
 

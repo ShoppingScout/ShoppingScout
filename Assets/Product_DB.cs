@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System;
-
+/*
 public class Product_DB : MonoBehaviour {
 
 	// Use this for initialization
@@ -68,3 +68,4 @@ public class Product_DB : MonoBehaviour {
 	}
 	
 }
+*/
