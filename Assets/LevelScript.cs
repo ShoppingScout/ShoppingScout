@@ -51,6 +51,21 @@ public class LevelScript : MonoBehaviour {
 						Button6.addCategory(24011, 24009, 24004, 24003);
 						GameObject.Find("Game Object Clock").GetComponent<Clock_Script>().SetStartTime(30);
 						break;
+					case 3:
+						Button1 = new GroupButton(pos1, 1);
+						Button1.addCategory(24017, 24015, 24013, 24012);
+						Button2 = new GroupButton(pos2, 2);
+						Button2.addCategory(28488, 23182, 23186, 24048);
+						Button3 = new GroupButton(pos3, 3);
+						Button3.addCategory(-1, 24002, 23105, 24008);
+						Button4 = new GroupButton(pos4, 4);
+						Button4.addCategory(24017, 24015, 24013, 24012);
+						Button5 = new GroupButton(pos5, 5);
+						Button5.addCategory(28488, 23182, 23186, 24048);
+						Button6 = new GroupButton(pos6, 6);
+						Button6.addCategory(-1, 24002, 23105, 24008);
+						GameObject.Find("Game Object Clock").GetComponent<Clock_Script>().SetStartTime(30);
+						break;
 				}
 			}
 			

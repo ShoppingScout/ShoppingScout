@@ -73,9 +73,17 @@ public class Main : MonoBehaviour {
 							touchObject = hitTest.HitTest (Input.GetTouch (0).position);
 							//get current touch position in decimal. [0-1]
 							curTouchPositionx = Input.GetTouch (0).position.x / SCREEN_WIDTH;
-							curTouchPositiony = Input.GetTouch(0).position.y / SCREEN_HEIGHT;			
+							curTouchPositiony = Input.GetTouch(0).position.y / (SCREEN_HEIGHT);			
 							//get current touch button
-							curButton = touchObject.guiTexture;			
+							curButton = touchObject.guiTexture;	
+							if (curButton.transform.name.Length < 12)
+								if(curButton.transform.parent != null)
+								if(curButton.transform.parent.name.Equals("groupButton1") || curButton.transform.parent.name.Equals("groupButton2") ||
+								   curButton.transform.parent.name.Equals("groupButton3") || curButton.transform.parent.name.Equals("groupButton4") ||
+								   curButton.transform.parent.name.Equals("groupButton5") || curButton.transform.parent.name.Equals("groupButton6"))
+								   {
+										curButton = curButton.transform.parent.guiTexture;
+									}
 							resetPos = curButton.transform.position;	
 							
 						}
@@ -95,43 +103,57 @@ public class Main : MonoBehaviour {
 							curTouchPositiony = Input.GetTouch(0).position.y / SCREEN_HEIGHT;
 
 							// snap the dragging button to the center if it is near.
-							if(curButton!=null && (curTouchPositionx > 0.4f && curTouchPositionx < 0.6f) &&  (curTouchPositiony > 0.155f && curTouchPositiony < 0.27f)){
+							if(curButton!=null && (curButton.transform.position.x > 0.4f && curButton.transform.position.x < 0.6f) &&  (curButton.transform.position.y > 0.22f && curButton.transform.position.y < 0.28f)){
 								if(curButton.name.Equals("groupButton1") || curButton.name.Equals("groupButton2") ||
 								   curButton.name.Equals("groupButton3") || curButton.name.Equals("groupButton4") ||
-								   curButton.name.Equals("groupButton4") || curButton.name.Equals("groupButton6"))
+								   curButton.name.Equals("groupButton5") || curButton.name.Equals("groupButton6"))
 										curButton.transform.position = new Vector3 (.5f, .25f, 7f);	
 								//categoryButtons.transformCategory(curButton.name, curButton.transform.position.x, curTouchPositiony+0.02f);	
 							}
-							if(curButton.transform.position!=new Vector3 (.5f, .25f, 7f)){
+							if(curButton.transform.position!= new Vector3 (.5f, .25f, 7f)){
 								switch (curButton.name) {
 								case "groupButton1":
-										curButton.transform.position = new Vector3 (curButton.transform.position.x, curTouchPositiony+.02f, 7f);
+										if (Vector3.Distance(new Vector3 (curButton.transform.position.x, curTouchPositiony, 7f), new Vector3 (.5f, .25f, 7f)) 
+											<= Vector3.Distance((resetPos + new Vector3 (0,0,7f)), new Vector3 (.5f, .25f, 7f)))
+										curButton.transform.position = new Vector3 (curButton.transform.position.x, curTouchPositiony-.02f, 7f);
 										//button1.transformButton("ButtonGroup1", curTouchPositionx, curTouchPositiony);
 										break;
 								case "groupButton2":
+										if (Vector3.Distance(new Vector3 (curTouchPositionx, (BUTTON_SLOPE * curTouchPositionx), 7f), new Vector3 (.5f, .25f, 7f)) 
+											<= Vector3.Distance((resetPos + new Vector3 (0,0,7f)), new Vector3 (.5f, .25f, 7f)))
 										curButton.transform.position = new Vector3 (curTouchPositionx, (BUTTON_SLOPE * curTouchPositionx) + 0.133f, 7f);
 		
 										break;	
 								case "groupButton3":
+										if (Vector3.Distance(new Vector3 (curTouchPositionx, (-BUTTON_SLOPE * curTouchPositionx) + 0.366f, 7f), new Vector3 (.5f, .25f, 7f)) 
+											<= Vector3.Distance((resetPos + new Vector3 (0,0,7f)), new Vector3 (.5f, .25f, 7f)))
 										curButton.transform.position = new Vector3 (curTouchPositionx, (-BUTTON_SLOPE * curTouchPositionx) + 0.366f, 7f);
 										
 										break;
 								case "groupButton4":
+										if (Vector3.Distance(new Vector3 (curButton.transform.position.x, curTouchPositiony, 7f), new Vector3 (.5f, .25f, 7f)) 
+											<= Vector3.Distance((resetPos + new Vector3 (0,0,7f)), new Vector3 (.5f, .25f, 7f)))
 										curButton.transform.position = new Vector3 (curButton.transform.position.x, curTouchPositiony+.02f, 7f);
 										
 										break;	
 								case "groupButton5":
+										if (Vector3.Distance(new Vector3 (curTouchPositionx, (BUTTON_SLOPE * curTouchPositionx), 7f), new Vector3 (.5f, .25f, 7f)) 
+											<= Vector3.Distance((resetPos + new Vector3 (0,0,7f)), new Vector3 (.5f, .25f, 7f)))
 										curButton.transform.position = new Vector3 (curTouchPositionx, (BUTTON_SLOPE * curTouchPositionx) + 0.133f, 7f);
 										
 										break;
 								case "groupButton6":
-										curButton.transform.position = new Vector3 (curTouchPositionx, (-BUTTON_SLOPE * curTouchPositionx) + 0.366f, 7f);
+										if (Vector3.Distance(new Vector3 (curTouchPositionx, (-1* BUTTON_SLOPE * curTouchPositionx) + 0.366f, 7f), new Vector3 (.5f, .25f, 7f)) 
+											<= Vector3.Distance((resetPos + new Vector3 (0,0,7f)), new Vector3 (.5f, .25f, 7f)))
+										curButton.transform.position = new Vector3 (curTouchPositionx, (-1 * BUTTON_SLOPE * curTouchPositionx) + 0.366f, 7f);
 										
 										break;
 								}	
 								if(DEBUG){
 									debugText.text = "Debug: finger pos: " + Input.GetTouch (0).position.x / Screen.width + ", " + Input.GetTouch (0).position.y / Screen.height 
-									+ "\n" + curButton.name + "\nbutton pos: " + curButton.transform.position.x + ", " + curButton.transform.position.y;
+									+ "\n" + curButton.name + "\nbutton pos: " + curButton.transform.position.x + ", " + curButton.transform.position.y + '\n' + "ResetPosDist" 
+									+ (Vector3.Distance((resetPos + new Vector3 (0,0,7f)), new Vector3 (.5f, .25f, 7f))) + '\n' + "TouchPos:" + Vector3.Distance(new Vector3 (curButton.transform.position.x, curTouchPositiony, 7f), 
+									new Vector3 (.5f, .25f, 7f)) + "     " + resetPos;
 								}		
 							}
 						}
