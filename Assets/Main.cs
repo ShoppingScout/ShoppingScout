@@ -46,7 +46,7 @@ public class Main : MonoBehaviour {
 		level.AddComponent("GUITexture");
 		level.guiTexture.name = "level";
 		level.AddComponent("LevelScript");
-		levelGroup = button_touching_chris.load_number;
+		levelGroup = Main_Menu.load_number;
 		level.GetComponent<LevelScript>().LoadLevelSettings(levelGroup);
 		
 

@@ -19,6 +19,8 @@ public class Pause_Menu : MonoBehaviour {
 	}
 	
 	void OnGUI () {
+		pauseSkin.button.fontSize = SCREEN_WIDTH/20;
+
 		GUI.skin = pauseSkin;
 		
 		if (paused) {
