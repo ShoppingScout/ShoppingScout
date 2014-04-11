@@ -33,7 +33,8 @@ public class Main : MonoBehaviour {
     public GameObject level;
     public GroupButton groupie;
     public GroupButton[] groupies;
-	public GameObject centerMark;
+
+    public GameObject centerMark;
 
 
     //============= VARIABLES END =============
@@ -62,6 +63,7 @@ public class Main : MonoBehaviour {
     void Update () {
         //========================= Button area =======================
         //is there a touch on screen?
+
         if (Input.touches.Length <= 0) {
             //if no touches
 
@@ -86,7 +88,7 @@ public class Main : MonoBehaviour {
                             curButton = curButton.transform.parent.guiTexture;
                         }
                 resetPos = curButton.transform.position;
-				centerMark = GameObject.Find("center");
+                centerMark = GameObject.Find("center");
                 groupies = new GroupButton[6];
                 groupies[0] = GameObject.Find("level").GetComponent<LevelScript>().Button1;
 
@@ -103,7 +105,8 @@ public class Main : MonoBehaviour {
             //================== End phase ===================
             if (Input.GetTouch (0).phase == TouchPhase.Ended) {
                 touchObject = hitTest.HitTest (Input.GetTouch (0).position);
-				centerMark.transform.position = new Vector3 (.5f, .25f, 0f);
+
+                centerMark.transform.position = new Vector3 (.5f, .25f, 0f);
                 curButton.transform.position = resetPos;
                 if (curButton.name.Equals("groupButton1") || curButton.name.Equals("groupButton2") ||
                         curButton.name.Equals("groupButton3") || curButton.name.Equals("groupButton4") ||
@@ -184,7 +187,8 @@ public class Main : MonoBehaviour {
                             break;
                         }
                         groupie.setCategoriesScale(0);
-						selectAnswerPhaseTwo();
+
+                        selectAnswerPhaseTwo();
                     }
                 }
                 else {// (curButton.transform.position!= new Vector3 (.5f, .25f, 7f)) {
@@ -242,9 +246,12 @@ public class Main : MonoBehaviour {
                     }
                     if (DEBUG) {
                         debugText.text = centerMark.transform.position.z + "        "  +groupies[0].getCat(1).transform.position.z;
-						
-						
-						/*"Debug: finger pos: " + Input.GetTouch (0).position.x / Screen.width + ", " + Input.GetTouch (0).position.y / Screen.height
+
+
+
+
+
+                        /*"Debug: finger pos: " + Input.GetTouch (0).position.x / Screen.width + ", " + Input.GetTouch (0).position.y / Screen.height
                                          + "\n" + curButton.name + "\nbutton pos: " + curButton.transform.position.x + ", " + curButton.transform.position.y + '\n' + "ResetPosDist"
                                          + (Vector3.Distance((resetPos + new Vector3 (0,0,7f)), new Vector3 (.5f, .25f, 7f))) + '\n' + "TouchPos:" + Vector3.Distance(new Vector3 (curButton.transform.position.x, curTouchPositiony, 7f),
                                                  new Vector3 (.5f, .25f, 7f)) + "     " + resetPos;*/
@@ -270,7 +277,7 @@ public class Main : MonoBehaviour {
         }
     }
     public void selectAnswerPhaseTwo() {
-		centerMark.transform.position = new Vector3 (curTouchPositionx, curTouchPositiony, 11f);
+        centerMark.transform.position = new Vector3 (curTouchPositionx, curTouchPositiony, 11f);
 
     }
 
