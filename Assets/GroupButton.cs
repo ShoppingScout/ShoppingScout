@@ -35,7 +35,7 @@ public class GroupButton : MonoBehaviour{
 		groupButton.guiTexture.name = "groupButton" + posID;
 		groupButton.guiTexture.transform.position = position;
 		// Scale
-		setGroupButtonScale(groupButtonScale);		
+		setGroupButtonScale(groupButtonScale);	
 	}
 	// TOP -> RIGHT -> BOTTOM -> LEFT
 	public void addCategory(int ID1, int ID2, int ID3, int ID4){
@@ -51,6 +51,7 @@ public class GroupButton : MonoBehaviour{
 			cat1.guiTexture.name = ID1.ToString();
 			cat1.transform.position = new Vector3(groupButton.guiTexture.transform.position.x,
 												  groupButton.guiTexture.transform.position.y + spacingy, 10f);
+			cat1.AddComponent("CircleCollider2D");
 		}	
 		if(ID2 != -1){
 			cat2 = new GameObject();
@@ -82,6 +83,19 @@ public class GroupButton : MonoBehaviour{
 			cat4.transform.position = new Vector3(groupButton.guiTexture.transform.position.x - spacingx,
 												  groupButton.guiTexture.transform.position.y, 10f);
 		}	
+	}
+	
+	public GameObject getCat(int cat){
+		if (cat ==1)
+			return cat1;
+		else if (cat==2)
+			return cat2;
+		else if (cat==3)
+			return cat3;
+		else if (cat==4)
+			return cat4;
+		else
+			return null;
 	}
 
 	// move button by touch
@@ -131,5 +145,76 @@ public class GroupButton : MonoBehaviour{
 	public void setGroupButtonScale(Vector3 scale){
 		groupButton.guiTexture.transform.localScale = scale;
 	}
-
+	
+	public void setCategoriesScale( float pos){
+		float spacingx = 0.18f;
+		float spacingy = 0.10f;
+		float scale = 1.5f;
+		float height = 11f;
+		scale = 0.4f * (4 - 3 * pos); 
+		spacingx = 0.09f * (3 - 2 * pos); 
+		spacingy = 0.05f * (3 - 2 * pos); 
+		
+		if (cat1 != null){
+			cat1.transform.localScale = new Vector3(scale,scale,1);
+			cat1.transform.position = new Vector3(groupButton.guiTexture.transform.position.x,
+												  groupButton.guiTexture.transform.position.y + spacingy, height);
+			
+		}	
+		if (cat2 != null){
+			cat2.transform.localScale = new Vector3(scale,scale,1);
+			cat2.transform.position = new Vector3(groupButton.guiTexture.transform.position.x + spacingx,
+												  groupButton.guiTexture.transform.position.y, height);
+			
+		}
+		if (cat3 != null){
+			cat3.transform.localScale = new Vector3(scale,scale,1);
+			cat3.transform.position = new Vector3(groupButton.guiTexture.transform.position.x,
+												  groupButton.guiTexture.transform.position.y- spacingy, height);
+			
+		}
+		if (cat4 != null){
+			cat4.transform.localScale = new Vector3(scale,scale,1);
+			cat4.transform.position = new Vector3(groupButton.guiTexture.transform.position.x - spacingx,
+												  groupButton.guiTexture.transform.position.y, height);
+			
+		}
+	}
+	public void resetCategoriesScale(){
+		float spacingx = 0.09f;
+		float spacingy = 0.05f;
+		float scale = 0.4f;
+		if (cat1 != null){
+			cat1.transform.localScale = new Vector3(scale,scale,1);
+			cat1.transform.position = new Vector3(groupButton.guiTexture.transform.position.x,
+												  groupButton.guiTexture.transform.position.y + spacingy, 10f);
+			
+		}	
+		if (cat2 != null){
+			cat2.transform.localScale = new Vector3(scale,scale,1);
+			cat2.transform.position = new Vector3(groupButton.guiTexture.transform.position.x + spacingx,
+												  groupButton.guiTexture.transform.position.y, 10f);
+			
+		}
+		if (cat3 != null){
+			cat3.transform.localScale = new Vector3(scale,scale,1);
+			cat3.transform.position = new Vector3(groupButton.guiTexture.transform.position.x,
+												  groupButton.guiTexture.transform.position.y- spacingy, 10f);
+			
+		}
+		if (cat4 != null){
+			cat4.transform.localScale = new Vector3(scale,scale,1);
+			cat4.transform.position = new Vector3(groupButton.guiTexture.transform.position.x - spacingx,
+												  groupButton.guiTexture.transform.position.y, 10f);
+			
+		}
+	}
+	void OnTriggerExit(Collider other){
+		GUIText debugText = GameObject.Find ("DebugText").guiText;
+		debugText.text = cat1.guiTexture.name;
+	}
+	void OnTriggerStay(Collider other){
+		GUIText debugText = GameObject.Find ("DebugText").guiText;
+		debugText.text = "Entered!";
+	}
 }

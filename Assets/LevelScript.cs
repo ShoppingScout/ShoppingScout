@@ -6,7 +6,7 @@ using System.IO;
 
 public class LevelScript : MonoBehaviour {
 			private Vector3 pos1, pos2, pos3, pos4, pos5, pos6, resetPos;
-			GroupButton Button1, Button2, Button3, Button4, Button5, Button6;
+			public GroupButton Button1, Button2, Button3, Button4, Button5, Button6;
 			
 			//Default position of buttons
 			private void Awake()
@@ -41,11 +41,11 @@ public class LevelScript : MonoBehaviour {
 						//StartStackUnknown(200,219);
 						break;		
 					case 2:
-						Button1 = new GroupButton(pos1, 1);
+						Button1 = new GroupButton(pos2, 2);
 						Button1.addCategory(24017, 24015, 24013, 24012);
-						Button2 = new GroupButton(pos2, 2);
+						Button2 = new GroupButton(pos3, 3);
 						Button2.addCategory(28488, 23182, 23186, 24048);
-						Button4 = new GroupButton(pos4, 4);
+						Button4 = new GroupButton(pos5, 5);
 						Button4.addCategory(-1, 24002, 23105, 24008);
 						Button6 = new GroupButton(pos6, 6);
 						Button6.addCategory(24011, 24009, 24004, 24003);
