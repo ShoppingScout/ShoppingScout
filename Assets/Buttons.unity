@@ -570,6 +570,7 @@ GameObject:
   - 131: {fileID: 1798805465}
   - 50: {fileID: 1798805468}
   - 58: {fileID: 1798805467}
+  - 114: {fileID: 1798805469}
   m_Layer: 0
   m_Name: center
   m_TagString: Untagged
@@ -633,6 +634,17 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 1
+--- !u!114 &1798805469
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1798805464}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81e88f3b8f01b97458fddb72df1f91bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1906131794
 GameObject:
   m_ObjectHideFlags: 0

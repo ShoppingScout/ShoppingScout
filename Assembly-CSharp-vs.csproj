@@ -47,6 +47,7 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\Clock_Script.cs" />
+     <Compile Include="Assets\CollisionAnswer.cs" />
      <Compile Include="Assets\GroupButton.cs" />
      <Compile Include="Assets\Item.cs" />
      <Compile Include="Assets\LevelScript.cs" />
