@@ -37,6 +37,7 @@ public class Item {
 	public void set_PID(int pid){ ProductID = pid; }
 	public void set_LID(int lid){ LocalID = lid; }
 	public void set_PName(string pname){ ProductName = pname; }
+	public void set_IMG(string imgname){ Image = imgname; }
 	public void set_ctg(int index, int ctg){
 		Category[index] = ctg;
 	}
