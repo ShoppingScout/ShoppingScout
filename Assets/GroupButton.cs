@@ -47,7 +47,7 @@ public class GroupButton : MonoBehaviour {
             cat1.transform.parent = groupButton.transform;
             cat1.AddComponent("GUITexture");
             cat1.transform.localScale = new Vector3(0.4f,0.4f,1);
-            cat1.guiTexture.texture = (Texture2D)Resources.Load("button");
+            cat1.guiTexture.texture = (Texture2D)Resources.Load("images/CategoryImages/"+ID1, typeof(Texture2D));
             cat1.guiTexture.name = ID1.ToString();
             cat1.transform.position = new Vector3(groupButton.guiTexture.transform.position.x,
                                                   groupButton.guiTexture.transform.position.y + spacingy, 10f);
@@ -59,7 +59,7 @@ public class GroupButton : MonoBehaviour {
             cat2.transform.parent = groupButton.transform;
             cat2.AddComponent("GUITexture");
             cat2.transform.localScale = new Vector3(0.4f,0.4f,1);
-            cat2.guiTexture.texture = (Texture2D)Resources.Load("button");
+            cat2.guiTexture.texture = (Texture2D)Resources.Load("images/CategoryImages/"+ID2, typeof(Texture2D));
             cat2.guiTexture.name = ID2.ToString();
             cat2.transform.position = new Vector3(groupButton.guiTexture.transform.position.x + spacingx,
                                                   groupButton.guiTexture.transform.position.y, 10f);
@@ -71,7 +71,7 @@ public class GroupButton : MonoBehaviour {
             cat3.transform.parent = groupButton.transform;
             cat3.AddComponent("GUITexture");
             cat3.transform.localScale = new Vector3(0.4f,0.4f,1);
-            cat3.guiTexture.texture = (Texture2D)Resources.Load("button");
+            cat3.guiTexture.texture = (Texture2D)Resources.Load("images/CategoryImages/"+ID3, typeof(Texture2D));
             cat3.guiTexture.name = ID3.ToString();
             cat3.transform.position = new Vector3(groupButton.guiTexture.transform.position.x,
                                                   groupButton.guiTexture.transform.position.y- spacingy, 10f);
@@ -83,7 +83,7 @@ public class GroupButton : MonoBehaviour {
             cat4.transform.parent = groupButton.transform;
             cat4.AddComponent("GUITexture");
             cat4.transform.localScale = new Vector3(0.4f,0.4f,1);
-            cat4.guiTexture.texture = (Texture2D)Resources.Load("button");
+            cat4.guiTexture.texture = (Texture2D)Resources.Load("images/CategoryImages/"+ID4, typeof(Texture2D));
             cat4.guiTexture.name = ID4.ToString();
             cat4.transform.position = new Vector3(groupButton.guiTexture.transform.position.x - spacingx,
                                                   groupButton.guiTexture.transform.position.y, 10f);
