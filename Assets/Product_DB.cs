@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System;
-/*
+
 public class Product_DB : MonoBehaviour {
 
 	// Use this for initialization
@@ -13,6 +13,7 @@ public class Product_DB : MonoBehaviour {
 	public static Item[] known;
 	public static Item[] unknown;
 	private static int max_index_known, max_index_unknown; 
+	private static int max_known_size, max_unknown_size;
 
 	Product_DB(){
 		known = new Item[500];	// May need to adjust sizes, keep size large just in case
@@ -25,16 +26,44 @@ public class Product_DB : MonoBehaviour {
 
 	private Item pop_known(){
 		Item temp;
+		if(max_index_known <= 0){
+			max_index_known = max_known_size;
+		}
+
 		int randindex = UnityEngine.Random.Range (0,max_index_known);
 
 		temp = known[randindex];
 		known[randindex] = known[max_index_known];
-		//known[max_index_known] 
+		known[max_index_known] = temp;
+		max_index_known--;
 
 		return temp;
 
+	}
+
+	private Item pop_unknown(){
+		Item temp;
+		if(max_index_unknown <= 0){
+			max_index_unknown = max_unknown_size;
+		}
+
+		int randindex = UnityEngine.Random.Range (0,max_index_unknown);
+
+		temp = unknown[randindex];
+		unknown[randindex] = unknown[max_index_unknown];
+		unknown[max_index_unknown] = temp;
+		max_index_unknown--;
+
+		return temp;
 
 	}
+
+/*
+	public Item next_Item(){
+		Item temp;
+
+	}
+	*/
 
 	void Awake () {
 		// Parse product by product from CSV, placing info into Product objects and filling "stacks"
@@ -49,6 +78,7 @@ public class Product_DB : MonoBehaviour {
 				known[max_index_known].set_PID(System.Convert.ToInt32(row[0]));		// Assign Product ID
 				known[max_index_known].set_LID(System.Convert.ToInt32(row[1]));		// Assign Local ID
 				known[max_index_known].set_PName(row[2]);							// Assign Product Name
+				known[max_index_known].set_IMG("image"+known[max_index_known].get_LID()+".jpg");	// Assign image file
 				for(int i = 3; i < row.Count; i++){
 					known[max_index_known].set_ctg (i-3, System.Convert.ToInt32(row[i]));					// Assign categories
 				}
@@ -59,13 +89,19 @@ public class Product_DB : MonoBehaviour {
 				unknown[max_index_unknown].set_PID(System.Convert.ToInt32(row[0]));		// Assign Product ID
 				unknown[max_index_unknown].set_LID(System.Convert.ToInt32(row[1]));		// Assign Local ID
 				unknown[max_index_unknown].set_PName(row[2]);							// Assign Product Name
-				Debug.Log (unknown[max_index_unknown].get_PName());
+				unknown[max_index_unknown].set_IMG("image"+unknown[max_index_unknown].get_LID()+".jpg");
+				//Debug.Log (unknown[max_index_unknown].get_IMG());
 				max_index_unknown++;
 			}
 
 		}
 
+		max_known_size = max_index_known;
+		max_unknown_size = max_index_unknown;
+		Item temp;
+		temp = pop_known();
+		Debug.Log (temp.get_IMG());
+
 	}
 	
 }
-*/
