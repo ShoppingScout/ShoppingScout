@@ -6,80 +6,74 @@ using System;
 
 public class Scoring_Money : MonoBehaviour
 {
-	
-	public static int balance;	// public in case needed in another script
+	private static int balance;
 	public static int myMultiplier;
-	private float startTime;
-	private float elapsedTime;
-	private float timeLeft;
-	private int count;
+	public int streak;
 	private GUIText playerBalance;
-	private int correct;
-	private float current_time;
+	private double timeLeft;
 	
 	void Awake ()
-	{
-		
-		correct = 1;
-
+	{		
 		playerBalance = GameObject.Find ("PlayerBalance").guiText;
-		//PlayerPrefs.DeleteAll ();	// For testing purposes, resets balance
+		PlayerPrefs.DeleteAll ();	// For testing purposes, resets balance
 		balance = PlayerPrefs.GetInt ("Balance", 0); // Look into an alternative for saving player's balance other than PlayerPrefs
 		myMultiplier = 1;
-		//startTime = Time.time;
+		streak = 1;
 		timeLeft = 30.0f;
-		count = 1;
-		// E: Took out update(), don't need it here; update() is called by the game every frame
 	}
-	void Update ()
+	
+	void update()
 	{
 		timeLeft -= Time.deltaTime;
-		
-		if(correct == 0) {
-			current_time = timeLeft;
-			//			playerBalance.color = Color.red;
-			//			StartCoroutine(Wait());
-			correct = 1;
+		if (timeLeft < 0) {
+			timeLeft = 0;
+			Application.LoadLevel("Statistics");
 		}
 	}
-
 	
-	void Inc_Balance (int multiplier)
+	
+	void Inc_Balance (bool correct)
 	{
-		correct = 1;
-		if (Event.current.type == EventType.MouseDown) {
-			if (count % 5 == 0)
-				timeLeft += 5;
-			if (count % 10 == 0)
+		if (correct) {
+			if (streak % 10 == 0)
 				myMultiplier++;
 			balance = balance + (5 * myMultiplier);
 			PlayerPrefs.SetInt ("Balance", balance);
-			count++;
-			correct = 1;
+			streak++;
 		} // if key up/correct answer
 		
-		if (Event.current.type == EventType.KeyDown) {
+		else {
 			balance -= 5;
 			myMultiplier = 1;
-			count = 1;
+			streak = 1;
 			PlayerPrefs.SetInt ("Balance", balance);
-			correct = 0;
 		} // if key down/incorrect answer
+	}
+	
+	
+	public void Check_Answer (string inputAns)
+	{
+		int answer = Convert.ToInt32 (inputAns);
+		GUIText debugText = GameObject.Find ("DebugText").guiText;
+
+		debugText.text = "result: " + answer;
+
+//		if (Item.category[depth == 0]) {
+//			Inc_Balance (true);			
+//		}
+
+		if (answer % 2 == 0) {
+			Inc_Balance (true);
+		}
 		
+		if (answer % 2 == 1) {
+			Inc_Balance (false);
+		}
 	}
 	
 	void OnGUI ()
 	{
-		GUILayout.Space (3);
-		// Can change text color and font to fit with the rest of the game's graphics
-		GUI.color = Color.black;
-		
-		
-		
 		playerBalance.text = "$ " + balance.ToString ();
-		if (timeLeft < 0)
-			timeLeft = 0; // GAME OVER
-		Inc_Balance (1);		// May be better if called from sendmessage from another script
+
 	}
-	
 }
