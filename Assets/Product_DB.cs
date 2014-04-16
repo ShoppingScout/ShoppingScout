@@ -58,12 +58,45 @@ public class Product_DB : MonoBehaviour {
 
 	}
 
-/*
+
 	public Item next_Item(){
 		Item temp;
+		double r, decision = 0.0;
+		int MyStreak;
+
+		// Assign random value
+		r = UnityEngine.Random.Range(0.0F,1.0F);
+		// Obtain player streak of correct categories
+		GameObject scorer = GameObject.Find ("PlayerBalance");
+		MyStreak = scorer.GetComponent<Scoring_Money> ().streak; 
+
+		// Set chance of getting an unknown product
+		if(MyStreak > 5 && MyStreak < 10)
+			decision = 0.15;
+		else if(MyStreak >= 10 && MyStreak < 25)
+			decision = 0.30;
+		else if(MyStreak >= 25)
+			decision = 0.60;
+
+		Debug.Log (r);
+		if(r < decision){
+			temp = pop_unknown();
+			Debug.Log ("unknown");
+		}
+		else{
+			temp = pop_known ();
+			Debug.Log ("known");
+		}
+
+		Debug.Log ("Sample_pictures/"+temp.get_IMG ());
+
+		UnityEngine.Object otemp = Resources.Load ("Sample_pictures/"+temp.get_IMG ());
+		if(otemp == null)
+			Debug.Log ("Load Object Fail");
+		return temp;
 
 	}
-	*/
+
 
 	void Awake () {
 		// Parse product by product from CSV, placing info into Product objects and filling "stacks"
@@ -78,7 +111,7 @@ public class Product_DB : MonoBehaviour {
 				known[max_index_known].set_PID(System.Convert.ToInt32(row[0]));		// Assign Product ID
 				known[max_index_known].set_LID(System.Convert.ToInt32(row[1]));		// Assign Local ID
 				known[max_index_known].set_PName(row[2]);							// Assign Product Name
-				known[max_index_known].set_IMG("image"+known[max_index_known].get_LID()+".jpg");	// Assign image file
+				known[max_index_known].set_IMG("image"+known[max_index_known].get_LID());	// Assign image file
 				for(int i = 3; i < row.Count; i++){
 					known[max_index_known].set_ctg (i-3, System.Convert.ToInt32(row[i]));					// Assign categories
 				}
@@ -96,12 +129,19 @@ public class Product_DB : MonoBehaviour {
 
 		}
 
+		Item temp;
 		max_known_size = max_index_known;
 		max_unknown_size = max_index_unknown;
-		Item temp;
-		temp = pop_known();
-		Debug.Log (temp.get_IMG());
+		temp = next_Item();
 
+		
 	}
-	
+	/*
+	void Update(){
+		int MyStreak;
+		GameObject scorer = GameObject.Find ("PlayerBalance");
+		MyStreak = scorer.GetComponent<Scoring_Money> ().streak; 
+		Debug.Log (MyStreak);
+	}
+	*/
 }
