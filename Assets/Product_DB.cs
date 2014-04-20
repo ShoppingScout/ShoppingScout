@@ -12,8 +12,10 @@ public class Product_DB : MonoBehaviour {
 	
 	public static Item[] known;
 	public static Item[] unknown;
+	public GameObject product;
 	private static int max_index_known, max_index_unknown; 
 	private static int max_known_size, max_unknown_size;
+
 
 	Product_DB(){
 		known = new Item[500];	// May need to adjust sizes, keep size large just in case
@@ -79,6 +81,7 @@ public class Product_DB : MonoBehaviour {
 			decision = 0.60;
 
 		Debug.Log (r);
+		Debug.Log (MyStreak);
 		if(r < decision){
 			temp = pop_unknown();
 			Debug.Log ("unknown");
@@ -90,9 +93,14 @@ public class Product_DB : MonoBehaviour {
 
 		Debug.Log ("Sample_pictures/"+temp.get_IMG ());
 
-		UnityEngine.Object otemp = Resources.Load ("Sample_pictures/"+temp.get_IMG ());
-		if(otemp == null)
-			Debug.Log ("Load Object Fail");
+		//UnityEngine.Object otemp = Resources.Load ("Sample_pictures/"+temp.get_IMG ());
+		//if(otemp == null)
+		//	Debug.Log ("Load Object Fail");
+		product = new GameObject();
+		product.AddComponent ("GUITexture");
+		product.guiTexture.texture = (Texture2D)Resources.Load ("Sample_pictures/"+temp.get_IMG ());
+		product.transform.position = new Vector3(0.5f,0.73f,4.0f);
+		product.transform.localScale = new Vector3(0.6f,0.24f,0f);
 		return temp;
 
 	}
@@ -122,26 +130,20 @@ public class Product_DB : MonoBehaviour {
 				unknown[max_index_unknown].set_PID(System.Convert.ToInt32(row[0]));		// Assign Product ID
 				unknown[max_index_unknown].set_LID(System.Convert.ToInt32(row[1]));		// Assign Local ID
 				unknown[max_index_unknown].set_PName(row[2]);							// Assign Product Name
-				unknown[max_index_unknown].set_IMG("image"+unknown[max_index_unknown].get_LID()+".jpg");
+				//unknown[max_index_unknown].set_IMG("image"+unknown[max_index_unknown].get_LID()+".jpg");
+				unknown[max_index_unknown].set_IMG("image"+unknown[max_index_unknown].get_LID());
 				//Debug.Log (unknown[max_index_unknown].get_IMG());
 				max_index_unknown++;
 			}
 
 		}
 
-		Item temp;
+		//Item temp;
 		max_known_size = max_index_known;
 		max_unknown_size = max_index_unknown;
-		temp = next_Item();
+		//temp = next_Item();
 
 		
 	}
-	/*
-	void Update(){
-		int MyStreak;
-		GameObject scorer = GameObject.Find ("PlayerBalance");
-		MyStreak = scorer.GetComponent<Scoring_Money> ().streak; 
-		Debug.Log (MyStreak);
-	}
-	*/
+
 }

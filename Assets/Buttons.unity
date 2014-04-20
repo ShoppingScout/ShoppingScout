@@ -136,7 +136,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc251d1ad08007847b0805cfec862b2a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  streak: 0
+  streak: 6
 --- !u!1 &530620687
 GameObject:
   m_ObjectHideFlags: 0
@@ -265,6 +265,7 @@ GameObject:
   - 4: {fileID: 871643014}
   - 114: {fileID: 871643016}
   - 114: {fileID: 871643019}
+  - 114: {fileID: 871643015}
   m_Layer: 0
   m_Name: Scripts
   m_TagString: Untagged
@@ -283,6 +284,17 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
+--- !u!114 &871643015
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 871643013}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5990693233c4a3e4a854c8a2bec421e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &871643016
 MonoBehaviour:
   m_ObjectHideFlags: 0
