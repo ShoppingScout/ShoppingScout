@@ -32,6 +32,8 @@ public class LevelScript : MonoBehaviour {
     public void LoadLevelSettings(int level) {
         switch (level) {
         case 1:
+			GUIText debugText = GameObject.Find ("DebugText").guiText;
+			debugText.text = Application.persistentDataPath;
             Button1 = new GroupButton(pos1, 1);
             Button1.addCategory(4,5,2,28242);
             Button4 = new GroupButton(pos4, 4);
@@ -40,8 +42,7 @@ public class LevelScript : MonoBehaviour {
 			depth = 1;
 			currentItem = GameObject.Find("Scripts").GetComponent<Product_DB>().next_Item();
 			GameObject.Find("GUIProductImg").guiTexture.texture = (Texture2D) Resources.Load("Sample_pictures/"+currentItem.get_IMG());
-			GUIText debugText = GameObject.Find ("DebugText").guiText;
-			debugText.text = currentItem.get_PName();
+			
             //GameObject.Find("Button0").turnOn(1,3,4,2);
             //GameObject.Find("Button1").turnOn(5,7,8,6);
             //StartStackKnown(0, 199);
