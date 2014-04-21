@@ -39,7 +39,9 @@ public class LevelScript : MonoBehaviour {
             GameObject.Find("Game Object Clock").GetComponent<Clock_Script>().SetStartTime(30);
 			depth = 1;
 			currentItem = GameObject.Find("Scripts").GetComponent<Product_DB>().next_Item();
-			GameObject.Find("GUIProductImg").guiTexture.texture = (Texture2D) Resources.Load(currentItem.get_IMG());
+			GameObject.Find("GUIProductImg").guiTexture.texture = (Texture2D) Resources.Load("Sample_pictures/"+currentItem.get_IMG());
+			GUIText debugText = GameObject.Find ("DebugText").guiText;
+			debugText.text = currentItem.get_PName();
             //GameObject.Find("Button0").turnOn(1,3,4,2);
             //GameObject.Find("Button1").turnOn(5,7,8,6);
             //StartStackKnown(0, 199);

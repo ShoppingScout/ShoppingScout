@@ -96,11 +96,14 @@ public class Product_DB : MonoBehaviour {
 		//UnityEngine.Object otemp = Resources.Load ("Sample_pictures/"+temp.get_IMG ());
 		//if(otemp == null)
 		//	Debug.Log ("Load Object Fail");
+		GUIText debugText = GameObject.Find ("DebugText").guiText;
+			debugText.text = temp.get_IMG();
+			/*
 		product = new GameObject();
 		product.AddComponent ("GUITexture");
 		product.guiTexture.texture = (Texture2D)Resources.Load ("Sample_pictures/"+temp.get_IMG ());
 		product.transform.position = new Vector3(0.5f,0.73f,4.0f);
-		product.transform.localScale = new Vector3(0.6f,0.24f,0f);
+		product.transform.localScale = new Vector3(0.6f,0.24f,0f);*/
 		return temp;
 
 	}
