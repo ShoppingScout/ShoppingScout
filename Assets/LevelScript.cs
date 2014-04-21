@@ -7,6 +7,7 @@ using System.IO;
 public class LevelScript : MonoBehaviour {
     private Vector3 pos1, pos2, pos3, pos4, pos5, pos6, resetPos;
     public GroupButton Button1, Button2, Button3, Button4, Button5, Button6;
+	public Item currentItem;
 	int depth;
 
     //Default position of buttons
@@ -37,6 +38,8 @@ public class LevelScript : MonoBehaviour {
             Button4.addCategory(28347,6,-1,3);
             GameObject.Find("Game Object Clock").GetComponent<Clock_Script>().SetStartTime(30);
 			depth = 1;
+			currentItem = GameObject.Find("Scripts").GetComponent<Product_DB>().next_Item();
+			GameObject.Find("GUIProductImg").guiTexture.texture = (Texture2D) Resources.Load(currentItem.get_IMG());
             //GameObject.Find("Button0").turnOn(1,3,4,2);
             //GameObject.Find("Button1").turnOn(5,7,8,6);
             //StartStackKnown(0, 199);
