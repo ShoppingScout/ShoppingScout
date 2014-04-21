@@ -7,6 +7,7 @@ using System.IO;
 public class LevelScript : MonoBehaviour {
     private Vector3 pos1, pos2, pos3, pos4, pos5, pos6, resetPos;
     public GroupButton Button1, Button2, Button3, Button4, Button5, Button6;
+	int depth;
 
     //Default position of buttons
     private void Awake()
@@ -31,10 +32,11 @@ public class LevelScript : MonoBehaviour {
         switch (level) {
         case 1:
             Button1 = new GroupButton(pos1, 1);
-            Button1.addCategory(1,2,3,4);
+            Button1.addCategory(4,5,2,28242);
             Button4 = new GroupButton(pos4, 4);
-            Button4.addCategory(5,6,7,8);
+            Button4.addCategory(28347,6,-1,3);
             GameObject.Find("Game Object Clock").GetComponent<Clock_Script>().SetStartTime(30);
+			depth = 1;
             //GameObject.Find("Button0").turnOn(1,3,4,2);
             //GameObject.Find("Button1").turnOn(5,7,8,6);
             //StartStackKnown(0, 199);
@@ -50,6 +52,7 @@ public class LevelScript : MonoBehaviour {
             Button6 = new GroupButton(pos6, 6);
             Button6.addCategory(24011, 24009, 24004, 24003);
             GameObject.Find("Game Object Clock").GetComponent<Clock_Script>().SetStartTime(30);
+			depth = 2;
             break;
         case 3:
             Button1 = new GroupButton(pos1, 1);
@@ -65,6 +68,8 @@ public class LevelScript : MonoBehaviour {
             Button6 = new GroupButton(pos6, 6);
             Button6.addCategory(-1, 24002, 23105, 24008);
             GameObject.Find("Game Object Clock").GetComponent<Clock_Script>().SetStartTime(30);
+			depth = 2;
+			
             break;
         }
     }
