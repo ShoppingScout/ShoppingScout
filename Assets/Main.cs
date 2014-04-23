@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+
 using System;
 
 
@@ -37,6 +38,8 @@ public class Main : MonoBehaviour {
 
     public GameObject centerMark;
     private bool middle; //Touch button in the middle?
+	public static int itemUpdate;
+	public static int itemAnswer;
 
 
     //============= VARIABLES END =============
@@ -55,6 +58,8 @@ public class Main : MonoBehaviour {
         levelGroup = Main_Menu.load_number;
         level.GetComponent<LevelScript>().LoadLevelSettings(levelGroup);
         middle = false;
+		itemUpdate = -1;
+		itemAnswer = -1;
 
 
         //========= BUTTON ============
@@ -68,7 +73,14 @@ public class Main : MonoBehaviour {
         //is there a touch on screen?
 
         if (Input.touches.Length <= 0) {
+			GameObject checker = GameObject.Find ("PlayerBalance");
             //if no touches
+			if (itemUpdate != -1){
+				checker.GetComponent <Scoring_Money> ().Check_Answer(itemUpdate.ToString());
+				LevelScript.currentItem = GameObject.Find("Scripts").GetComponent<Product_DB>().next_Item();
+				GameObject.Find("GUIProductImg").guiTexture.texture = (Texture2D) Resources.Load("Sample_pictures/"+LevelScript.currentItem.get_IMG());
+				itemUpdate = -1;
+			}
 
             curButton = null;
 
@@ -151,6 +163,10 @@ public class Main : MonoBehaviour {
                         catch (Exception e) {};
 
                     }
+					if (itemAnswer != -1){
+						itemUpdate = itemAnswer;
+						itemAnswer = -1;
+					}
                 }
                 middle = false;
                 //if (DEBUG) {
