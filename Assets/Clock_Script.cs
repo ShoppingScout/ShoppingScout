@@ -14,7 +14,6 @@ public class Clock_Script : MonoBehaviour {
     public Texture2D leftSide;
     public Texture2D back;
     public Texture2D blocker;
-    public Texture2D shiny;
     public Texture2D finished;
     
 
@@ -100,7 +99,6 @@ public class Clock_Script : MonoBehaviour {
         {
             GUI.DrawTexture(clockRect, finished, ScaleMode.StretchToFill, true, 0);
         }
-        GUI.DrawTexture(clockRect, shiny, ScaleMode.StretchToFill, true, 0);
 
         
     }

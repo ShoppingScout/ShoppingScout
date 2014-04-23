@@ -169,7 +169,6 @@ MonoBehaviour:
   leftSide: {fileID: 2800000, guid: caaaa64fde55b9749a3f5d0b2dc97b14, type: 3}
   back: {fileID: 2800000, guid: 7560283a14202de448f999cb8ed51ac1, type: 3}
   blocker: {fileID: 2800000, guid: 423a746194ff2804dba8ba03c95d76ac, type: 3}
-  shiny: {fileID: 2800000, guid: 55de4582e8d5ee4429b3c09cb7a3e133, type: 3}
   finished: {fileID: 2800000, guid: f8b77a6516f96ad4c8cc0d354351c829, type: 3}
 --- !u!132 &530620689
 GUIText:
