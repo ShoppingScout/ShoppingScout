@@ -51,8 +51,8 @@ public class GroupButton : MonoBehaviour {
             cat1.guiTexture.name = ID1.ToString();
             cat1.transform.position = new Vector3(groupButton.guiTexture.transform.position.x,
                                                   groupButton.guiTexture.transform.position.y + spacingy, 10f);
-            cat1.AddComponent("CircleCollider2D");
-			cat1.GetComponent<CircleCollider2D>().radius = .15f;
+            cat1.AddComponent("BoxCollider2D");
+			cat1.GetComponent<BoxCollider2D>().size = new Vector2(.7f, .2f);
         }
         if (ID2 != -1) {
             cat2 = new GameObject();
@@ -63,8 +63,8 @@ public class GroupButton : MonoBehaviour {
             cat2.guiTexture.name = ID2.ToString();
             cat2.transform.position = new Vector3(groupButton.guiTexture.transform.position.x + spacingx,
                                                   groupButton.guiTexture.transform.position.y, 10f);
-			cat2.AddComponent("CircleCollider2D");
-			cat2.GetComponent<CircleCollider2D>().radius = .15f;
+			cat2.AddComponent("BoxCollider2D");
+			cat2.GetComponent<BoxCollider2D>().size = new Vector2(.7f, .2f);
         }
         if (ID3 != -1) {
             cat3 = new GameObject();
@@ -75,8 +75,8 @@ public class GroupButton : MonoBehaviour {
             cat3.guiTexture.name = ID3.ToString();
             cat3.transform.position = new Vector3(groupButton.guiTexture.transform.position.x,
                                                   groupButton.guiTexture.transform.position.y- spacingy, 10f);
-			cat3.AddComponent("CircleCollider2D");
-			cat3.GetComponent<CircleCollider2D>().radius = .15f;
+			cat3.AddComponent("BoxCollider2D");
+			cat3.GetComponent<BoxCollider2D>().size = new Vector2(.7f, .2f);
 		}
         if (ID4 != -1) {
             cat4 = new GameObject();
@@ -87,8 +87,8 @@ public class GroupButton : MonoBehaviour {
             cat4.guiTexture.name = ID4.ToString();
             cat4.transform.position = new Vector3(groupButton.guiTexture.transform.position.x - spacingx,
                                                   groupButton.guiTexture.transform.position.y, 10f);
-			cat4.AddComponent("CircleCollider2D");
-			cat4.GetComponent<CircleCollider2D>().radius = .15f;
+			cat4.AddComponent("BoxCollider2D");
+			cat4.GetComponent<BoxCollider2D>().size = new Vector2(.7f, .2f);
 		}
     }
 
