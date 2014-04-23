@@ -31,25 +31,10 @@ public class Main_Menu : MonoBehaviour {
 
 		GUI.skin = myGuiSkin;
 		
-		if (GUI.Button (new Rect (0.20f * SCREEN_WIDTH, 0.4f * SCREEN_HEIGHT, 0.60f * SCREEN_WIDTH, 0.1f * SCREEN_HEIGHT), "All Items")) {
+		if (GUI.Button (new Rect (0.25f * SCREEN_WIDTH, 0.6f * SCREEN_HEIGHT, 0.50f * SCREEN_WIDTH, 0.1f * SCREEN_HEIGHT), "")) {
 			Application.LoadLevel("Buttons");
 			load_number = 1;
 		} 
-		
-		if (GUI.Button (new Rect (0.20f * SCREEN_WIDTH, 0.55f * SCREEN_HEIGHT, 0.60f * SCREEN_WIDTH, 0.1f * SCREEN_HEIGHT), "Grocery")) {
-			Application.LoadLevel("Buttons");
-			load_number = 2;
-		} // load level 2 and set static variable
-		
-		
-		if (GUI.Button (new Rect (0.20f * SCREEN_WIDTH, 0.7f * SCREEN_HEIGHT, 0.60f * SCREEN_WIDTH, 0.1f * SCREEN_HEIGHT), "Level 3")) {
-			Application.LoadLevel("Buttons");
-			load_number = 3;
-		} // load level 3 and set static variable
-		
-		if (GUI.Button (new Rect (0.20f * SCREEN_WIDTH, 0.85f * SCREEN_HEIGHT, 0.60f * SCREEN_WIDTH, 0.1f * SCREEN_HEIGHT), "Quit Game")) {
-			Application.Quit();
-		} // quit game
 		
 	}
 }
