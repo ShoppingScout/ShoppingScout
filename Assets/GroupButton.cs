@@ -46,13 +46,14 @@ public class GroupButton : MonoBehaviour {
             cat1 = new GameObject();
             cat1.transform.parent = groupButton.transform;
             cat1.AddComponent("GUITexture");
+
             cat1.transform.localScale = new Vector3(0.4f,0.4f,1);
             cat1.guiTexture.texture = (Texture2D)Resources.Load("images/CategoryImages/"+ID1, typeof(Texture2D));
             cat1.guiTexture.name = ID1.ToString();
             cat1.transform.position = new Vector3(groupButton.guiTexture.transform.position.x,
                                                   groupButton.guiTexture.transform.position.y + spacingy, 10f);
             cat1.AddComponent("BoxCollider2D");
-			cat1.GetComponent<BoxCollider2D>().size = new Vector2(.7f, .2f);
+            cat1.GetComponent<BoxCollider2D>().size = new Vector2(.7f, .2f);
         }
         if (ID2 != -1) {
             cat2 = new GameObject();
@@ -63,8 +64,8 @@ public class GroupButton : MonoBehaviour {
             cat2.guiTexture.name = ID2.ToString();
             cat2.transform.position = new Vector3(groupButton.guiTexture.transform.position.x + spacingx,
                                                   groupButton.guiTexture.transform.position.y, 10f);
-			cat2.AddComponent("BoxCollider2D");
-			cat2.GetComponent<BoxCollider2D>().size = new Vector2(.7f, .2f);
+            cat2.AddComponent("BoxCollider2D");
+            cat2.GetComponent<BoxCollider2D>().size = new Vector2(.7f, .2f);
         }
         if (ID3 != -1) {
             cat3 = new GameObject();
@@ -75,9 +76,9 @@ public class GroupButton : MonoBehaviour {
             cat3.guiTexture.name = ID3.ToString();
             cat3.transform.position = new Vector3(groupButton.guiTexture.transform.position.x,
                                                   groupButton.guiTexture.transform.position.y- spacingy, 10f);
-			cat3.AddComponent("BoxCollider2D");
-			cat3.GetComponent<BoxCollider2D>().size = new Vector2(.7f, .2f);
-		}
+            cat3.AddComponent("BoxCollider2D");
+            cat3.GetComponent<BoxCollider2D>().size = new Vector2(.7f, .2f);
+        }
         if (ID4 != -1) {
             cat4 = new GameObject();
             cat4.transform.parent = groupButton.transform;
@@ -87,9 +88,9 @@ public class GroupButton : MonoBehaviour {
             cat4.guiTexture.name = ID4.ToString();
             cat4.transform.position = new Vector3(groupButton.guiTexture.transform.position.x - spacingx,
                                                   groupButton.guiTexture.transform.position.y, 10f);
-			cat4.AddComponent("BoxCollider2D");
-			cat4.GetComponent<BoxCollider2D>().size = new Vector2(.7f, .2f);
-		}
+            cat4.AddComponent("BoxCollider2D");
+            cat4.GetComponent<BoxCollider2D>().size = new Vector2(.7f, .2f);
+        }
     }
 
     public GameObject getCat(int cat) {
@@ -167,6 +168,7 @@ public class GroupButton : MonoBehaviour {
             cat1.transform.position = new Vector3(groupButton.guiTexture.transform.position.x,
                                                   groupButton.guiTexture.transform.position.y + spacingy, height);
 
+
         }
         if (cat2 != null) {
             cat2.transform.localScale = new Vector3(scale,scale,1);
@@ -216,6 +218,86 @@ public class GroupButton : MonoBehaviour {
 
         }
     }
+
+    public void addCatTexts() {
+        GameObject cat1Text, cat2Text, cat3Text, cat4Text;
+        if (cat1 != null) {
+            cat1Text = new GameObject();
+            cat1Text.AddComponent("GUIText");
+            cat1Text.transform.parent = cat1.transform;
+            cat1Text.guiText.text = cat1.guiTexture.name;
+            cat1Text.guiText.color = Color.black;
+            cat1Text.guiText.fontSize = (int)(Screen.width/20);
+            cat1Text.guiText.anchor = TextAnchor.LowerCenter;
+            cat1Text.transform.localScale = cat1Text.transform.root.localScale;
+            cat1Text.transform.localPosition = new Vector3 (0f,0f,11f);
+            cat1Text.guiText.pixelOffset = new Vector2(0,Screen.height / -10);
+        }
+
+        if (cat2 != null) {
+            cat2Text = new GameObject();
+            cat2Text.AddComponent("GUIText");
+            cat2Text.transform.parent = cat2.transform;
+            cat2Text.guiText.text = cat2.guiTexture.name;
+            cat2Text.guiText.color = Color.black;
+            cat2Text.guiText.fontSize = (int)(Screen.width/20);
+            cat2Text.guiText.anchor = TextAnchor.LowerCenter;
+            cat2Text.transform.localScale = cat2Text.transform.root.localScale;
+            cat2Text.transform.localPosition = new Vector3 (0f,0f,11f);
+            cat2Text.guiText.pixelOffset = new Vector2(0,Screen.height / -10);
+        }
+
+        if (cat3 != null) {
+            cat3Text = new GameObject();
+            cat3Text.AddComponent("GUIText");
+            cat3Text.transform.parent = cat3.transform;
+            cat3Text.guiText.text = cat3.guiTexture.name;
+            cat3Text.guiText.color = Color.black;
+            cat3Text.guiText.fontSize = (int)(Screen.width/20);
+            cat3Text.guiText.anchor = TextAnchor.LowerCenter;
+            cat3Text.transform.localScale = cat3Text.transform.root.localScale;
+            cat3Text.transform.localPosition = new Vector3 (0f,0f,11f);
+            cat3Text.guiText.pixelOffset = new Vector2(0,Screen.height / -10);
+        }
+
+        if (cat4 != null) {
+            cat4Text = new GameObject();
+            cat4Text.AddComponent("GUIText");
+            cat4Text.transform.parent = cat4.transform;
+            cat4Text.guiText.text = cat4.guiTexture.name;
+            cat4Text.guiText.color = Color.black;
+            cat4Text.guiText.fontSize = (int)(Screen.width/20);
+            cat4Text.guiText.anchor = TextAnchor.LowerCenter;
+            cat4Text.transform.localScale = cat4Text.transform.root.localScale;
+            cat4Text.transform.localPosition = new Vector3 (0f,0f,11f);
+            cat4Text.guiText.pixelOffset = new Vector2(0,Screen.height / -10);
+        }
+    }
+
+    public void removeCatTexts() {
+        Transform temp;
+        if (cat1 != null) {
+            temp = cat1.transform.GetChild(0);
+            temp.parent = null;
+            Destroy(temp.gameObject);
+        }
+		if (cat2 != null) {
+            temp = cat2.transform.GetChild(0);
+            temp.parent = null;
+            Destroy(temp.gameObject);
+        }
+		if (cat3 != null) {
+            temp = cat3.transform.GetChild(0);
+            temp.parent = null;
+            Destroy(temp.gameObject);
+        }
+		if (cat4 != null) {
+            temp = cat4.transform.GetChild(0);
+            temp.parent = null;
+            Destroy(temp.gameObject);
+        }
+    }
+
     /*void OnTriggerExit2D(Collider2D other) {
         GUIText debugText = GameObject.Find ("DebugText").guiText;
         debugText.text = other.guiTexture.name;
@@ -223,6 +305,6 @@ public class GroupButton : MonoBehaviour {
     void OnTriggerStay2D(Collider2D other) {
         GUIText debugText = GameObject.Find ("DebugText").guiText;
         debugText.text = "Entered!";
-		}*/
+    	}*/
 
 }

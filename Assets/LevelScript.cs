@@ -38,7 +38,7 @@ public class LevelScript : MonoBehaviour {
             Button1.addCategory(4,5,2,28242);
             Button4 = new GroupButton(pos4, 4);
             Button4.addCategory(28347,6,-1,3);
-            GameObject.Find("Game Object Clock").GetComponent<Clock_Script>().SetStartTime(30);
+            GameObject.Find("Game Object Clock").GetComponent<Clock_Script>().SetStartTime(7);
 			depth = 1;
 			currentItem = GameObject.Find("Scripts").GetComponent<Product_DB>().next_Item();
 			GameObject.Find("GUIProductImg").guiTexture.texture = (Texture2D) Resources.Load("Sample_pictures/"+currentItem.get_IMG());

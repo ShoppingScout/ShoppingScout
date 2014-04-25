@@ -8,7 +8,10 @@ public class CollisionAnswer : MonoBehaviour {
 		currentItem = LevelScript.currentItem;
 		GUIText debugText = GameObject.Find ("DebugText").guiText;
 		GameObject checker = GameObject.Find ("PlayerBalance");
-		Main.itemAnswer = Convert.ToInt32 (other.guiTexture.name);
+		if (Main.middle){
+			Main.itemAnswer = Convert.ToInt32 (other.guiTexture.name);
+			debugText.text = other.guiTexture.name;
+		}
 		//if (Input.GetTouch (0).phase == TouchPhase.Ended) {
 //			GameObject.FindGameObjectWithTag("PlayerBalance").GetComponent < Scoring_Money > ().Check_Answer(other.guiTexture.name);
 		//	Main.itemUpdate = Convert.ToInt32 (other.guiTexture.name);

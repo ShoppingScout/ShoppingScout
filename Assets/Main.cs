@@ -37,9 +37,9 @@ public class Main : MonoBehaviour {
     public GroupButton[] groupies;
 
     public GameObject centerMark;
-    private bool middle; //Touch button in the middle?
-	public static int itemUpdate;
-	public static int itemAnswer;
+    public static bool middle; //Touch button in the middle?
+    public static int itemUpdate;
+    public static int itemAnswer;
 
 
     //============= VARIABLES END =============
@@ -58,8 +58,8 @@ public class Main : MonoBehaviour {
         levelGroup = Main_Menu.load_number;
         level.GetComponent<LevelScript>().LoadLevelSettings(levelGroup);
         middle = false;
-		itemUpdate = -1;
-		itemAnswer = -1;
+        itemUpdate = -1;
+        itemAnswer = -1;
 
 
         //========= BUTTON ============
@@ -73,14 +73,15 @@ public class Main : MonoBehaviour {
         //is there a touch on screen?
 
         if (Input.touches.Length <= 0) {
-			GameObject checker = GameObject.Find ("PlayerBalance");
+            GameObject checker = GameObject.Find ("PlayerBalance");
             //if no touches
-			if (itemUpdate != -1){
-				checker.GetComponent <Scoring_Money> ().Check_Answer(itemUpdate.ToString());
-				LevelScript.currentItem = GameObject.Find("Scripts").GetComponent<Product_DB>().next_Item();
-				GameObject.Find("GUIProductImg").guiTexture.texture = (Texture2D) Resources.Load("Sample_pictures/"+LevelScript.currentItem.get_IMG());
-				itemUpdate = -1;
-			}
+            if (itemUpdate != -1) {
+                checker.GetComponent <Scoring_Money> ().Check_Answer(itemUpdate.ToString());
+                LevelScript.currentItem = GameObject.Find("Scripts").GetComponent<Product_DB>().next_Item();
+                GameObject.Find("GUIProductImg").guiTexture.texture = (Texture2D) Resources.Load("Sample_pictures/"+LevelScript.currentItem.get_IMG());
+                itemUpdate = -1;
+                GameObject.Find("Game Object Clock").GetComponent<Clock_Script>().addTime(.5f);
+            }
 
             curButton = null;
 
@@ -156,6 +157,7 @@ public class Main : MonoBehaviour {
                         break;
                     }
                     groupie.resetCategoriesScale();
+					groupie.removeCatTexts();
                     for (int i = 0; i < 6; i++) {
                         try {
                             groupies[i].getGroupButton().gameObject.SetActive(true);
@@ -163,10 +165,10 @@ public class Main : MonoBehaviour {
                         catch (Exception e) {};
 
                     }
-					if (itemAnswer != -1){
-						itemUpdate = itemAnswer;
-						itemAnswer = -1;
-					}
+                    if (itemAnswer != -1) {
+                        itemUpdate = itemAnswer;
+                        itemAnswer = -1;
+                    }
                 }
                 middle = false;
                 //if (DEBUG) {
@@ -216,7 +218,10 @@ public class Main : MonoBehaviour {
                             }
                             groupie.setCategoriesScale(0);
                             middle = true;
-
+							
+                            groupie.addCatTexts();
+                           // groupie.getCat(1).guiText.anchor = TextAnchor.LowerCenter;
+                            debugText.text = "working!";
 
                         }
                     }
@@ -316,6 +321,7 @@ public class Main : MonoBehaviour {
             if (GameObject.Find("groupButton"+(i+1)))
                 if (!groupies[i].getGroupButton().name.Equals(curButton.name))
                     groupies[i].getGroupButton().gameObject.SetActive(false);
+
         }
         centerMark.transform.position = new Vector3 (curTouchPositionx, curTouchPositiony, 12f);
         //if (DEBUG) {

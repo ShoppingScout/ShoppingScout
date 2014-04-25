@@ -102,4 +102,11 @@ public class Clock_Script : MonoBehaviour {
 
         
     }
+	
+	public void addTime(float time){
+		startTime+=time/2;
+		if (timeRemaining > time/2)
+			timeRemaining-=time/2;
+		
+	}
 }
