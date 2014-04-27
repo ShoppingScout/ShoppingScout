@@ -79,8 +79,10 @@ public class Main : MonoBehaviour {
                 checker.GetComponent <Scoring_Money> ().Check_Answer(itemUpdate.ToString());
                 LevelScript.currentItem = GameObject.Find("Scripts").GetComponent<Product_DB>().next_Item();
                 GameObject.Find("GUIProductImg").guiTexture.texture = (Texture2D) Resources.Load("Sample_pictures/"+LevelScript.currentItem.get_IMG());
+				StartCoroutine(GameObject.Find("center").GetComponent<CollisionAnswer>().flashAnswer((itemUpdate % 2) == 0));
                 itemUpdate = -1;
                 GameObject.Find("Game Object Clock").GetComponent<Clock_Script>().addTime(.5f);
+				
             }
 
             curButton = null;

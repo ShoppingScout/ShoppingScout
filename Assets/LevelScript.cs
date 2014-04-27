@@ -30,10 +30,11 @@ public class LevelScript : MonoBehaviour {
 
     //Switch to determine which layout and categories to load
     public void LoadLevelSettings(int level) {
+		GameObject.Find("center").SetActive(true);
         switch (level) {
         case 1:
-			GUIText debugText = GameObject.Find ("DebugText").guiText;
-			debugText.text = Application.persistentDataPath;
+			//GUIText debugText = GameObject.Find ("DebugText").guiText;
+			//debugText.text = Application.persistentDataPath;
             Button1 = new GroupButton(pos1, 1);
             Button1.addCategory(4,5,2,28242);
             Button4 = new GroupButton(pos4, 4);

@@ -98,8 +98,6 @@ public class Product_DB : MonoBehaviour {
 		//UnityEngine.Object otemp = Resources.Load ("Sample_pictures/"+temp.get_IMG ());
 		//if(otemp == null)
 		//	Debug.Log ("Load Object Fail");
-		GUIText debugText = GameObject.Find ("DebugText").guiText;
-			debugText.text = temp.get_IMG();
 			/*
 		product = new GameObject();
 		product.AddComponent ("GUITexture");

@@ -57,6 +57,7 @@ public class Clock_Script : MonoBehaviour {
     void TimeIsUp()
     {
 		(GameObject.Find("level").GetComponent<LevelScript>()).Deinitialize();
+		GameObject.Find("center").SetActive(false);
         //Debug.Log("Time is Up!");
     }
 
