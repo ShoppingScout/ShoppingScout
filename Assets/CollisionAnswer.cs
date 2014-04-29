@@ -8,14 +8,16 @@ public class CollisionAnswer : MonoBehaviour {
     AndroidJavaObject jo;
     AndroidJavaClass jc;
     void Start() {
-        try {
-            Vibrate  = new AndroidJavaClass("vibrate.ShoppingScout.app.MainActivity");
-            jc = new AndroidJavaClass("com.unity3d.player.UnityPlayer");
-            jo = Vibrate.GetStatic<AndroidJavaObject>("test");
-        }
-        catch (Exception e) {
-            GUIText debugText = GameObject.Find ("DebugText").guiText;
-            debugText.text = e.Message;
+        if (Application.platform == RuntimePlatform.Android) {
+            try {
+                Vibrate  = new AndroidJavaClass("vibrate.ShoppingScout.app.MainActivity");
+                jc = new AndroidJavaClass("com.unity3d.player.UnityPlayer");
+                jo = Vibrate.GetStatic<AndroidJavaObject>("test");
+            }
+            catch (Exception e) {
+                GUIText debugText = GameObject.Find ("DebugText").guiText;
+                debugText.text = e.Message;
+            }
         }
     }
     void OnTriggerEnter2D(Collider2D other) {
@@ -25,12 +27,14 @@ public class CollisionAnswer : MonoBehaviour {
         if (Main.middle) {
             Main.itemAnswer = Convert.ToInt32 (other.guiTexture.name);
             //debugText.text = other.guiTexture.name;
-            try {
-                //Call Vibration function in Java, vibrationTime
-                jo.Call("vibrate2", 5);
-            }
-            catch (Exception e) {
-                debugText.text = e.Message;
+            if (Application.platform == RuntimePlatform.Android) {
+                try {
+                    //Call Vibration function in Java, vibrationTime
+                    jo.Call("vibrate2", 5);
+                }
+                catch (Exception e) {
+                    debugText.text = e.Message;
+                }
             }
         }
         //if (Input.GetTouch (0).phase == TouchPhase.Ended) {

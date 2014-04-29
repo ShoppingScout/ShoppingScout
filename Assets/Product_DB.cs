@@ -113,12 +113,14 @@ public class Product_DB : MonoBehaviour {
 		// Parse product by product from CSV, placing info into Product objects and filling "stacks"
 		CsvFileReader reader;
 		Stream stream;
-		WWW tester;
+		WWW tester; 
+		if (Application.platform == RuntimePlatform.Android){
 		tester = new WWW(Application.streamingAssetsPath + "/Sample.csv");
 		while(!tester.isDone){};
 		stream = new MemoryStream(tester.bytes);
-		if (Application.platform == RuntimePlatform.Android)
+		
 			reader = new CsvFileReader(stream);	// Use reader object to read in csv file
+			}
 		else
 			reader = new CsvFileReader("Assets/StreamingAssets/Sample.csv");
 		CsvRow row = new CsvRow();	// row will take in each row in csv file

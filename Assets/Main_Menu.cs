@@ -14,8 +14,8 @@ public class Main_Menu : MonoBehaviour {
 	public GUISkin myGuiSkin;
 	// Use this for initialization
 	void Start () {
-		logo = GameObject.Find ("Logo").guiTexture;
-		logo.guiTexture.transform.localScale = new Vector3(0.1f, 0.1f, 0); // format the logo
+//		logo = GameObject.Find ("Logo").guiTexture;
+//		logo.guiTexture.transform.localScale = new Vector3(0.1f, 0.1f, 0); // format the logo
 	}
 	
 	// Update is called once per frame
