@@ -4,9 +4,9 @@ using System;
 using System.Runtime.InteropServices;
 public class CollisionAnswer : MonoBehaviour {
     private Item currentItem;
-    AndroidJavaClass Vibrate;
-    AndroidJavaObject jo;
-    AndroidJavaClass jc;
+    public static AndroidJavaClass Vibrate;
+    public static AndroidJavaObject jo;
+    public static AndroidJavaClass jc;
     void Start() {
         if (Application.platform == RuntimePlatform.Android) {
             try {

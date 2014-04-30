@@ -4,7 +4,7 @@ using System.Collections;
 
 public class Clock_Script : MonoBehaviour {
 
-    bool isPaused = false;
+    public bool isPaused = false;
     float startTime;
     float timeRemaining;
     float percent;
@@ -24,16 +24,9 @@ public class Clock_Script : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
-        if (!isPaused)
-        {
-            // make sure the timer is not paused
-            Countdown();
-        }
 	
-	}
 
-    void Countdown()
+    public void Countdown()
     {
         timeRemaining = startTime - Time.time + callTime;
         percent = timeRemaining / startTime * 100;
@@ -56,8 +49,9 @@ public class Clock_Script : MonoBehaviour {
 
     void TimeIsUp()
     {
-		(GameObject.Find("level").GetComponent<LevelScript>()).Deinitialize();
 		GameObject.Find("center").SetActive(false);
+		(GameObject.Find("level").GetComponent<LevelScript>()).Deinitialize();
+		
         //Debug.Log("Time is Up!");
     }
 

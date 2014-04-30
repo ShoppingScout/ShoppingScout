@@ -46,6 +46,7 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\CategorySwitch.cs" />
      <Compile Include="Assets\Clock_Script.cs" />
      <Compile Include="Assets\CollisionAnswer.cs" />
      <Compile Include="Assets\CsvFileReader.cs" />

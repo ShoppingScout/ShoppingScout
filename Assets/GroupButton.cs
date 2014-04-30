@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using System;
 
 public class GroupButton : MonoBehaviour {
     //========================== VARIABLES ============================
@@ -225,7 +226,7 @@ public class GroupButton : MonoBehaviour {
             cat1Text = new GameObject();
             cat1Text.AddComponent("GUIText");
             cat1Text.transform.parent = cat1.transform;
-            cat1Text.guiText.text = cat1.guiTexture.name;
+            cat1Text.guiText.text = CategorySwitch.getCategoryFromID(Convert.ToInt32 (cat1.guiTexture.name));
             cat1Text.guiText.color = Color.black;
             cat1Text.guiText.fontSize = (int)(Screen.width/20);
             cat1Text.guiText.anchor = TextAnchor.LowerCenter;
@@ -238,7 +239,7 @@ public class GroupButton : MonoBehaviour {
             cat2Text = new GameObject();
             cat2Text.AddComponent("GUIText");
             cat2Text.transform.parent = cat2.transform;
-            cat2Text.guiText.text = cat2.guiTexture.name;
+            cat2Text.guiText.text = CategorySwitch.getCategoryFromID(Convert.ToInt32 (cat2.guiTexture.name));
             cat2Text.guiText.color = Color.black;
             cat2Text.guiText.fontSize = (int)(Screen.width/20);
             cat2Text.guiText.anchor = TextAnchor.LowerCenter;
@@ -251,7 +252,7 @@ public class GroupButton : MonoBehaviour {
             cat3Text = new GameObject();
             cat3Text.AddComponent("GUIText");
             cat3Text.transform.parent = cat3.transform;
-            cat3Text.guiText.text = cat3.guiTexture.name;
+            cat3Text.guiText.text = CategorySwitch.getCategoryFromID(Convert.ToInt32 (cat3.guiTexture.name));
             cat3Text.guiText.color = Color.black;
             cat3Text.guiText.fontSize = (int)(Screen.width/20);
             cat3Text.guiText.anchor = TextAnchor.LowerCenter;
@@ -264,7 +265,7 @@ public class GroupButton : MonoBehaviour {
             cat4Text = new GameObject();
             cat4Text.AddComponent("GUIText");
             cat4Text.transform.parent = cat4.transform;
-            cat4Text.guiText.text = cat4.guiTexture.name;
+            cat4Text.guiText.text = CategorySwitch.getCategoryFromID(Convert.ToInt32 (cat4.guiTexture.name));
             cat4Text.guiText.color = Color.black;
             cat4Text.guiText.fontSize = (int)(Screen.width/20);
             cat4Text.guiText.anchor = TextAnchor.LowerCenter;

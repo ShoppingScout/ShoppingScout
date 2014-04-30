@@ -69,9 +69,11 @@ public class Main : MonoBehaviour {
     //================ UPDATE =============================================//
     //=====================================================================//
     void Update () {
+		int remainder;
         //========================= Button area =======================
         //is there a touch on screen?
-
+		if (!GameObject.Find("Game Object Clock").GetComponent<Clock_Script>().isPaused)
+			GameObject.Find("Game Object Clock").GetComponent<Clock_Script>().Countdown();
         if (Input.touches.Length <= 0) {
             GameObject checker = GameObject.Find ("PlayerBalance");
             //if no touches
@@ -79,8 +81,10 @@ public class Main : MonoBehaviour {
                 checker.GetComponent <Scoring_Money> ().Check_Answer(itemUpdate.ToString());
                 LevelScript.currentItem = GameObject.Find("Scripts").GetComponent<Product_DB>().next_Item();
                 GameObject.Find("GUIProductImg").guiTexture.texture = (Texture2D) Resources.Load("Sample_pictures/"+LevelScript.currentItem.get_IMG());
-				StartCoroutine(GameObject.Find("center").GetComponent<CollisionAnswer>().flashAnswer((itemUpdate % 2) == 0));
-                itemUpdate = -1;
+				remainder = (itemUpdate % 2);
+				itemUpdate = -1;
+				StartCoroutine(GameObject.Find("center").GetComponent<CollisionAnswer>().flashAnswer(remainder == 0));
+                
                 GameObject.Find("Game Object Clock").GetComponent<Clock_Script>().addTime(.5f);
 				
             }
@@ -310,6 +314,7 @@ public class Main : MonoBehaviour {
         {
             if (Input.GetKey(KeyCode.Escape))
             {
+				CollisionAnswer.jo.Call("vibrate2", 75);
                 Application.LoadLevel("Menu");
                 //ButtonGroup.Total_Number_Buttons = 0;
                 //ButtonGroup.Total_Button_Group = 0;
