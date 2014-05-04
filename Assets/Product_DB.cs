@@ -30,13 +30,13 @@ public class Product_DB : MonoBehaviour {
 	public void StartStackKnown(int Begin, int End){
 		known_start_index = Begin;
 		known_end_index = End;
-		known_size = End+1-Begin;
+		known_size = End - Begin + 1;
 	}
 
 	public void StartStackUnknown(int Begin, int End){
 		unknown_start_index = Begin;
 		unknown_end_index = End;
-		unknown_size = End+1-Begin;
+		unknown_size = End - Begin + 1;
 	}
 
 	private Item pop_known(){
@@ -147,7 +147,6 @@ public class Product_DB : MonoBehaviour {
 				for(int i = 3; i < row.Count; i++){
 					master_list[mlist_size].set_ctg (i-3, System.Convert.ToInt32(row[i]));					// Assign categories
 				}
-				known_size++;
 			}
 			else{
 				master_list[mlist_size] = new Item();
@@ -155,7 +154,6 @@ public class Product_DB : MonoBehaviour {
 				master_list[mlist_size].set_LID(System.Convert.ToInt32(row[1]));		// Assign Local ID
 				master_list[mlist_size].set_PName(row[2]);							// Assign Product Name
 				master_list[mlist_size].set_IMG("image"+master_list[mlist_size].get_LID());	// Assign image file
-				unknown_size++;
 			}
 
 			mlist_size++;
