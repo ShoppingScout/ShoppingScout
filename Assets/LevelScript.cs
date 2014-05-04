@@ -51,12 +51,7 @@ public class LevelScript : MonoBehaviour {
 			GameObject.Find("Scripts").GetComponent<Product_DB>().StartStackUnknown(12,15);
 			currentItem = GameObject.Find("Scripts").GetComponent<Product_DB>().next_Item();
 			GameObject.Find("GUIProductImg").guiTexture.texture = (Texture2D) Resources.Load("Sample_pictures/"+currentItem.get_IMG());
-
-
-			GameObject scorer = GameObject.Find ("PlayerBalance");
-			scorer.GetComponent <Scoring_Money> ().initialize(depth);
-
-
+			
             //GameObject.Find("Button0").turnOn(1,3,4,2);
             //GameObject.Find("Button1").turnOn(5,7,8,6);
 			
