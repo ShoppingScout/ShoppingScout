@@ -52,8 +52,8 @@ public class LevelScript : MonoBehaviour {
 			
             //GameObject.Find("Button0").turnOn(1,3,4,2);
             //GameObject.Find("Button1").turnOn(5,7,8,6);
-            //StartStackKnown(0, 199);
-            //StartStackUnknown(200,219);
+			GameObject.Find("Scripts").GetComponent<Product_DB>().StartStackKnown(0, 9);
+			GameObject.Find("Scripts").GetComponent<Product_DB>().StartStackUnknown(12,15);
             break;
         case 2:
             Button2 = new GroupButton(pos2, 2);
