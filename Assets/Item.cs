@@ -8,17 +8,23 @@ public class Item {
 	private string Image;
 	private int[] Category;
 
-	public Item(int LID, int PID, string PName,string Img){
+	private int[] responses;
+	private int responseCount;
+
+	public Item(int LID, int PID, string PName,string Img, int index){
 		LocalID = LID;
 		ProductID = PID;
 		ProductName = PName;
 		Image = Img;
 		Category = new int[5];	// Looking at the category tree, it seems most products do
 								// not go deeper than 5 categories
+		responses = new int[50];
+		responseCount = 0;
 	}
 
 	public Item(){
 		Category = new int[5];
+		responses = new int[50];
 	}
 
 	// Accessor functions
@@ -33,6 +39,8 @@ public class Item {
 			return -1;	// -1 indicates out of range
 	}
 
+	public int get_responses(int index) { return responses[index]; }
+
 	// Mutator functions
 	public void set_PID(int pid){ ProductID = pid; }
 	public void set_LID(int lid){ LocalID = lid; }
@@ -45,6 +53,9 @@ public class Item {
 	//Item.Load(Int index) return an item
 
 
-
+	public void set_responses(int answer) {
+		responses[responseCount] = answer;
+		responseCount++;
+	}
 
 }
