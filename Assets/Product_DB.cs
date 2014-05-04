@@ -30,11 +30,13 @@ public class Product_DB : MonoBehaviour {
 	public void StartStackKnown(int Begin, int End){
 		known_start_index = Begin;
 		known_end_index = End;
+		known_size = End+1-Begin;
 	}
 
 	public void StartStackUnknown(int Begin, int End){
 		unknown_start_index = Begin;
 		unknown_end_index = End;
+		unknown_size = End+1-Begin;
 	}
 
 	private Item pop_known(){

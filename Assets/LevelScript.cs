@@ -47,13 +47,14 @@ public class LevelScript : MonoBehaviour {
             Button4.addCategory(28347,6,-1,3);
             GameObject.Find("Game Object Clock").GetComponent<Clock_Script>().SetStartTime(7);
 			depth = 1;
+			GameObject.Find("Scripts").GetComponent<Product_DB>().StartStackKnown(0, 1);
+			GameObject.Find("Scripts").GetComponent<Product_DB>().StartStackUnknown(12,15);
 			currentItem = GameObject.Find("Scripts").GetComponent<Product_DB>().next_Item();
 			GameObject.Find("GUIProductImg").guiTexture.texture = (Texture2D) Resources.Load("Sample_pictures/"+currentItem.get_IMG());
 			
             //GameObject.Find("Button0").turnOn(1,3,4,2);
             //GameObject.Find("Button1").turnOn(5,7,8,6);
-			GameObject.Find("Scripts").GetComponent<Product_DB>().StartStackKnown(0, 9);
-			GameObject.Find("Scripts").GetComponent<Product_DB>().StartStackUnknown(12,15);
+			
             break;
         case 2:
             Button2 = new GroupButton(pos2, 2);
