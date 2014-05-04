@@ -83,7 +83,7 @@ public class Main : MonoBehaviour {
                 GameObject.Find("GUIProductImg").guiTexture.texture = (Texture2D) Resources.Load("Sample_pictures/"+LevelScript.currentItem.get_IMG());
 				remainder = (itemUpdate % 2);
 				itemUpdate = -1;
-				StartCoroutine(GameObject.Find("center").GetComponent<CollisionAnswer>().flashAnswer(remainder == 0));
+				//StartCoroutine(GameObject.Find("center").GetComponent<CollisionAnswer>().flashAnswer(remainder == 0));
                 
                 GameObject.Find("Game Object Clock").GetComponent<Clock_Script>().addTime(.5f);
 				

@@ -11,7 +11,9 @@ public class Scoring_Money : MonoBehaviour
 	public int streak;
 	private GUIText playerBalance;
 	private double timeLeft;
-	
+
+	private int myDepth;
+
 	void Awake ()
 	{		
 		playerBalance = GameObject.Find ("PlayerBalance").guiText;
@@ -21,7 +23,12 @@ public class Scoring_Money : MonoBehaviour
 		streak = 1;
 		timeLeft = 30.0f;
 	}
-	
+
+	public void initialize(int depth)
+	{
+		myDepth = depth - 1;
+	}
+
 	void update()
 	{
 		timeLeft -= Time.deltaTime;
@@ -56,18 +63,26 @@ public class Scoring_Money : MonoBehaviour
 		int answer = Convert.ToInt32 (inputAns);
 		GUIText debugText = GameObject.Find ("DebugText").guiText;
 
-		debugText.text = "result: " + answer;
+//		debugText.text = "masterIndex: " + currentItem.get_myIndex() + "\ncurrent.answer: " + currentItem.get_ctg(0) + "\nresult: " + answer;
+		debugText.text = "responses1:" + LevelScript.currentItem.get_responses(0)
+			+ "\nresponse2: " + LevelScript.currentItem.get_responses(1) + "\nresponse3: " + LevelScript.currentItem.get_responses(2);
 
-//		if (Item.category[depth == 0]) {
-//			Inc_Balance (true);			
-//		}
-
-		if (answer % 2 == 0) {
+		if (LevelScript.currentItem.get_ctg(myDepth) == 0) {
 			Inc_Balance (true);
+			LevelScript.currentItem.set_responses(answer);
+			StartCoroutine(GameObject.Find("center").GetComponent<CollisionAnswer>().flashAnswer(true));
+		}
+
+		else if (LevelScript.currentItem.get_ctg(myDepth) == answer) {
+			Inc_Balance (true);
+			LevelScript.currentItem.set_responses(answer);
+			StartCoroutine(GameObject.Find("center").GetComponent<CollisionAnswer>().flashAnswer(true));
 		}
 		
-		if (answer % 2 == 1) {
+		else {
 			Inc_Balance (false);
+			LevelScript.currentItem.set_responses(answer);
+			StartCoroutine(GameObject.Find("center").GetComponent<CollisionAnswer>().flashAnswer(false));
 		}
 	}
 	
