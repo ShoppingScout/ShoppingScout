@@ -32,6 +32,12 @@ public class LevelScript : MonoBehaviour {
     public void LoadLevelSettings(int level) {
 		GameObject.Find("center").SetActive(true);
         switch (level) {
+		/* Buttons
+			1
+		6		2		
+		5		3
+			4
+		*/
         case 1:
 			//GUIText debugText = GameObject.Find ("DebugText").guiText;
 			//debugText.text = Application.persistentDataPath;

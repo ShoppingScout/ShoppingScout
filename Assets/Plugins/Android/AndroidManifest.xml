@@ -7,7 +7,7 @@
    <application android:allowBackup="true" android:label="@string/app_name"> 
       <activity android:name="vibrate.ShoppingScout.app.MainActivity"
                 android:label="@string/app_name"
-				 android:configChanges="fontScale|keyboard|keyboardHidden|locale|mnc|mcc|navigation|orientation|screenLayout|screenSize|smallestScreenSize|uiMode|touchscreen">
+				 >
          <intent-filter> 
             <action android:name="android.intent.action.MAIN" /> 
             <category android:name="android.intent.category.LAUNCHER" /> 
