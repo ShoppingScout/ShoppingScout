@@ -74,6 +74,56 @@ NavMeshSettings:
     widthInaccuracy: 16.666666
     heightInaccuracy: 10
   m_NavMesh: {fileID: 0}
+--- !u!1 &12208104
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 12208106}
+  - 132: {fileID: 12208105}
+  m_Layer: 0
+  m_Name: DebugText
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!132 &12208105
+GUIText:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 12208104}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Text: 'Debug:'
+  m_Anchor: 0
+  m_Alignment: 0
+  m_PixelOffset: {x: 0, y: 0}
+  m_LineSpacing: 1
+  m_TabSize: 4
+  m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+  m_Material: {fileID: 0}
+  m_FontSize: 80
+  m_FontStyle: 0
+  m_Color:
+    serializedVersion: 2
+    rgba: 4278190080
+  m_PixelCorrect: 0
+  m_RichText: 1
+--- !u!4 &12208106
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 12208104}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: .0494900011, y: .899999976, z: 15}
+  m_LocalScale: {x: .114713669, y: .0557155237, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
 --- !u!1 &76814646
 GameObject:
   m_ObjectHideFlags: 0
@@ -815,7 +865,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5990693233c4a3e4a854c8a2bec421e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  product: {fileID: 0}
 --- !u!114 &871643016
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2013,7 +2062,7 @@ GameObject:
   - 4: {fileID: 1906131796}
   - 132: {fileID: 1906131795}
   m_Layer: 0
-  m_Name: DebugText
+  m_Name: GUIProductName
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2027,9 +2076,9 @@ GUIText:
   m_GameObject: {fileID: 1906131794}
   m_Enabled: 1
   serializedVersion: 3
-  m_Text: 'Debug:'
+  m_Text: Product Name
   m_Anchor: 0
-  m_Alignment: 0
+  m_Alignment: 1
   m_PixelOffset: {x: 0, y: 0}
   m_LineSpacing: 1
   m_TabSize: 4
@@ -2049,7 +2098,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1906131794}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: .0494900011, y: .899999976, z: 15}
+  m_LocalPosition: {x: 0, y: .550000012, z: 15}
   m_LocalScale: {x: .114713669, y: .0557155237, z: 1}
   m_Children: []
   m_Father: {fileID: 0}

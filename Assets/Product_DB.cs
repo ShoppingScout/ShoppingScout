@@ -110,6 +110,8 @@ public class Product_DB : MonoBehaviour {
 		product.guiTexture.texture = (Texture2D)Resources.Load ("Sample_pictures/"+temp.get_IMG ());
 		product.transform.position = new Vector3(0.5f,0.73f,4.0f);
 		product.transform.localScale = new Vector3(0.6f,0.24f,0f);*/
+		GameObject.Find("GUIProductImg").guiTexture.texture = (Texture2D) Resources.Load("Sample_pictures/"+temp.get_IMG());
+		GameObject.Find("GUIProductName").guiText.text = temp.get_PName();
 		return temp;
 
 	}

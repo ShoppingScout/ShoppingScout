@@ -23,7 +23,6 @@ public class Clock_Script : MonoBehaviour {
 		callTime = Time.time;
 	}
 	
-	// Update is called once per frame
 	
 
     public void Countdown()

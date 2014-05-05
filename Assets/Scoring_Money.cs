@@ -29,14 +29,14 @@ public class Scoring_Money : MonoBehaviour
 		myDepth = depth - 1;
 	}
 
-	void update()
+	/*void Update ()
 	{
 		timeLeft -= Time.deltaTime;
 		if (timeLeft < 0) {
 			timeLeft = 0;
 			Application.LoadLevel("Statistics");
 		}
-	}
+	}*/
 	
 	
 	void Inc_Balance (bool correct)

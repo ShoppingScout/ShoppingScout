@@ -6,9 +6,10 @@ using System.IO;
 
 public class LevelScript : MonoBehaviour {
     private Vector3 pos1, pos2, pos3, pos4, pos5, pos6, resetPos;
-    public GroupButton Button1, Button2, Button3, Button4, Button5, Button6;
+    public static GroupButton Button1, Button2, Button3, Button4, Button5, Button6;
 	public static Item currentItem;
 	int depth;
+	GUIText pName;
 
     //Default position of buttons
     private void Awake()
@@ -31,6 +32,8 @@ public class LevelScript : MonoBehaviour {
     //Switch to determine which layout and categories to load
     public void LoadLevelSettings(int level) {
 		GameObject.Find("center").SetActive(true);
+		pName = GameObject.Find ("GUIProductName").guiText;
+		pName.gameObject.SetActive(true);
         switch (level) {
 		/* Buttons
 			1
@@ -45,12 +48,17 @@ public class LevelScript : MonoBehaviour {
             Button1.addCategory(4,5,2,28242);
             Button4 = new GroupButton(pos4, 4);
             Button4.addCategory(28347,6,-1,3);
-            GameObject.Find("Game Object Clock").GetComponent<Clock_Script>().SetStartTime(7);
+            GameObject.Find("Game Object Clock").GetComponent<Clock_Script>().SetStartTime(10);
 			depth = 1;
-			GameObject.Find("Scripts").GetComponent<Product_DB>().StartStackKnown(0, 1);
+			GameObject.Find("Scripts").GetComponent<Product_DB>().StartStackKnown(0, 9);
 			GameObject.Find("Scripts").GetComponent<Product_DB>().StartStackUnknown(12,15);
 			currentItem = GameObject.Find("Scripts").GetComponent<Product_DB>().next_Item();
-			GameObject.Find("GUIProductImg").guiTexture.texture = (Texture2D) Resources.Load("Sample_pictures/"+currentItem.get_IMG());
+			//GameObject.Find("GUIProductImg").guiTexture.texture = (Texture2D) Resources.Load("Sample_pictures/"+currentItem.get_IMG());
+            pName.color = Color.white;
+            pName.fontSize = (int)(Screen.width/15);
+            pName.anchor = TextAnchor.MiddleCenter;
+            pName.transform.localPosition = new Vector3 (.5f,.55f,11f);
+            pName.pixelOffset = new Vector2(0,Screen.height / -10);
 
 
 			GameObject scorer = GameObject.Find ("PlayerBalance");
@@ -97,7 +105,9 @@ public class LevelScript : MonoBehaviour {
     public void Deinitialize() {
         GroupButton.deleteGroupButtons();
 		GameObject.Find("GUIProductImg").guiTexture.texture = (Texture2D) Resources.Load("Smiley");
-
+		pName.gameObject.SetActive(false);
+		//Application.LoadLevel("Statistics");
+		
     }
 }
 

@@ -33,8 +33,8 @@ public class Main : MonoBehaviour {
     private bool DEBUG = true;
     private int levelGroup = 1;
     public GameObject level;
-    public GroupButton groupie;
-    public GroupButton[] groupies;
+    public static GroupButton groupie;
+    public static GroupButton[] groupies;
 
     public GameObject centerMark;
     public static bool middle; //Touch button in the middle?
@@ -69,7 +69,6 @@ public class Main : MonoBehaviour {
     //================ UPDATE =============================================//
     //=====================================================================//
     void Update () {
-		int remainder;
         //========================= Button area =======================
         //is there a touch on screen?
 		if (!GameObject.Find("Game Object Clock").GetComponent<Clock_Script>().isPaused)
@@ -80,8 +79,6 @@ public class Main : MonoBehaviour {
             if (itemUpdate != -1) {
                 checker.GetComponent <Scoring_Money> ().Check_Answer(itemUpdate.ToString());
                 LevelScript.currentItem = GameObject.Find("Scripts").GetComponent<Product_DB>().next_Item();
-                GameObject.Find("GUIProductImg").guiTexture.texture = (Texture2D) Resources.Load("Sample_pictures/"+LevelScript.currentItem.get_IMG());
-				remainder = (itemUpdate % 2);
 				itemUpdate = -1;
 				//StartCoroutine(GameObject.Find("center").GetComponent<CollisionAnswer>().flashAnswer(remainder == 0));
                 
@@ -113,17 +110,17 @@ public class Main : MonoBehaviour {
                 centerMark = GameObject.Find("center");
                 centerResetPos = centerMark.transform.position;
                 groupies = new GroupButton[6];
-                groupies[0] = GameObject.Find("level").GetComponent<LevelScript>().Button1;
+                groupies[0] = LevelScript.Button1;
 
-                groupies[1] = GameObject.Find("level").GetComponent<LevelScript>().Button2;
+                groupies[1] = LevelScript.Button2;
 
-                groupies[2] = GameObject.Find("level").GetComponent<LevelScript>().Button3;
+                groupies[2] = LevelScript.Button3;
 
-                groupies[3] = GameObject.Find("level").GetComponent<LevelScript>().Button4;
+                groupies[3] = LevelScript.Button4;
 
-                groupies[4] = GameObject.Find("level").GetComponent<LevelScript>().Button5;
+                groupies[4] = LevelScript.Button5;
 
-                groupies[5] = GameObject.Find("level").GetComponent<LevelScript>().Button6;
+                groupies[5] = LevelScript.Button6;
             }
             //================== End phase ===================
             if (Input.GetTouch (0).phase == TouchPhase.Ended) {
@@ -223,6 +220,7 @@ public class Main : MonoBehaviour {
                                 break;
                             }
                             groupie.setCategoriesScale(0);
+							setMiddle();
                             middle = true;
 							
                             groupie.addCatTexts();
@@ -315,21 +313,22 @@ public class Main : MonoBehaviour {
             if (Input.GetKey(KeyCode.Escape))
             {
 				CollisionAnswer.jo.Call("vibrate2", 75);
+				(GameObject.Find("level").GetComponent<LevelScript>()).Deinitialize();
                 Application.LoadLevel("Menu");
-                //ButtonGroup.Total_Number_Buttons = 0;
-                //ButtonGroup.Total_Button_Group = 0;
                 return;
             }
         }
     }
-    public void selectAnswerPhaseTwo() {
-        //debugText.text = groupies[3].getGroupButton().name + '\n' + curButton.name;
-        for (int i = 0; i < 6; i++) {
+	public void setMiddle(){
+		for (int i = 0; i < 6; i++) {
             if (GameObject.Find("groupButton"+(i+1)))
                 if (!groupies[i].getGroupButton().name.Equals(curButton.name))
                     groupies[i].getGroupButton().gameObject.SetActive(false);
-
-        }
+		}
+        
+	}
+    public void selectAnswerPhaseTwo() {
+        //debugText.text = groupies[3].getGroupButton().name + '\n' + curButton.name;
         centerMark.transform.position = new Vector3 (curTouchPositionx, curTouchPositiony, 12f);
         //if (DEBUG) {
         //   debugText.text = centerMark.transform.position.z + "        "  +groupies[3].getCat(1).transform.position.z+ "        "  +groupies[0].getCat(1).transform.position.z + '\n'

@@ -14,9 +14,6 @@ public class Pause_Menu : MonoBehaviour {
 		
 	}
 	
-	// Update is called once per frame
-	void Update () {
-	}
 	
 	void OnGUI () {
 		pauseSkin.button.fontSize = SCREEN_WIDTH/20;
@@ -35,7 +32,7 @@ public class Pause_Menu : MonoBehaviour {
 		}
 		
 		else {
-			if (GUI.Button (new Rect (0.05f * SCREEN_WIDTH, 0.45f * SCREEN_HEIGHT, 0.2f * SCREEN_WIDTH, 0.05f * SCREEN_HEIGHT), "Pause")) {
+			if (GUI.Button (new Rect (0.05f * SCREEN_WIDTH, 0.9f * SCREEN_HEIGHT, 0.2f * SCREEN_WIDTH, 0.05f * SCREEN_HEIGHT), "Pause")) {
 				paused = togglePause();
 			}
 		}
