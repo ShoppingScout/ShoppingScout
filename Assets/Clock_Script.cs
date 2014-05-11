@@ -37,19 +37,19 @@ public class Clock_Script : MonoBehaviour {
         }
     }
 	
-	public void SetStartTime(int time)
+	public void SetStartTime(float time)
 	{
 		startTime = time;
 	}
 
-    void PauseClock() { isPaused = true; }
+    public void PauseClock() { isPaused = true; }
 
-    void UnpauseClock() { isPaused = false; }
+    public void UnpauseClock() { isPaused = false; }
 
     void TimeIsUp()
     {
 		GameObject.Find("center").SetActive(false);
-		(GameObject.Find("level").GetComponent<LevelScript>()).Deinitialize();
+		LevelScript.Deinitialize();
 		
         //Debug.Log("Time is Up!");
     }

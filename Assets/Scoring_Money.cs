@@ -7,19 +7,19 @@ using System;
 public class Scoring_Money : MonoBehaviour
 {
 	private static int balance;
-	public static int myMultiplier;
+	public static float myMultiplier;
 	public int streak;
 	private GUIText playerBalance;
 	private double timeLeft;
 
 	private int myDepth;
 
-	void Awake ()
+	void Start ()
 	{		
 		playerBalance = GameObject.Find ("PlayerBalance").guiText;
-		PlayerPrefs.DeleteAll ();	// For testing purposes, resets balance
+		//PlayerPrefs.DeleteAll ();	// For testing purposes, resets balance
 		balance = PlayerPrefs.GetInt ("Balance", 0); // Look into an alternative for saving player's balance other than PlayerPrefs
-		myMultiplier = 1;
+		
 		streak = 1;
 		timeLeft = 30.0f;
 	}
@@ -27,6 +27,7 @@ public class Scoring_Money : MonoBehaviour
 	public void initialize(int depth)
 	{
 		myDepth = depth - 1;
+		myMultiplier = 1 +  PlayerPrefs.GetInt("startMultBonusLevel",0) * PlayerPrefs.GetFloat("startMultBonusFactor",0) ;
 	}
 
 	/*void Update ()
@@ -42,10 +43,14 @@ public class Scoring_Money : MonoBehaviour
 	void Inc_Balance (bool correct)
 	{
 		if (correct) {
-			if (streak % 10 == 0)
+			if (streak % 10 == 0){
+				myMultiplier = (float)(myMultiplier * Math.Pow(1 + PlayerPrefs.GetFloat("streakMultBonusFactor",0), PlayerPrefs.GetInt("streakMultBonusLevel", 0)));
 				myMultiplier++;
-			balance = balance + (5 * myMultiplier);
+			}
+			balance = balance + (int) (5 * myMultiplier);
 			PlayerPrefs.SetInt ("Balance", balance);
+			GUIText debugText = GameObject.Find ("DebugText").guiText;
+			debugText.text = "" + myMultiplier;
 			streak++;
 		} // if key up/correct answer
 		
@@ -55,6 +60,7 @@ public class Scoring_Money : MonoBehaviour
 			streak = 1;
 			PlayerPrefs.SetInt ("Balance", balance);
 		} // if key down/incorrect answer
+		LevelUp.updateExperienceBar();
 	}
 	
 	
@@ -70,12 +76,14 @@ public class Scoring_Money : MonoBehaviour
 		if (LevelScript.currentItem.get_ctg(myDepth) == 0) {
 			Inc_Balance (true);
 			LevelScript.currentItem.set_responses(answer);
+			GameObject.Find("Game Object Clock").GetComponent<Clock_Script>().addTime(.3f +  PlayerPrefs.GetInt("answerTimeBonusLevel",0) * PlayerPrefs.GetFloat("answerTimeBonusFactor",0));
 			StartCoroutine(GameObject.Find("center").GetComponent<CollisionAnswer>().flashAnswer(true));
 		}
 
 		else if (LevelScript.currentItem.get_ctg(myDepth) == answer) {
 			Inc_Balance (true);
 			LevelScript.currentItem.set_responses(answer);
+			GameObject.Find("Game Object Clock").GetComponent<Clock_Script>().addTime(.3f +  PlayerPrefs.GetInt("answerTimeBonusLevel",0) * PlayerPrefs.GetFloat("answerTimeBonusFactor",0));
 			StartCoroutine(GameObject.Find("center").GetComponent<CollisionAnswer>().flashAnswer(true));
 		}
 		
@@ -89,6 +97,11 @@ public class Scoring_Money : MonoBehaviour
 	void OnGUI ()
 	{
 		playerBalance.text = "$ " + balance.ToString ();
+		
 
+	}
+	
+	public static void setBalance(int b){
+		balance = b;
 	}
 }

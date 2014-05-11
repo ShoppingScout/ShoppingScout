@@ -54,6 +54,7 @@
      <Compile Include="Assets\GroupButton.cs" />
      <Compile Include="Assets\Item.cs" />
      <Compile Include="Assets\LevelScript.cs" />
+     <Compile Include="Assets\LevelUp.cs" />
      <Compile Include="Assets\Main.cs" />
      <Compile Include="Assets\Main_Menu.cs" />
      <Compile Include="Assets\Pause_Menu.cs" />

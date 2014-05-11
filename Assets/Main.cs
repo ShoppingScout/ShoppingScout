@@ -50,13 +50,13 @@ public class Main : MonoBehaviour {
     void Start() {
         //for debug
         debugText = GameObject.Find ("DebugText").guiText;
+		centerMark = GameObject.Find("center");
+		//centerMark.SetActive(false);
+		
         hitTest = Camera.main.GetComponent<GUILayer> ();
-        level = new GameObject();
-        level.AddComponent("GUITexture");
-        level.guiTexture.name = "level";
-        level.AddComponent("LevelScript");
+       
         levelGroup = Main_Menu.load_number;
-        level.GetComponent<LevelScript>().LoadLevelSettings(levelGroup);
+        LevelScript.LoadLevelSettings(levelGroup);
         middle = false;
         itemUpdate = -1;
         itemAnswer = -1;
@@ -82,7 +82,7 @@ public class Main : MonoBehaviour {
 				itemUpdate = -1;
 				//StartCoroutine(GameObject.Find("center").GetComponent<CollisionAnswer>().flashAnswer(remainder == 0));
                 
-                GameObject.Find("Game Object Clock").GetComponent<Clock_Script>().addTime(.5f);
+                
 				
             }
 
@@ -107,7 +107,7 @@ public class Main : MonoBehaviour {
                             curButton = curButton.transform.parent.guiTexture;
                         }
                 resetPos = curButton.transform.position;
-                centerMark = GameObject.Find("center");
+                
                 centerResetPos = centerMark.transform.position;
                 groupies = new GroupButton[6];
                 groupies[0] = LevelScript.Button1;
@@ -313,7 +313,7 @@ public class Main : MonoBehaviour {
             if (Input.GetKey(KeyCode.Escape))
             {
 				CollisionAnswer.jo.Call("vibrate2", 75);
-				(GameObject.Find("level").GetComponent<LevelScript>()).Deinitialize();
+				LevelScript.Deinitialize();
                 Application.LoadLevel("Menu");
                 return;
             }
@@ -328,7 +328,7 @@ public class Main : MonoBehaviour {
         
 	}
     public void selectAnswerPhaseTwo() {
-        //debugText.text = groupies[3].getGroupButton().name + '\n' + curButton.name;
+        debugText.text = "Level: " + PlayerPrefs.GetInt("level", 1);
         centerMark.transform.position = new Vector3 (curTouchPositionx, curTouchPositiony, 12f);
         //if (DEBUG) {
         //   debugText.text = centerMark.transform.position.z + "        "  +groupies[3].getCat(1).transform.position.z+ "        "  +groupies[0].getCat(1).transform.position.z + '\n'

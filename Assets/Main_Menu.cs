@@ -20,11 +20,13 @@ public class Main_Menu : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+	if (Application.platform == RuntimePlatform.Android){
 		if (Input.GetKey(KeyCode.Escape))
 			{
 				CollisionAnswer.jo.Call("vibrate2", 75);
 				Application.Quit();
 			}
+	}		
 	}
 	
 	void OnGUI () {
