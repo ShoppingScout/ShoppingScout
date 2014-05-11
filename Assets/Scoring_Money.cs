@@ -3,6 +3,8 @@ using System.Collections;
 using System.Diagnostics;
 using System.Threading;
 using System;
+using System.IO;
+
 
 public class Scoring_Money : MonoBehaviour
 {
@@ -14,6 +16,11 @@ public class Scoring_Money : MonoBehaviour
 
 	private int myDepth;
 
+	private int[] arID;
+	private int[] arResponses;
+	private int itemCount;
+
+
 	void Start ()
 	{		
 		playerBalance = GameObject.Find ("PlayerBalance").guiText;
@@ -22,6 +29,10 @@ public class Scoring_Money : MonoBehaviour
 		
 		streak = 1;
 		timeLeft = 30.0f;
+
+		arID = new int[50];
+		arResponses = new int[50];
+		itemCount = 0;
 	}
 
 	public void initialize(int depth)
@@ -38,7 +49,15 @@ public class Scoring_Money : MonoBehaviour
 			Application.LoadLevel("Statistics");
 		}
 	}*/
-	
+
+	public void Deinitialize() {
+//		PlayerPrefs.SetInt ("Balance",  overallBalance + balance);
+//		GUIText debugText = GameObject.Find ("DebugText").guiText;
+//		debugText.text = "FINAL: " + PlayerPrefs.GetInt ("Balance");
+		WriteToFile();
+		//testingFile();
+	}
+
 	
 	void Inc_Balance (bool correct)
 	{
@@ -75,25 +94,59 @@ public class Scoring_Money : MonoBehaviour
 
 		if (LevelScript.currentItem.get_ctg(myDepth) == 0) {
 			Inc_Balance (true);
-			LevelScript.currentItem.set_responses(answer);
+//			LevelScript.currentItem.set_responses(answer);
+			SaveResponses(answer);
 			GameObject.Find("Game Object Clock").GetComponent<Clock_Script>().addTime(.3f +  PlayerPrefs.GetInt("answerTimeBonusLevel",0) * PlayerPrefs.GetFloat("answerTimeBonusFactor",0));
 			StartCoroutine(GameObject.Find("center").GetComponent<CollisionAnswer>().flashAnswer(true));
 		}
 
 		else if (LevelScript.currentItem.get_ctg(myDepth) == answer) {
 			Inc_Balance (true);
-			LevelScript.currentItem.set_responses(answer);
+//			LevelScript.currentItem.set_responses(answer);
+			SaveResponses(answer);
 			GameObject.Find("Game Object Clock").GetComponent<Clock_Script>().addTime(.3f +  PlayerPrefs.GetInt("answerTimeBonusLevel",0) * PlayerPrefs.GetFloat("answerTimeBonusFactor",0));
 			StartCoroutine(GameObject.Find("center").GetComponent<CollisionAnswer>().flashAnswer(true));
 		}
 		
 		else {
 			Inc_Balance (false);
-			LevelScript.currentItem.set_responses(answer);
+//			LevelScript.currentItem.set_responses(answer);
+			SaveResponses(answer);
 			StartCoroutine(GameObject.Find("center").GetComponent<CollisionAnswer>().flashAnswer(false));
 		}
 	}
-	
+
+
+
+	public void SaveResponses(int response)
+	{
+		arID[itemCount] = LevelScript.currentItem.get_PID();
+		arResponses[itemCount] = response;
+		itemCount++;
+	}
+
+	public void WriteToFile()
+	{
+		GUIText debugText = GameObject.Find ("DebugText").guiText;
+		debugText.text = Application.persistentDataPath;
+		
+		StreamWriter _writer = null;
+		
+		FileInfo t = new FileInfo(Application.persistentDataPath + "/" + "responses.csv");
+		if(!t.Exists)
+			_writer = t.CreateText();
+		else{
+			t.Delete ();
+			_writer=t.CreateText ();
+		}
+		
+		for(int i = 0; i < itemCount; i++)
+			_writer.Write(arID[i] + "," + arResponses[i] + "\n");
+		
+		_writer.Close ();
+	}
+
+
 	void OnGUI ()
 	{
 		playerBalance.text = "$ " + balance.ToString ();

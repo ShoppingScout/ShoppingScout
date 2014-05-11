@@ -97,6 +97,9 @@ public class LevelScript : MonoBehaviour {
 		pName.gameObject.SetActive(false);
 		LevelUp.checkLevelUp();
 		Pause_Menu.levelUpMenu = false;
+
+		GameObject.Find ("PlayerBalance").GetComponent <Scoring_Money> ().Deinitialize();
+
 		//Application.LoadLevel("Statistics");
 		
     }
