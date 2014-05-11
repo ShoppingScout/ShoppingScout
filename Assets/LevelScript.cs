@@ -96,6 +96,7 @@ public class LevelScript : MonoBehaviour {
 		GameObject.Find("GUIProductImg").guiTexture.texture = (Texture2D) Resources.Load("Smiley");
 		pName.gameObject.SetActive(false);
 		LevelUp.checkLevelUp();
+		Pause_Menu.levelUpMenu = false;
 		//Application.LoadLevel("Statistics");
 		
     }
