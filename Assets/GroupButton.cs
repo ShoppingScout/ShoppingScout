@@ -198,25 +198,26 @@ public class GroupButton : MonoBehaviour {
             cat1.transform.localScale = new Vector3(scale,scale,1);
             cat1.transform.position = new Vector3(groupButton.guiTexture.transform.position.x,
                                                   groupButton.guiTexture.transform.position.y + spacingy, 10f);
+			cat1.guiTexture.texture = (Texture2D)Resources.Load("images/CategoryImages/"+cat1.guiTexture.name, typeof(Texture2D));
 
         }
         if (cat2 != null) {
             cat2.transform.localScale = new Vector3(scale,scale,1);
             cat2.transform.position = new Vector3(groupButton.guiTexture.transform.position.x + spacingx,
                                                   groupButton.guiTexture.transform.position.y, 10f);
-
+			cat2.guiTexture.texture = (Texture2D)Resources.Load("images/CategoryImages/"+cat2.guiTexture.name, typeof(Texture2D));
         }
         if (cat3 != null) {
             cat3.transform.localScale = new Vector3(scale,scale,1);
             cat3.transform.position = new Vector3(groupButton.guiTexture.transform.position.x,
                                                   groupButton.guiTexture.transform.position.y- spacingy, 10f);
-
+			cat3.guiTexture.texture = (Texture2D)Resources.Load("images/CategoryImages/"+cat3.guiTexture.name, typeof(Texture2D));
         }
         if (cat4 != null) {
             cat4.transform.localScale = new Vector3(scale,scale,1);
             cat4.transform.position = new Vector3(groupButton.guiTexture.transform.position.x - spacingx,
                                                   groupButton.guiTexture.transform.position.y, 10f);
-
+			cat4.guiTexture.texture = (Texture2D)Resources.Load("images/CategoryImages/"+cat4.guiTexture.name, typeof(Texture2D));
         }
     }
 

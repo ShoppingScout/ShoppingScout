@@ -26,6 +26,7 @@ public class CollisionAnswer : MonoBehaviour {
         GameObject checker = GameObject.Find ("PlayerBalance");
         if (Main.middle) {
             Main.itemAnswer = Convert.ToInt32 (other.guiTexture.name);
+			other.guiTexture.texture = (Texture2D)Resources.Load("images/CategoryImages/"+other.guiTexture.name + "Border", typeof(Texture2D));
             //debugText.text = other.guiTexture.name;
             if (Application.platform == RuntimePlatform.Android) {
                 try {
@@ -51,6 +52,7 @@ public class CollisionAnswer : MonoBehaviour {
         Main.itemAnswer = -1;
         GUIText debugText = GameObject.Find ("DebugText").guiText;
         debugText.text = "Exited!!  " + Main.itemAnswer;
+		other.guiTexture.texture = (Texture2D)Resources.Load("images/CategoryImages/"+other.guiTexture.name, typeof(Texture2D));
     }
     public IEnumerator flashAnswer(bool answer) {
         Color green = new Color(19f/255,113f/255,43f/255, 0);

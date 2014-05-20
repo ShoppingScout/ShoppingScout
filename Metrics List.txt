@@ -1,0 +1,30 @@
+Metrics to look for
+
+
+Linked to a session
+-Playsession number (for the player)
+-Play session time (every session) //only time spent in game
+-Number of rounds per session (every session)
+-Player's accuracy (every session)
+
+
+
+
+Linked to Player ID //As in this one should be identifiable so that everything can be updated on the server
+-Number play sessions (lifetime)
+-Number rounds (lifetime)
+-Player's current level
+
+Linked to a Round
+-Highest combo multiplier (every round)
+-Avg combo multiplier (every round)
+-Player's avg streak (every round)
+-Player's round length w/ startTimeBonus + answerTimeBonus (every round)
+-Number images seen
+-Number unknowns seen
+-Round number for the player
+
+
+
+Not linked
+-Player's choice of levelup //bit complicated since there are many combinations. Given levelup state, which did they choose to level up?

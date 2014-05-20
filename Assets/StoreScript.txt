@@ -1,0 +1,104 @@
+using UnityEngine;
+using System.Collections;
+using System;
+
+public class StoreScript : MonoBehaviour {
+
+    public GUISkin pauseSkin;
+    private int SCREEN_WIDTH = Screen.width;
+    private int SCREEN_HEIGHT = Screen.height;
+    public bool paused = false;
+    GUITexture RobotImg;
+    Texture lastTexture;
+    public static bool levelUpMenu = false;
+
+
+    // Use this for initialization
+    void Start () {
+        RobotImg = GameObject.Find("RobotImg").guiTexture;
+        RobotImg.texture = (Texture2D)Resources.Load("images/Robots/Green"+PlayerPrefs.GetFloat("startTimeBonusFactor",0));
+
+    }
+
+/*
+    void OnGUI () {
+        pauseSkin.button.fontSize = SCREEN_WIDTH/20;
+
+        GUI.skin = 
+
+
+        if (paused) {
+
+            pImg.guiTexture.texture = (Texture2D) Resources.Load("Smiley");
+            pName.guiText.text = "Paused!";
+            if (GUI.Button (new Rect (0.20f * SCREEN_WIDTH, 0.2f * SCREEN_HEIGHT, 0.60f * SCREEN_WIDTH, 0.07f * SCREEN_HEIGHT), "Unpause")) {
+                paused = togglePause();
+                GameObject.Find("GUIProductImg").guiTexture.texture = lastTexture;
+                GameObject.Find("GUIProductName").guiText.text = LevelScript.currentItem.get_PName();
+            }
+
+            if (GUI.Button (new Rect (0.20f * SCREEN_WIDTH, 0.3f * SCREEN_HEIGHT, 0.60f * SCREEN_WIDTH, 0.07f * SCREEN_HEIGHT), "Main Menu")) {
+                paused = togglePause ();
+                LevelScript.Deinitialize();
+                Application.LoadLevel("Menu");
+            }
+        }
+
+        else {
+            if (GUI.Button (new Rect (0.05f * SCREEN_WIDTH, 0.9f * SCREEN_HEIGHT, 0.2f * SCREEN_WIDTH, 0.05f * SCREEN_HEIGHT), "Pause")) {
+                paused = togglePause();
+                lastTexture = pImg.guiTexture.texture;
+            }
+            else if (levelUpMenu) {
+
+                pImg.guiTexture.texture = (Texture2D) Resources.Load("Smiley");
+                pName.guiText.text = "levelUpMenu!";
+
+                //Start Time Bonus
+                if (PlayerPrefs.GetInt ("startTimeBonusLevel", 0) < 6) {
+                    if (GUI.Button (new Rect (0.10f * SCREEN_WIDTH, 0.2f * SCREEN_HEIGHT, 0.30f * SCREEN_WIDTH, 0.07f * SCREEN_HEIGHT), "Red: " + PlayerPrefs.GetInt ("startTimeBonusLevel", 0), pauseSkin.customStyles[1])) {
+                        levelUpMenu = toggleLevelUpMenu();
+                        LevelUp.levelUp();
+                        GameObject.Find("GUIProductImg").guiTexture.texture = lastTexture;
+                        try {
+                            GameObject.Find("GUIProductName").guiText.text = LevelScript.currentItem.get_PName();
+                        }
+                        catch (Exception e) {}
+                        PlayerPrefs.SetInt("startTimeBonusLevel", PlayerPrefs.GetInt ("startTimeBonusLevel", 0) + 1);
+                        PlayerPrefs.SetInt("LevelUp", 0);
+                        LevelUp.checkLevelUp();
+                    }
+                }
+
+            }
+        }
+
+    }
+
+
+    bool togglePause()
+    {
+        if (Time.timeScale == 0f) {
+            Time.timeScale = 1f;
+            return (false);
+        }
+        else {
+            Time.timeScale = 0f;
+            return(true);
+        }
+    }
+
+    bool toggleLevelUpMenu()
+    {
+        if (Time.timeScale == 0f) {
+            Time.timeScale = 1f;
+        }
+        else {
+            Time.timeScale = 0f;
+        }
+        return (!levelUpMenu);
+    }
+*/
+}
+
+
