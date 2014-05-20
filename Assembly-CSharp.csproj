@@ -63,12 +63,7 @@
      <Compile Include="Assets\Read_Scores.cs" />
      <Compile Include="Assets\Scoring.cs" />
      <Compile Include="Assets\Scoring_Money.cs" />
-     <Compile Include="Assets\TinyPriest\Parallax\Scripts\Button.cs" />
-     <Compile Include="Assets\TinyPriest\Parallax\Scripts\Player.cs" />
-     <Compile Include="Assets\TinyPriest\Parallax\Scripts\Scroll.cs" />
      <None Include="Assets\Plugins\Android\AndroidManifest.xml" />
-     <None Include="Assets\TinyPriest\Parallax\ReadMe.txt" />
-     <None Include="Assets\TinyPriest\Documents\Readme.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
