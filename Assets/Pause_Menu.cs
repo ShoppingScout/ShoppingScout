@@ -71,7 +71,7 @@ public class Pause_Menu : MonoBehaviour {
             if (GUI.Button (new Rect (0.05f * SCREEN_WIDTH, 0.0075f * SCREEN_HEIGHT, 0.2f * SCREEN_WIDTH, 0.05f * SCREEN_HEIGHT), "Pause")) {
                 paused = togglePause();
                 lastTexture = pImg.guiTexture.texture;
-            }
+            }/*
             else if (levelUpMenu) {
 
                 pImg.guiTexture.texture = (Texture2D) Resources.Load("Smiley");
@@ -163,7 +163,7 @@ public class Pause_Menu : MonoBehaviour {
                     levelUpMenu = toggleLevelUpMenu();
                     lastTexture = pImg.guiTexture.texture;
                 }
-            }
+            }*/
         }
 
     }

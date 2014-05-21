@@ -255,6 +255,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 1257805445}
   - 114: {fileID: 1257805446}
+  - 114: {fileID: 1257805447}
   m_Layer: 0
   m_Name: Script
   m_TagString: Untagged
@@ -285,3 +286,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myGuiSkin: {fileID: 11400000, guid: 0541c735746d3a145a8bf6ee6cc16349, type: 2}
+--- !u!114 &1257805447
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1257805444}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81e88f3b8f01b97458fddb72df1f91bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

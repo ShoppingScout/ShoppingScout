@@ -6,8 +6,6 @@ public static class LevelUp : object {
 
 	private static int level;
 	private static int levelCutoff;
-	private static GameObject experienceBar;
-	private static float experienceRatio;
 	private static int balance;
 	private static int resetID;
 	private static int startTimeBonusLevel, answerTimeBonusLevel, startMultBonusLevel, streakMultBonusLevel;
@@ -17,9 +15,9 @@ public static class LevelUp : object {
 	
 	
 	static LevelUp(){
-		GUIText debugText = GameObject.Find ("DebugText").guiText;
-		debugText.text = "Awake";
-		resetID = 20;
+		//GUIText debugText = GameObject.Find ("DebugText").guiText;
+		//debugText.text = "Awake";
+		resetID = 24;
 		levelBase = 150; levelConstant = 10;
 		startTimeBonusFactor = 5;
 		answerTimeBonusFactor = .05f;
@@ -29,7 +27,7 @@ public static class LevelUp : object {
 		PlayerPrefs.SetFloat ("answerTimeBonusFactor", answerTimeBonusFactor);
 		PlayerPrefs.SetFloat ("startMultBonusFactor", startMultBonusFactor);
 		PlayerPrefs.SetFloat ("streakMultBonusFactor", streakMultBonusFactor);
-		if (resetID != PlayerPrefs.GetInt("resetID", 0) || PlayerPrefs.GetInt("Balance", 0) > 5000){
+		if (resetID != PlayerPrefs.GetInt("resetID", 0) || PlayerPrefs.GetInt("Balance", 0) > 25000){
 			balance = 0;
 			level = 1;
 			startTimeBonusLevel = 0;
@@ -56,8 +54,6 @@ public static class LevelUp : object {
 		balance = PlayerPrefs.GetInt ("Balance", 0);
 		level = PlayerPrefs.GetInt ("level", 1);
 		levelCutoff = levelBase + levelConstant * level;
-		experienceBar = GameObject.Find("experienceBar");
-		updateExperienceBar();
 		
 	}
 	
@@ -66,9 +62,6 @@ public static class LevelUp : object {
 		if (balance >= levelCutoff){
 			PlayerPrefs.SetInt("LevelUp", 1);
 			
-		}
-		else{
-			updateExperienceBar();
 		}
 	}
 
@@ -80,20 +73,12 @@ public static class LevelUp : object {
 		}
 		PlayerPrefs.SetInt ("Balance", balance);
 		PlayerPrefs.SetInt ("level", level);
-		updateExperienceBar();
 		GUIText debugText = GameObject.Find ("DebugText").guiText;
 		//debugText.text = "here";
 		Scoring_Money.setBalance(balance);
 		
 	}
 	
-	public static void updateExperienceBar(){
-		balance = PlayerPrefs.GetInt ("Balance", 0);
-		experienceRatio = ((float) balance * 2) / (float)levelCutoff;
-		if (experienceRatio < 0)
-			experienceRatio = 0;
-		experienceBar.transform.localScale = new Vector3 (experienceRatio, 0, 1);
-	}
 	
 	
 }

@@ -79,7 +79,6 @@ public class Scoring_Money : MonoBehaviour
 			streak = 1;
 			PlayerPrefs.SetInt ("Balance", balance);
 		} // if key down/incorrect answer
-		LevelUp.updateExperienceBar();
 	}
 	
 	
