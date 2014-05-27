@@ -26,6 +26,11 @@ public class Scoring_Money : MonoBehaviour
 	private int num_correct;
 	private int num_wrong;
 	
+	public GUISkin pauseSkin;
+	private int SCREEN_WIDTH = Screen.width;
+	private int SCREEN_HEIGHT = Screen.height;
+	private bool done;
+	
 	void Start ()
 	{		
 		playerBalance = GameObject.Find ("PlayerBalance").guiText;
@@ -44,6 +49,7 @@ public class Scoring_Money : MonoBehaviour
 		topStreak = PlayerPrefs.GetInt ("TopStreak");
 		num_correct = 0;
 		num_wrong = 0;
+		done = false;
 	}
 	
 	public void initialize(int depth)
@@ -53,7 +59,7 @@ public class Scoring_Money : MonoBehaviour
 		int roundNum = PlayerPrefs.GetInt("RoundNum") + 1;
 		PlayerPrefs.SetInt ("RoundNum", roundNum);
 		UnityEngine.Debug.Log("roundNum = " + PlayerPrefs.GetInt ("RoundNum"));
-
+		
 		GUITexture statBox = GameObject.Find ("StatBox").guiTexture;
 		statBox.enabled = false;
 		GUIText statText = GameObject.Find ("Stats").guiText;
@@ -71,9 +77,9 @@ public class Scoring_Money : MonoBehaviour
 	
 	public void Deinitialize() {
 		//		PlayerPrefs.SetInt ("Balance",  overallBalance + balance);
-//		GUIText debugText = GameObject.Find ("DebugText").guiText;
-//		debugText.text = "FINAL: " + PlayerPrefs.GetInt ("Balance") + "\nTopStreak: " + PlayerPrefs.GetInt("TopStreak")
-//			+ "\nNumber Correct: " + num_correct + "\nNumber Wrong: " + num_wrong + "\nMoney Gained: " + currentMoney;
+		//		GUIText debugText = GameObject.Find ("DebugText").guiText;
+		//		debugText.text = "FINAL: " + PlayerPrefs.GetInt ("Balance") + "\nTopStreak: " + PlayerPrefs.GetInt("TopStreak")
+		//			+ "\nNumber Correct: " + num_correct + "\nNumber Wrong: " + num_wrong + "\nMoney Gained: " + currentMoney;
 		WriteToFile();
 		ShowStats();
 		//testingFile();
@@ -178,24 +184,38 @@ public class Scoring_Money : MonoBehaviour
 	
 	public void ShowStats()
 	{
+		
 		GUITexture statBox = GameObject.Find ("StatBox").guiTexture;
-		statBox.guiTexture.transform.localScale = new Vector3(0.4f, 0.4f, 0);
+		statBox.guiTexture.transform.localScale = new Vector3(0.6f, 0.6f, 0);
 		statBox.enabled = true; 
-
+		
 		GUIText statText = GameObject.Find ("Stats").guiText;
-		statText.transform.localScale = new Vector3(0.5f, 0.5f, 0);
-		statText.fontSize = (int) (Screen.height * 0.035f);
-
-		statText.text = "FINAL: " + PlayerPrefs.GetInt ("Balance") + "\nTopStreak: " + PlayerPrefs.GetInt("TopStreak")
+		statText.transform.localScale = new Vector3(0.6f, 0.6f, 0);
+		statText.fontSize = (int) (Screen.height * 0.045f);
+		
+		statText.text = "Total Money: " + PlayerPrefs.GetInt ("Balance") + "\nTopStreak: " + PlayerPrefs.GetInt("TopStreak")
 			+ "\nNumber Correct: " + num_correct + "\nNumber Wrong: " + num_wrong + "\nMoney Gained: " + currentMoney;
-
-		if(GUI.Button (new Rect (0.25f * Screen.width, 0.8f * Screen.height, 0.50f * Screen.width, 0.1f * Screen.width), "Main Menu"))
-			Application.LoadLevel("Menu");
+		
+		done = true;
 	}
 	
 	void OnGUI ()
 	{
+		GUI.skin = pauseSkin;
+		
 		playerBalance.text = "$ " + currentMoney.ToString ();
+		if(done){
+			if (GUI.Button (new Rect (0.15f * SCREEN_WIDTH, 0.6f * SCREEN_HEIGHT, 0.15f * SCREEN_WIDTH, 0.05f * SCREEN_HEIGHT), "Retry")) {
+				Application.LoadLevel("Buttons");
+			}
+			
+			if (GUI.Button (new Rect (0.40f * SCREEN_WIDTH, 0.6f * SCREEN_HEIGHT, 0.15f * SCREEN_WIDTH, 0.05f * SCREEN_HEIGHT), "Shop")) {
+				Application.LoadLevel("Shop");
+			}
+			if (GUI.Button (new Rect (0.65f * SCREEN_WIDTH, 0.6f * SCREEN_HEIGHT, 0.15f * SCREEN_WIDTH, 0.05f * SCREEN_HEIGHT), "Menu")) {
+				Application.LoadLevel("Menu");
+			}
+		}
 	}
 	
 	public static void setBalance(int b){

@@ -5,7 +5,7 @@
 	<Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
 	<ProductVersion>10.0.20506</ProductVersion>
 	<SchemaVersion>2.0</SchemaVersion>
-	<ProjectGuid>{6AC41312-7A01-C892-FD44-A77BE92B8F43}</ProjectGuid>
+	<ProjectGuid>{D885B79E-5E11-FE8E-3B39-A19185BB6DAC}</ProjectGuid>
 	<OutputType>Library</OutputType>
 	<AppDesignerFolder>Properties</AppDesignerFolder>
 	<RootNamespace></RootNamespace>
@@ -39,10 +39,10 @@
 	<Reference Include="System.Core" />
 	<Reference Include="System.Xml.Linq" />
 	<Reference Include="UnityEngine">
-	  <HintPath>D:/Program Files (x86)/Unity/Editor/Data/Managed/UnityEngine.dll</HintPath>
+	  <HintPath>C:/Program Files (x86)/Unity/Editor/Data/Managed/UnityEngine.dll</HintPath>
 	</Reference>
 	<Reference Include="UnityEditor">
-	  <HintPath>D:/Program Files (x86)/Unity/Editor/Data/Managed/UnityEditor.dll</HintPath>
+	  <HintPath>C:/Program Files (x86)/Unity/Editor/Data/Managed/UnityEditor.dll</HintPath>
 	</Reference>
   </ItemGroup>
   <ItemGroup>
@@ -57,6 +57,7 @@
      <Compile Include="Assets\LevelUp.cs" />
      <Compile Include="Assets\Main.cs" />
      <Compile Include="Assets\Main_Menu.cs" />
+     <Compile Include="Assets\Network.cs" />
      <Compile Include="Assets\Pause_Menu.cs" />
      <Compile Include="Assets\PopupText.cs" />
      <Compile Include="Assets\Product_DB.cs" />
@@ -66,6 +67,18 @@
      <Compile Include="Assets\StoreScript.cs" />
      <None Include="Assets\Plugins\Android\AndroidManifest.xml" />
      <None Include="Assets\StoreScript.txt" />
+ <Reference Include="udpkit">
+ <HintPath>Assets\udpkit\udpkit.dll</HintPath>
+ </Reference>
+ <Reference Include="udpkit.platform.android">
+ <HintPath>Assets\udpkit\udpkit.platform.android.dll</HintPath>
+ </Reference>
+ <Reference Include="udpkit.platform.ios">
+ <HintPath>Assets\udpkit\udpkit.platform.ios.dll</HintPath>
+ </Reference>
+ <Reference Include="udpkit.platform.managed">
+ <HintPath>Assets\udpkit\udpkit.platform.managed.dll</HintPath>
+ </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
