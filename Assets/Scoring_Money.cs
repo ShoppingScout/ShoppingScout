@@ -29,7 +29,7 @@ public class Scoring_Money : MonoBehaviour
 	public GUISkin pauseSkin;
 	private int SCREEN_WIDTH = Screen.width;
 	private int SCREEN_HEIGHT = Screen.height;
-	private bool done;
+	public bool done;
 	
 	void Start ()
 	{		
@@ -186,16 +186,16 @@ public class Scoring_Money : MonoBehaviour
 	{
 		
 		GUITexture statBox = GameObject.Find ("StatBox").guiTexture;
-		statBox.guiTexture.transform.localScale = new Vector3(0.6f, 0.6f, 0);
+		statBox.guiTexture.transform.localScale = new Vector3(0.6f, 0.35f, 0);
 		statBox.enabled = true; 
 		
 		GUIText statText = GameObject.Find ("Stats").guiText;
-		statText.transform.localScale = new Vector3(0.6f, 0.6f, 0);
-		statText.fontSize = (int) (Screen.height * 0.045f);
+		statText.transform.localScale = new Vector3(0.6f, 0.35f, 0);
+		statText.fontSize = (int) (Screen.height * 0.04f);
 		
 		statText.text = "Total Money: " + PlayerPrefs.GetInt ("Balance") + "\nTopStreak: " + PlayerPrefs.GetInt("TopStreak")
 			+ "\nNumber Correct: " + num_correct + "\nNumber Wrong: " + num_wrong + "\nMoney Gained: " + currentMoney;
-		
+
 		done = true;
 	}
 	
@@ -205,14 +205,14 @@ public class Scoring_Money : MonoBehaviour
 		
 		playerBalance.text = "$ " + currentMoney.ToString ();
 		if(done){
-			if (GUI.Button (new Rect (0.15f * SCREEN_WIDTH, 0.6f * SCREEN_HEIGHT, 0.15f * SCREEN_WIDTH, 0.05f * SCREEN_HEIGHT), "Retry")) {
+			if (GUI.Button (new Rect (0.18f * SCREEN_WIDTH, 0.56f * SCREEN_HEIGHT, 0.15f * SCREEN_WIDTH, 0.05f * SCREEN_HEIGHT), "Retry")) {
 				Application.LoadLevel("Buttons");
 			}
 			
-			if (GUI.Button (new Rect (0.40f * SCREEN_WIDTH, 0.6f * SCREEN_HEIGHT, 0.15f * SCREEN_WIDTH, 0.05f * SCREEN_HEIGHT), "Shop")) {
+			if (GUI.Button (new Rect (0.43f * SCREEN_WIDTH, 0.56f * SCREEN_HEIGHT, 0.15f * SCREEN_WIDTH, 0.05f * SCREEN_HEIGHT), "Shop")) {
 				Application.LoadLevel("Shop");
 			}
-			if (GUI.Button (new Rect (0.65f * SCREEN_WIDTH, 0.6f * SCREEN_HEIGHT, 0.15f * SCREEN_WIDTH, 0.05f * SCREEN_HEIGHT), "Menu")) {
+			if (GUI.Button (new Rect (0.68f * SCREEN_WIDTH, 0.56f * SCREEN_HEIGHT, 0.15f * SCREEN_WIDTH, 0.05f * SCREEN_HEIGHT), "Menu")) {
 				Application.LoadLevel("Menu");
 			}
 		}

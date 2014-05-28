@@ -57,7 +57,6 @@
      <Compile Include="Assets\LevelUp.cs" />
      <Compile Include="Assets\Main.cs" />
      <Compile Include="Assets\Main_Menu.cs" />
-     <Compile Include="Assets\Network.cs" />
      <Compile Include="Assets\Pause_Menu.cs" />
      <Compile Include="Assets\PopupText.cs" />
      <Compile Include="Assets\Product_DB.cs" />
@@ -67,18 +66,6 @@
      <Compile Include="Assets\StoreScript.cs" />
      <None Include="Assets\Plugins\Android\AndroidManifest.xml" />
      <None Include="Assets\StoreScript.txt" />
- <Reference Include="udpkit">
- <HintPath>Assets\udpkit\udpkit.dll</HintPath>
- </Reference>
- <Reference Include="udpkit.platform.android">
- <HintPath>Assets\udpkit\udpkit.platform.android.dll</HintPath>
- </Reference>
- <Reference Include="udpkit.platform.ios">
- <HintPath>Assets\udpkit\udpkit.platform.ios.dll</HintPath>
- </Reference>
- <Reference Include="udpkit.platform.managed">
- <HintPath>Assets\udpkit\udpkit.platform.managed.dll</HintPath>
- </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
