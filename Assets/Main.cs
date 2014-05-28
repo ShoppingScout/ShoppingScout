@@ -50,11 +50,12 @@ public class Main : MonoBehaviour {
     void Start() {
         //for debug
         debugText = GameObject.Find ("DebugText").guiText;
-		centerMark = GameObject.Find("center");
-		//centerMark.SetActive(false);
-		
+        centerMark = GameObject.Find("center");
+		centerMark.transform.position = new Vector3(3f,3f,3f);
+        //centerMark.SetActive(false);
+
         hitTest = Camera.main.GetComponent<GUILayer> ();
-       
+
         levelGroup = Main_Menu.load_number;
         LevelScript.LoadLevelSettings(levelGroup);
         middle = false;
@@ -71,19 +72,19 @@ public class Main : MonoBehaviour {
     void Update () {
         //========================= Button area =======================
         //is there a touch on screen?
-		if (!GameObject.Find("Game Object Clock").GetComponent<Clock_Script>().isPaused)
-			GameObject.Find("Game Object Clock").GetComponent<Clock_Script>().Countdown();
+        if (!GameObject.Find("Game Object Clock").GetComponent<Clock_Script>().isPaused)
+            GameObject.Find("Game Object Clock").GetComponent<Clock_Script>().Countdown();
         if (Input.touches.Length <= 0) {
             GameObject checker = GameObject.Find ("PlayerBalance");
             //if no touches
             if (itemUpdate != -1) {
                 checker.GetComponent <Scoring_Money> ().Check_Answer(itemUpdate.ToString());
                 LevelScript.currentItem = GameObject.Find("Scripts").GetComponent<Product_DB>().next_Item();
-				itemUpdate = -1;
-				//StartCoroutine(GameObject.Find("center").GetComponent<CollisionAnswer>().flashAnswer(remainder == 0));
-                
-                
-				
+                itemUpdate = -1;
+                //StartCoroutine(GameObject.Find("center").GetComponent<CollisionAnswer>().flashAnswer(remainder == 0));
+
+
+
             }
 
             curButton = null;
@@ -105,9 +106,10 @@ public class Main : MonoBehaviour {
                                 curButton.transform.parent.name.Equals("groupButton5") || curButton.transform.parent.name.Equals("groupButton6"))
                         {
                             curButton = curButton.transform.parent.guiTexture;
+							debugText.text = curButton.transform.name;
                         }
                 resetPos = curButton.transform.position;
-                
+
                 centerResetPos = centerMark.transform.position;
                 groupies = new GroupButton[6];
                 groupies[0] = LevelScript.Button1;
@@ -121,12 +123,17 @@ public class Main : MonoBehaviour {
                 groupies[4] = LevelScript.Button5;
 
                 groupies[5] = LevelScript.Button6;
+				if (curButton.transform.name.Equals("groupButton1") || curButton.transform.name.Equals("groupButton2") ||
+                                curButton.transform.name.Equals("groupButton3") || curButton.transform.name.Equals("groupButton4") ||
+                                curButton.transform.name.Equals("groupButton5") || curButton.transform.name.Equals("groupButton6"))
+                            setMiddle();
+                            
             }
             //================== End phase ===================
             if (Input.GetTouch (0).phase == TouchPhase.Ended) {
                 touchObject = hitTest.HitTest (Input.GetTouch (0).position);
 
-                centerMark.transform.position = new Vector3 (.5f, .25f, 0f);
+                centerMark.transform.position = centerResetPos;
                 curButton.transform.position = resetPos;
                 if (curButton.name.Equals("groupButton1") || curButton.name.Equals("groupButton2") ||
                         curButton.name.Equals("groupButton3") || curButton.name.Equals("groupButton4") ||
@@ -160,7 +167,7 @@ public class Main : MonoBehaviour {
                         break;
                     }
                     groupie.resetCategoriesScale();
-					groupie.removeCatTexts();
+                    groupie.removeCatTexts();
                     for (int i = 0; i < 6; i++) {
                         try {
                             groupies[i].getGroupButton().gameObject.SetActive(true);
@@ -220,11 +227,11 @@ public class Main : MonoBehaviour {
                                 break;
                             }
                             groupie.setCategoriesScale(0);
-							setMiddle();
+                            setMiddle();
                             middle = true;
-							
+
                             groupie.addCatTexts();
-                           // groupie.getCat(1).guiText.anchor = TextAnchor.LowerCenter;
+                            // groupie.getCat(1).guiText.anchor = TextAnchor.LowerCenter;
                             debugText.text = "working!";
 
                         }
@@ -312,23 +319,28 @@ public class Main : MonoBehaviour {
         {
             if (Input.GetKey(KeyCode.Escape))
             {
-				CollisionAnswer.jo.Call("vibrate2", 75);
-				LevelScript.Deinitialize();
+                CollisionAnswer.jo.Call("vibrate2", 75);
+                LevelScript.Deinitialize();
                 Application.LoadLevel("Menu");
                 return;
             }
         }
     }
-	public void setMiddle(){
-		for (int i = 0; i < 6; i++) {
+    public void setMiddle() {
+		
+        for (int i = 0; i < 6; i++) {
             if (GameObject.Find("groupButton"+(i+1)))
                 if (!groupies[i].getGroupButton().name.Equals(curButton.name))
                     groupies[i].getGroupButton().gameObject.SetActive(false);
-		}
-        
-	}
+				else{
+					groupies[i].setCategoriesScale(0);
+					groupies[i].addCatTexts();
+					}
+        }
+        middle = true;
+
+    }
     public void selectAnswerPhaseTwo() {
-        debugText.text = "Level: " + PlayerPrefs.GetInt("level", 1);
         centerMark.transform.position = new Vector3 (curTouchPositionx, curTouchPositiony, 12f);
         //if (DEBUG) {
         //   debugText.text = centerMark.transform.position.z + "        "  +groupies[3].getCat(1).transform.position.z+ "        "  +groupies[0].getCat(1).transform.position.z + '\n'
@@ -336,5 +348,6 @@ public class Main : MonoBehaviour {
         //}
 
     }
+
 
 }

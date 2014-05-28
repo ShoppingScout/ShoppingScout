@@ -72,22 +72,22 @@ public class StoreScript : MonoBehaviour {
 		Stat1Bonus.fontSize = (int)(Screen.width/15); 
 		Stat1BonusExplanation.fontSize = (int)(Screen.width/30);
 		Stat1Level.fontSize = (int)(Screen.width/30);
-		Stat1Title.fontSize = (int)(Screen.width/30);
+		Stat1Title.fontSize = (int)(Screen.width/27);
 		
 		Stat2Bonus.fontSize = (int)(Screen.width/15);
 		Stat2BonusExplanation.fontSize = (int)(Screen.width/30);
 		Stat2Level.fontSize = (int)(Screen.width/30);
-		Stat2Title.fontSize = (int)(Screen.width/30);
+		Stat2Title.fontSize = (int)(Screen.width/27);
 		
 		Stat3Bonus.fontSize = (int)(Screen.width/15);
 		Stat3BonusExplanation.fontSize = (int)(Screen.width/30);
 		Stat3Level.fontSize = (int)(Screen.width/30);
-		Stat3Title.fontSize = (int)(Screen.width/30);
+		Stat3Title.fontSize = (int)(Screen.width/27);
 		
 		Stat4Bonus.fontSize = (int)(Screen.width/15);
 		Stat4BonusExplanation.fontSize = (int)(Screen.width/30);
 		Stat4Level.fontSize = (int)(Screen.width/30);
-		Stat4Title.fontSize = (int)(Screen.width/30);
+		Stat4Title.fontSize = (int)(Screen.width/27);
 		
 		Stat1Level.text = "Level: " + PlayerPrefs.GetInt("startTimeBonusLevel", 0) + "/6"    ;
 		Stat2Level.text = "Level: " + PlayerPrefs.GetInt("answerTimeBonusLevel", 0) + "/6"   ;
