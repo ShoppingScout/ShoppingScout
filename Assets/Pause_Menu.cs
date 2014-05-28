@@ -11,7 +11,7 @@ public class Pause_Menu : MonoBehaviour {
     GameObject pImg, pName;
     Texture lastTexture;
     public static bool levelUpMenu = false;
-
+	private bool done;
 
     // Use this for initialization
     void Start () {
@@ -49,8 +49,10 @@ public class Pause_Menu : MonoBehaviour {
         pauseSkin.customStyles[5].name = "Maxed Out";
         pauseSkin.customStyles[5].normal.textColor = Color.grey;
 
+		GameObject finished = GameObject.Find ("PlayerBalance");
+		done = finished.GetComponent<Scoring_Money> ().done; 
 
-        if (paused) {
+        if (paused && !done) {
 
             pImg.guiTexture.texture = (Texture2D) Resources.Load("Smiley");
             pName.guiText.text = "Paused!";
@@ -67,7 +69,7 @@ public class Pause_Menu : MonoBehaviour {
             }
         }
 
-        else {
+        if(!paused && !done) {
             if (GUI.Button (new Rect (0.05f * SCREEN_WIDTH, 0.0075f * SCREEN_HEIGHT, 0.2f * SCREEN_WIDTH, 0.05f * SCREEN_HEIGHT), "Pause")) {
                 paused = togglePause();
                 lastTexture = pImg.guiTexture.texture;
