@@ -92,9 +92,8 @@ public class LevelScript : MonoBehaviour {
 
     //Function to make buttons invisible when timer runs out
     public static void Deinitialize() {
-        GroupButton.deleteGroupButtons();
 		GameObject.Find("GUIProductImg").guiTexture.texture = (Texture2D) Resources.Load("Smiley");
-		pName.gameObject.SetActive(false);
+		pName.guiText.text = "";
 
 		GameObject.Find ("PlayerBalance").GetComponent <Scoring_Money> ().Deinitialize();
 		GroupButton.deleteGroupButtons();

@@ -17,7 +17,7 @@ public static class LevelUp : object {
 	static LevelUp(){
 		//GUIText debugText = GameObject.Find ("DebugText").guiText;
 		//debugText.text = "Awake";
-		resetID = 24;
+		resetID = 26;
 		levelBase = 150; levelConstant = 10;
 		startTimeBonusFactor = 5;
 		answerTimeBonusFactor = .05f;

@@ -51,7 +51,8 @@ public class Main : MonoBehaviour {
         //for debug
         debugText = GameObject.Find ("DebugText").guiText;
         centerMark = GameObject.Find("center");
-		centerMark.transform.position = new Vector3(3f,3f,3f);
+
+        centerMark.transform.position = new Vector3(3f,3f,3f);
         //centerMark.SetActive(false);
 
         hitTest = Camera.main.GetComponent<GUILayer> ();
@@ -72,12 +73,11 @@ public class Main : MonoBehaviour {
     void Update () {
         //========================= Button area =======================
         //is there a touch on screen?
-        if (!GameObject.Find("Game Object Clock").GetComponent<Clock_Script>().isPaused)
-            GameObject.Find("Game Object Clock").GetComponent<Clock_Script>().Countdown();
+
         if (Input.touches.Length <= 0) {
             GameObject checker = GameObject.Find ("PlayerBalance");
             //if no touches
-            if (itemUpdate != -1) {
+            if (itemUpdate != -1 && !GameObject.Find("Game Object Clock").GetComponent<Clock_Script>().isPaused) {
                 checker.GetComponent <Scoring_Money> ().Check_Answer(itemUpdate.ToString());
                 LevelScript.currentItem = GameObject.Find("Scripts").GetComponent<Product_DB>().next_Item();
                 itemUpdate = -1;
@@ -106,7 +106,8 @@ public class Main : MonoBehaviour {
                                 curButton.transform.parent.name.Equals("groupButton5") || curButton.transform.parent.name.Equals("groupButton6"))
                         {
                             curButton = curButton.transform.parent.guiTexture;
-							debugText.text = curButton.transform.name;
+
+                            debugText.text = curButton.transform.name;
                         }
                 resetPos = curButton.transform.position;
 
@@ -123,11 +124,15 @@ public class Main : MonoBehaviour {
                 groupies[4] = LevelScript.Button5;
 
                 groupies[5] = LevelScript.Button6;
-				if (curButton.transform.name.Equals("groupButton1") || curButton.transform.name.Equals("groupButton2") ||
-                                curButton.transform.name.Equals("groupButton3") || curButton.transform.name.Equals("groupButton4") ||
-                                curButton.transform.name.Equals("groupButton5") || curButton.transform.name.Equals("groupButton6"))
-                            setMiddle();
-                            
+
+                if (curButton.transform.name.Equals("groupButton1") || curButton.transform.name.Equals("groupButton2") ||
+
+                        curButton.transform.name.Equals("groupButton3") || curButton.transform.name.Equals("groupButton4") ||
+
+                        curButton.transform.name.Equals("groupButton5") || curButton.transform.name.Equals("groupButton6"))
+                    setMiddle();
+
+
             }
             //================== End phase ===================
             else if (Input.GetTouch (0).phase == TouchPhase.Ended) {
@@ -307,9 +312,11 @@ public class Main : MonoBehaviour {
                                          new Vector3 (.5f, .25f, 0f)) + "     " + resetPos;*/
                 // }
             }
+            
         }
 
-
+		if (!GameObject.Find("Game Object Clock").GetComponent<Clock_Script>().isPaused)
+                GameObject.Find("Game Object Clock").GetComponent<Clock_Script>().Countdown();
 
 
 
@@ -325,17 +332,23 @@ public class Main : MonoBehaviour {
                 return;
             }
         }
+
     }
     public void setMiddle() {
-		
+
+
         for (int i = 0; i < 6; i++) {
             if (GameObject.Find("groupButton"+(i+1)))
                 if (!groupies[i].getGroupButton().name.Equals(curButton.name))
                     groupies[i].getGroupButton().gameObject.SetActive(false);
-				else{
-					groupies[i].setCategoriesScale(0);
-					groupies[i].addCatTexts();
-					}
+
+                else {
+
+                    groupies[i].setCategoriesScale(0);
+
+                    groupies[i].addCatTexts();
+
+                }
         }
         middle = true;
 
