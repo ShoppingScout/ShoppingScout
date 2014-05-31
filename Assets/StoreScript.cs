@@ -36,6 +36,9 @@ public class StoreScript : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
+//		PlayerPrefs.SetInt("Balance", 100000000);
+
+
         currentRobotIndex = 0;
         RobotImg = GameObject.Find("RobotImg").guiTexture;
         RobotImg.texture = (Texture2D)Resources.Load("images/Robots/Red"+ PlayerPrefs.GetInt("startTimeBonusLevel",0), typeof(Texture2D));
@@ -159,7 +162,13 @@ public class StoreScript : MonoBehaviour {
 		
         if (GUI.Button (new Rect (0.0f * SCREEN_WIDTH, 0.91f * SCREEN_HEIGHT, 0.60f * SCREEN_WIDTH, 0.09f * SCREEN_HEIGHT), "Purchase"))
             if (balance >= itemPrice) {
-                balance -= itemPrice;
+
+				int prevLvl = (PlayerPrefs.GetInt ("startTimeBonusLevel",0)*1000) + (PlayerPrefs.GetInt("answerTimeBonusLevel",0)*100)
+					+ (PlayerPrefs.GetInt("startMultBonusLevel",0)*10) + PlayerPrefs.GetInt("streakMultBonusLevel",0);
+				PlayerPrefs.SetInt("PrevLvls", prevLvl);
+			UnityEngine.Debug.Log("PrevLvls = " + PlayerPrefs.GetInt ("PrevLvls"));
+
+				balance -= itemPrice;
 				PlayerPrefs.SetInt("Balance", balance);
 				playerBalance.guiText.text = "$ " + PlayerPrefs.GetInt("Balance", 0);
 				switch (currentRobotIndex) {
@@ -199,6 +208,10 @@ public class StoreScript : MonoBehaviour {
 
 				}
 				purchaseColor();
+				int finalLvl = (PlayerPrefs.GetInt ("startTimeBonusLevel",0)*1000) + (PlayerPrefs.GetInt("answerTimeBonusLevel",0)*100)
+				+ (PlayerPrefs.GetInt("startMultBonusLevel",0)*10) + PlayerPrefs.GetInt("streakMultBonusLevel",0);
+				PlayerPrefs.SetInt("FinalLvls", finalLvl);
+				UnityEngine.Debug.Log("FinalLvls = " + PlayerPrefs.GetInt ("FinalLvls"));
 			}
     }
 
