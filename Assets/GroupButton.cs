@@ -48,7 +48,7 @@ public class GroupButton : MonoBehaviour {
             cat1.transform.parent = groupButton.transform;
             cat1.AddComponent("GUITexture");
 
-            cat1.transform.localScale = new Vector3(0.4f,0.4f,1);
+            cat1.transform.localScale = new Vector3(0.7f,0.7f,1);
             cat1.guiTexture.texture = (Texture2D)Resources.Load("images/CategoryImages/"+ID1, typeof(Texture2D));
             cat1.guiTexture.name = ID1.ToString();
             cat1.transform.position = new Vector3(groupButton.guiTexture.transform.position.x,
@@ -60,7 +60,7 @@ public class GroupButton : MonoBehaviour {
             cat2 = new GameObject();
             cat2.transform.parent = groupButton.transform;
             cat2.AddComponent("GUITexture");
-            cat2.transform.localScale = new Vector3(0.4f,0.4f,1);
+            cat2.transform.localScale = new Vector3(0.7f,0.7f,1);
             cat2.guiTexture.texture = (Texture2D)Resources.Load("images/CategoryImages/"+ID2, typeof(Texture2D));
             cat2.guiTexture.name = ID2.ToString();
             cat2.transform.position = new Vector3(groupButton.guiTexture.transform.position.x + spacingx,
@@ -72,7 +72,7 @@ public class GroupButton : MonoBehaviour {
             cat3 = new GameObject();
             cat3.transform.parent = groupButton.transform;
             cat3.AddComponent("GUITexture");
-            cat3.transform.localScale = new Vector3(0.4f,0.4f,1);
+            cat3.transform.localScale = new Vector3(0.7f,0.7f,1);
             cat3.guiTexture.texture = (Texture2D)Resources.Load("images/CategoryImages/"+ID3, typeof(Texture2D));
             cat3.guiTexture.name = ID3.ToString();
             cat3.transform.position = new Vector3(groupButton.guiTexture.transform.position.x,
@@ -84,7 +84,7 @@ public class GroupButton : MonoBehaviour {
             cat4 = new GameObject();
             cat4.transform.parent = groupButton.transform;
             cat4.AddComponent("GUITexture");
-            cat4.transform.localScale = new Vector3(0.4f,0.4f,1);
+            cat4.transform.localScale = new Vector3(0.7f,0.7f,1);
             cat4.guiTexture.texture = (Texture2D)Resources.Load("images/CategoryImages/"+ID4, typeof(Texture2D));
             cat4.guiTexture.name = ID4.ToString();
             cat4.transform.position = new Vector3(groupButton.guiTexture.transform.position.x - spacingx,
@@ -161,8 +161,8 @@ public class GroupButton : MonoBehaviour {
         float scale = 1.5f;
         float height = 10f;
         scale = 0.4f * (4 - 3 * ratio);
-        spacingx = 0.09f * (3 - 2 * ratio);
-        spacingy = 0.05f * (3 - 2 * ratio);
+        spacingx = 0.08f * (3 - 2 * ratio);
+        spacingy = 0.04f * (3 - 2 * ratio);
 
         if (cat1 != null) {
             cat1.transform.localScale = new Vector3(scale,scale,1);
@@ -193,7 +193,7 @@ public class GroupButton : MonoBehaviour {
     public void resetCategoriesScale() {
         float spacingx = 0.09f;
         float spacingy = 0.05f;
-        float scale = 0.4f;
+        float scale = 0.7f;
         if (cat1 != null) {
             cat1.transform.localScale = new Vector3(scale,scale,1);
             cat1.transform.position = new Vector3(groupButton.guiTexture.transform.position.x,
@@ -227,8 +227,8 @@ public class GroupButton : MonoBehaviour {
             cat1Text = new GameObject();
             cat1Text.AddComponent("GUIText");
             cat1Text.transform.parent = cat1.transform;
+			cat1Text.guiText.color = Color.black;
             cat1Text.guiText.text = CategorySwitch.getCategoryFromID(Convert.ToInt32 (cat1.guiTexture.name));
-            cat1Text.guiText.color = Color.white;
             cat1Text.guiText.fontSize = (int)(Screen.width/20);
             cat1Text.guiText.anchor = TextAnchor.LowerCenter;
             cat1Text.transform.localScale = cat1Text.transform.root.localScale;
@@ -240,8 +240,8 @@ public class GroupButton : MonoBehaviour {
             cat2Text = new GameObject();
             cat2Text.AddComponent("GUIText");
             cat2Text.transform.parent = cat2.transform;
+			cat2Text.guiText.color = Color.black;
             cat2Text.guiText.text = CategorySwitch.getCategoryFromID(Convert.ToInt32 (cat2.guiTexture.name));
-            cat2Text.guiText.color = Color.white;
             cat2Text.guiText.fontSize = (int)(Screen.width/20);
             cat2Text.guiText.anchor = TextAnchor.LowerCenter;
             cat2Text.transform.localScale = cat2Text.transform.root.localScale;
@@ -253,8 +253,8 @@ public class GroupButton : MonoBehaviour {
             cat3Text = new GameObject();
             cat3Text.AddComponent("GUIText");
             cat3Text.transform.parent = cat3.transform;
+			cat3Text.guiText.color = Color.black;
             cat3Text.guiText.text = CategorySwitch.getCategoryFromID(Convert.ToInt32 (cat3.guiTexture.name));
-            cat3Text.guiText.color = Color.white;
             cat3Text.guiText.fontSize = (int)(Screen.width/20);
             cat3Text.guiText.anchor = TextAnchor.LowerCenter;
             cat3Text.transform.localScale = cat3Text.transform.root.localScale;
@@ -266,8 +266,8 @@ public class GroupButton : MonoBehaviour {
             cat4Text = new GameObject();
             cat4Text.AddComponent("GUIText");
             cat4Text.transform.parent = cat4.transform;
+			cat4Text.guiText.color = Color.black;
             cat4Text.guiText.text = CategorySwitch.getCategoryFromID(Convert.ToInt32 (cat4.guiTexture.name));
-            cat4Text.guiText.color = Color.white;
             cat4Text.guiText.fontSize = (int)(Screen.width/20);
             cat4Text.guiText.anchor = TextAnchor.LowerCenter;
             cat4Text.transform.localScale = cat4Text.transform.root.localScale;

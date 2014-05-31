@@ -17,7 +17,7 @@ public class LevelScript : MonoBehaviour {
         pos1 = new Vector3 (0.5f, 0.4f, 0f);
         pos2 = new Vector3 (0.8f, 0.32f, 0f);
         pos3 = new Vector3 (0.8f, 0.18f, 0f);
-        pos4 = new Vector3 (0.5f, 0.1f, 0f);
+        pos4 = new Vector3 (0.5f, 0.25f, 0f);
         pos5 = new Vector3 (0.2f, 0.18f, 0f);
         pos6 = new Vector3 (0.2f, 0.32f, 0f);
     }
@@ -48,17 +48,17 @@ public class LevelScript : MonoBehaviour {
             Button1 = new GroupButton(pos1, 1);
             Button1.addCategory(4,5,2,28242);
             Button4 = new GroupButton(pos4, 4);
-            Button4.addCategory(28347,6,-1,3);
+            Button4.addCategory(28347,6,23203,3);
             GameObject.Find("Game Object Clock").GetComponent<Clock_Script>().SetStartTime(10 + PlayerPrefs.GetInt("startTimeBonusLevel",0) * PlayerPrefs.GetFloat("startTimeBonusFactor",0));
 			depth = 1;
 			GameObject.Find("Scripts").GetComponent<Product_DB>().StartStackKnown(0, 9);
 			GameObject.Find("Scripts").GetComponent<Product_DB>().StartStackUnknown(12,15);
 			currentItem = GameObject.Find("Scripts").GetComponent<Product_DB>().next_Item();
 			//GameObject.Find("GUIProductImg").guiTexture.texture = (Texture2D) Resources.Load("Sample_pictures/"+currentItem.get_IMG());
-            pName.color = Color.white;
+            pName.color = Color.black;
             pName.fontSize = (int)(Screen.width/15);
             pName.anchor = TextAnchor.MiddleCenter;
-            pName.transform.localPosition = new Vector3 (.5f,.55f,11f);
+            pName.transform.localPosition = new Vector3 (.5f,.55f,1f);
             pName.pixelOffset = new Vector2(0,Screen.height / -10);
 
 
@@ -95,11 +95,9 @@ public class LevelScript : MonoBehaviour {
         GroupButton.deleteGroupButtons();
 		GameObject.Find("GUIProductImg").guiTexture.texture = (Texture2D) Resources.Load("Smiley");
 		pName.gameObject.SetActive(false);
-		LevelUp.checkLevelUp();
-		Pause_Menu.levelUpMenu = false;
 
 		GameObject.Find ("PlayerBalance").GetComponent <Scoring_Money> ().Deinitialize();
-
+		GroupButton.deleteGroupButtons();
 		//Application.LoadLevel("Statistics");
 		
     }

@@ -234,6 +234,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   streak: 6
   pauseSkin: {fileID: 11400000, guid: b59fdf4ad8fc9f040aa759d31f93c848, type: 2}
+  done: 0
 --- !u!1 &530620687
 GameObject:
   m_ObjectHideFlags: 0
@@ -1092,7 +1093,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1906131794}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: .550000012, z: 15}
+  m_LocalPosition: {x: 0, y: .550000012, z: 6}
   m_LocalScale: {x: .114713669, y: .0557155237, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
