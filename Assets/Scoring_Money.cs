@@ -25,18 +25,20 @@ public class Scoring_Money : MonoBehaviour
 	private int currentMoney;
 	private int num_correct;
 	private int num_wrong;
-	
+	private int roundUnk;
+
 	public GUISkin pauseSkin;
 	private int SCREEN_WIDTH = Screen.width;
 	private int SCREEN_HEIGHT = Screen.height;
 	public bool done;
-	
+
+
 	void Start ()
 	{		
 		playerBalance = GameObject.Find ("PlayerBalance").guiText;
 		//PlayerPrefs.DeleteAll ();	// For testing purposes, resets balance
 		balance = PlayerPrefs.GetInt ("Balance", 0); // Look into an alternative for saving player's balance other than PlayerPrefs
-		
+
 		currentMoney = 0;
 		
 		streak = 1;
@@ -46,10 +48,13 @@ public class Scoring_Money : MonoBehaviour
 		arResponses = new int[50];
 		itemCount = 0;
 		
-		topStreak = PlayerPrefs.GetInt ("TopStreak");
+//		topStreak = PlayerPrefs.GetInt ("TopStreak");
+		topStreak = 0;
 		num_correct = 0;
 		num_wrong = 0;
 		done = false;
+		roundUnk = 0;
+
 	}
 	
 	public void initialize(int depth)
@@ -94,9 +99,12 @@ public class Scoring_Money : MonoBehaviour
 				myMultiplier++;
 			}
 			
-			if (streak > topStreak)
-				PlayerPrefs.SetInt("TopStreak", streak);
-			
+			if (streak > topStreak) {
+				topStreak = streak;
+				if(topStreak > PlayerPrefs.GetInt ("TopStreak", 0))
+					PlayerPrefs.SetInt("TopStreak", streak);
+			}
+
 			currentMoney = currentMoney + (int) (5 * myMultiplier);
 			num_correct++;
 			
@@ -131,6 +139,7 @@ public class Scoring_Money : MonoBehaviour
 		if (LevelScript.currentItem.get_ctg(myDepth) == 0) {
 			Inc_Balance (true);
 			//			LevelScript.currentItem.set_responses(answer);
+			roundUnk++;
 			SaveResponses(answer);
 			GameObject.Find("Game Object Clock").GetComponent<Clock_Script>().addTime(.3f +  PlayerPrefs.GetInt("answerTimeBonusLevel",0) * PlayerPrefs.GetFloat("answerTimeBonusFactor",0));
 			StartCoroutine(GameObject.Find("center").GetComponent<CollisionAnswer>().flashAnswer(true));
@@ -193,9 +202,13 @@ public class Scoring_Money : MonoBehaviour
 		statText.transform.localScale = new Vector3(0.6f, 0.35f, 0);
 		statText.fontSize = (int) (Screen.height * 0.04f);
 		
-		statText.text = "Total Money: " + PlayerPrefs.GetInt ("Balance") + "\nTopStreak: " + PlayerPrefs.GetInt("TopStreak")
+		statText.text = "Total Money: " + PlayerPrefs.GetInt ("Balance") + "\nTopStreak: " + topStreak
 			+ "\nNumber Correct: " + num_correct + "\nNumber Wrong: " + num_wrong + "\nMoney Gained: " + currentMoney;
 
+//		PlayerPrefs.SetInt ("RoundImgs", num_correct + num_wrong);
+//		PlayerPrefs.SetInt ("RoundUNK", roundUnk);
+//		PlayerPrefs.SetInt ("SessionAcc", (num_correct/(num_correct+num_wrong))*100);
+//		statText.text = "roundImgs" + PlayerPrefs.GetInt("RoundImgs",0) + "\nSessionAcc: " + PlayerPrefs.GetInt("SessionAcc");
 		done = true;
 	}
 	
