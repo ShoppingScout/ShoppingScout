@@ -1,9 +1,9 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Main_Menu.cs">
+  <MonoDevelop.Ide.Workspace />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scoring_Money.cs">
     <Files>
-      <File FileName="Assets\Main_Menu.cs" Line="37" Column="54" />
-      <File FileName="Assets\Main_Menu.cs" Line="45" Column="1" />
+      <File FileName="Assets\Main_Menu.cs" Line="15" Column="21" />
+      <File FileName="Assets\Scoring_Money.cs" Line="217" Column="4" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

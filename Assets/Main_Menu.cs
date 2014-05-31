@@ -12,6 +12,7 @@ public class Main_Menu : MonoBehaviour {
 	public static int load_number;
 	
 	public GUISkin myGuiSkin;
+	public GUISkin shopGuiSkin;
 	// Use this for initialization
 	void Start () {
 //		logo = GameObject.Find ("Logo").guiTexture;
@@ -38,6 +39,9 @@ public class Main_Menu : MonoBehaviour {
 			Application.LoadLevel("Buttons");
 			load_number = 1;
 		} 
+
+		GUI.skin = shopGuiSkin;
+
 		if (GUI.Button (new Rect (0.25f * SCREEN_WIDTH, 0.6f * SCREEN_HEIGHT, 0.50f * SCREEN_WIDTH, 0.1f * SCREEN_HEIGHT), "")) {
 			Application.LoadLevel("Shop");
 		} 
