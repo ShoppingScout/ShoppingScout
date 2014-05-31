@@ -11,6 +11,7 @@ public static class CategorySwitch : object {
 			case 4: return "Baby";
 			case 5: return "Grocery";
 			case 6: return "Office Supplies";
+			case 23203: return "General Merchandise";
 			case 28242: return "Health & Nutrition";
 			case 28347: return "Household";
 			default: return "Error";

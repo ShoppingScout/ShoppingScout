@@ -130,7 +130,7 @@ public class Main : MonoBehaviour {
                             
             }
             //================== End phase ===================
-            if (Input.GetTouch (0).phase == TouchPhase.Ended) {
+            else if (Input.GetTouch (0).phase == TouchPhase.Ended) {
                 touchObject = hitTest.HitTest (Input.GetTouch (0).position);
 
                 centerMark.transform.position = centerResetPos;
@@ -188,7 +188,7 @@ public class Main : MonoBehaviour {
             }
 
             //================== Button movement and animation ===================
-            if (Input.GetTouch (0).phase == TouchPhase.Stationary || Input.GetTouch (0).phase == TouchPhase.Moved) {
+            else if (Input.GetTouch (0).phase == TouchPhase.Stationary || Input.GetTouch (0).phase == TouchPhase.Moved) {
                 curTouchPositionx = Input.GetTouch (0).position.x / SCREEN_WIDTH;
                 curTouchPositiony = Input.GetTouch(0).position.y / SCREEN_HEIGHT;
                 if (!middle) {
