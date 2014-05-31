@@ -20,6 +20,19 @@ public class Pause_Menu : MonoBehaviour {
 
     }
 
+	void Update () {
+		if (Application.platform == RuntimePlatform.Android)
+		{
+			if (Input.GetKey(KeyCode.Escape))
+			{
+				CollisionAnswer.jo.Call("vibrate2", 75);
+				togglePause();
+				LevelScript.Deinitialize();
+				Application.LoadLevel("Menu");
+				return;
+			}
+		}
+	}
 
     void OnGUI () {
         pauseSkin.button.fontSize = SCREEN_WIDTH/20;

@@ -213,7 +213,7 @@ public class StoreScript : MonoBehaviour {
 				PlayerPrefs.SetInt("FinalLvls", finalLvl);
 				UnityEngine.Debug.Log("FinalLvls = " + PlayerPrefs.GetInt ("FinalLvls"));
 			}
-    }
+	}
 
     void Update () {
         if (Application.platform == RuntimePlatform.Android)

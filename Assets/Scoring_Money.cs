@@ -48,7 +48,8 @@ public class Scoring_Money : MonoBehaviour
 		arResponses = new int[50];
 		itemCount = 0;
 		
-		topStreak = PlayerPrefs.GetInt ("TopStreak");
+//		topStreak = PlayerPrefs.GetInt ("TopStreak");
+		topStreak = 0;
 		num_correct = 0;
 		num_wrong = 0;
 		done = false;
@@ -98,9 +99,12 @@ public class Scoring_Money : MonoBehaviour
 				myMultiplier++;
 			}
 			
-			if (streak > topStreak)
-				PlayerPrefs.SetInt("TopStreak", streak);
-			
+			if (streak > topStreak) {
+				topStreak = streak;
+				if(topStreak > PlayerPrefs.GetInt ("TopStreak", 0))
+					PlayerPrefs.SetInt("TopStreak", streak);
+			}
+
 			currentMoney = currentMoney + (int) (5 * myMultiplier);
 			num_correct++;
 			
@@ -198,13 +202,13 @@ public class Scoring_Money : MonoBehaviour
 		statText.transform.localScale = new Vector3(0.6f, 0.35f, 0);
 		statText.fontSize = (int) (Screen.height * 0.04f);
 		
-//		statText.text = "Total Money: " + PlayerPrefs.GetInt ("Balance") + "\nTopStreak: " + PlayerPrefs.GetInt("TopStreak")
-//			+ "\nNumber Correct: " + num_correct + "\nNumber Wrong: " + num_wrong + "\nMoney Gained: " + currentMoney;
+		statText.text = "Total Money: " + PlayerPrefs.GetInt ("Balance") + "\nTopStreak: " + topStreak
+			+ "\nNumber Correct: " + num_correct + "\nNumber Wrong: " + num_wrong + "\nMoney Gained: " + currentMoney;
 
-		PlayerPrefs.SetInt ("RoundImgs", num_correct + num_wrong);
-		PlayerPrefs.SetInt ("RoundUNK", roundUnk);
-		PlayerPrefs.SetFloat ("SessionAcc", (num_correct/(num_correct+num_wrong))*100);
-		statText.text = "roundImgs" + PlayerPrefs.GetInt("RoundImgs",0) + "\nSessionAcc: " + PlayerPrefs.GetFloat("SessionAcc");
+//		PlayerPrefs.SetInt ("RoundImgs", num_correct + num_wrong);
+//		PlayerPrefs.SetInt ("RoundUNK", roundUnk);
+//		PlayerPrefs.SetInt ("SessionAcc", (num_correct/(num_correct+num_wrong))*100);
+//		statText.text = "roundImgs" + PlayerPrefs.GetInt("RoundImgs",0) + "\nSessionAcc: " + PlayerPrefs.GetInt("SessionAcc");
 		done = true;
 	}
 	
