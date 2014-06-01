@@ -1,11 +1,8 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\BackButton.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\CollisionAnswer.cs">
     <Files>
-      <File FileName="Assets\Pause_Menu.cs" Line="38" Column="53" />
-      <File FileName="Assets\Main.cs" Line="80" Column="1" />
-      <File FileName="Assets\StoreScript.cs" Line="6" Column="2" />
-      <File FileName="Assets\BackButton.cs" Line="24" Column="126" />
+      <File FileName="Assets\CollisionAnswer.cs" Line="13" Column="61" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

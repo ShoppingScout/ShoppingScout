@@ -1,4 +1,4 @@
-using UnityEngine;
+/*using UnityEngine;
 using System.Collections;
 
 
@@ -15,8 +15,6 @@ public static class LevelUp : object {
 	
 	
 	static LevelUp(){
-		//GUIText debugText = GameObject.Find ("DebugText").guiText;
-		//debugText.text = "Awake";
 		resetID = 26;
 		levelBase = 150; levelConstant = 10;
 		startTimeBonusFactor = 5;
@@ -81,4 +79,4 @@ public static class LevelUp : object {
 	
 	
 	
-}
+}*/

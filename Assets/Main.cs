@@ -17,7 +17,7 @@ public class Main : MonoBehaviour {
     private GUITexture curButton;
 
     //used for outputing
-    private GUIText debugText;
+    //private GUIText debugText;
 
     private float curTouchPositionx;
     private float curTouchPositiony;
@@ -49,7 +49,7 @@ public class Main : MonoBehaviour {
     //=====================================================================//o
     void Start() {
         //for debug
-        debugText = GameObject.Find ("DebugText").guiText;
+        //debugText = GameObject.Find ("DebugText").guiText;
         centerMark = GameObject.Find("center");
 
         centerMark.transform.position = new Vector3(3f,3f,3f);
@@ -81,10 +81,6 @@ public class Main : MonoBehaviour {
                 checker.GetComponent <Scoring_Money> ().Check_Answer(itemUpdate.ToString());
                 LevelScript.currentItem = GameObject.Find("Scripts").GetComponent<Product_DB>().next_Item();
                 itemUpdate = -1;
-                //StartCoroutine(GameObject.Find("center").GetComponent<CollisionAnswer>().flashAnswer(remainder == 0));
-
-
-
             }
 
             curButton = null;
@@ -106,8 +102,6 @@ public class Main : MonoBehaviour {
                                 curButton.transform.parent.name.Equals("groupButton5") || curButton.transform.parent.name.Equals("groupButton6"))
                         {
                             curButton = curButton.transform.parent.guiTexture;
-
-                            debugText.text = curButton.transform.name;
                         }
                 resetPos = curButton.transform.position;
 
@@ -131,9 +125,8 @@ public class Main : MonoBehaviour {
 
                         curButton.transform.name.Equals("groupButton5") || curButton.transform.name.Equals("groupButton6"))
                     setMiddle();
-
-
             }
+
             //================== End phase ===================
             else if (Input.GetTouch (0).phase == TouchPhase.Ended) {
                 touchObject = hitTest.HitTest (Input.GetTouch (0).position);
@@ -186,10 +179,6 @@ public class Main : MonoBehaviour {
                     }
                 }
                 middle = false;
-                //if (DEBUG) {
-                //   debugText.text = "Debug: finger pos: " + Input.GetTouch (0).position.x / Screen.width + ", " + Input.GetTouch (0).position.y / Screen.height
-                //                    + "\n" + touchObject.guiTexture.name + "\nbutton pos: " + curButton.transform.position.x + ", " + curButton.transform.position.y;
-                // }
             }
 
             //================== Button movement and animation ===================
@@ -236,12 +225,9 @@ public class Main : MonoBehaviour {
                             middle = true;
 
                             groupie.addCatTexts();
-                            // groupie.getCat(1).guiText.anchor = TextAnchor.LowerCenter;
-                            debugText.text = "working!";
-
                         }
                     }
-                    else {// (curButton.transform.position!= new Vector3 (.5f, .25f, 0f)) {
+                    else {
                         switch (curButton.name) {
                         case "groupButton1":
                             if (Vector3.Distance(new Vector3 (curButton.transform.position.x, curTouchPositiony, 0f), new Vector3 (.5f, .25f, 0f))
@@ -299,20 +285,7 @@ public class Main : MonoBehaviour {
                 else {
                     selectAnswerPhaseTwo();
                 }
-                //if (DEBUG) {
-                //  debugText.text = centerMark.transform.position.z + "        "  +groupies[0].getCat(1).transform.position.z;
-
-
-
-
-
-                /*"Debug: finger pos: " + Input.GetTouch (0).position.x / Screen.width + ", " + Input.GetTouch (0).position.y / Screen.height
-                                 + "\n" + curButton.name + "\nbutton pos: " + curButton.transform.position.x + ", " + curButton.transform.position.y + '\n' + "ResetPosDist"
-                                 + (Vector3.Distance((resetPos + new Vector3 (0,0,0f)), new Vector3 (.5f, .25f, 0f))) + '\n' + "TouchPos:" + Vector3.Distance(new Vector3 (curButton.transform.position.x, curTouchPositiony, 0f),
-                                         new Vector3 (.5f, .25f, 0f)) + "     " + resetPos;*/
-                // }
             }
-            
         }
 
 		if (!GameObject.Find("Game Object Clock").GetComponent<Clock_Script>().isPaused)
@@ -334,9 +307,8 @@ public class Main : MonoBehaviour {
         }
 
     }
+
     public void setMiddle() {
-
-
         for (int i = 0; i < 6; i++) {
             if (GameObject.Find("groupButton"+(i+1)))
                 if (!groupies[i].getGroupButton().name.Equals(curButton.name))
@@ -353,13 +325,9 @@ public class Main : MonoBehaviour {
         middle = true;
 
     }
+
     public void selectAnswerPhaseTwo() {
         centerMark.transform.position = new Vector3 (curTouchPositionx, curTouchPositiony, 12f);
-        //if (DEBUG) {
-        //   debugText.text = centerMark.transform.position.z + "        "  +groupies[3].getCat(1).transform.position.z+ "        "  +groupies[0].getCat(1).transform.position.z + '\n'
-        //                    + groupies[3].getGroupButton().transform.position.z+ "        "  + groupies[0].getCat(1).GetComponent<CircleCollider2D>().center + '\n' + groupies[0].getCat(1).GetComponent<CircleCollider2D>().radius;
-        //}
-
     }
 
 

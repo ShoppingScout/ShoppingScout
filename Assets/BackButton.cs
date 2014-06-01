@@ -7,16 +7,6 @@ public class BackButton : MonoBehaviour {
 	private int SCREEN_WIDTH = Screen.width;
 	private int SCREEN_HEIGHT = Screen.height;
 
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
-
 	void OnGUI () {
 		pauseSkin.button.fontSize = SCREEN_WIDTH/20;
 		GUI.skin = pauseSkin;

@@ -2,11 +2,13 @@ using UnityEngine;
 using System.Collections;
 using System;
 using System.Runtime.InteropServices;
+
 public class CollisionAnswer : MonoBehaviour {
     private Item currentItem;
     public static AndroidJavaClass Vibrate;
     public static AndroidJavaObject jo;
     public static AndroidJavaClass jc;
+
     void Start() {
         if (Application.platform == RuntimePlatform.Android) {
             try {
@@ -27,7 +29,6 @@ public class CollisionAnswer : MonoBehaviour {
         if (Main.middle) {
             Main.itemAnswer = Convert.ToInt32 (other.guiTexture.name);
 			other.guiTexture.texture = (Texture2D)Resources.Load("images/CategoryImages/"+other.guiTexture.name + "Border", typeof(Texture2D));
-            //debugText.text = other.guiTexture.name;
             if (Application.platform == RuntimePlatform.Android) {
                 try {
                     //Call Vibration function in Java, vibrationTime
@@ -38,20 +39,10 @@ public class CollisionAnswer : MonoBehaviour {
                 }
             }
         }
-        //if (Input.GetTouch (0).phase == TouchPhase.Ended) {
-//			GameObject.FindGameObjectWithTag("PlayerBalance").GetComponent < Scoring_Money > ().Check_Answer(other.guiTexture.name);
-        //	Main.itemUpdate = Convert.ToInt32 (other.guiTexture.name);
-        /*checker.GetComponent <Scoring_Money> ().Check_Answer(other.guiTexture.name);
-        LevelScript.currentItem = GameObject.Find("Scripts").GetComponent<Product_DB>().next_Item();
-        currentItem = LevelScript.currentItem;
-        debugText.text = currentItem.get_PName();
-        GameObject.Find("GUIProductImg").guiTexture.texture = (Texture2D) Resources.Load("Sample_pictures/"+currentItem.get_IMG());*/
-        //}
+
     }
     void OnTriggerExit2D(Collider2D other) {
         Main.itemAnswer = -1;
-        GUIText debugText = GameObject.Find ("DebugText").guiText;
-        debugText.text = "Exited!!  " + Main.itemAnswer;
 		other.guiTexture.texture = (Texture2D)Resources.Load("images/CategoryImages/"+other.guiTexture.name, typeof(Texture2D));
     }
     public IEnumerator flashAnswer(bool answer) {

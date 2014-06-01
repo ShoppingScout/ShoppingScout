@@ -28,14 +28,14 @@ public class LevelScript : MonoBehaviour {
 
     //Switch to determine which layout and categories to load
     public static void LoadLevelSettings(int level) {
-		GUIText debugText = GameObject.Find ("DebugText").guiText;
-		//fdebugText.text = "here";
 		GameObject.Find("center").SetActive(true);
 		
 		pName = GameObject.Find ("GUIProductName").guiText;
 		pName.gameObject.SetActive(true);
-		LevelUp.startStage();
-        switch (level) {
+
+//		LevelUp.startStage();
+        
+		switch (level) {
 		/* Buttons
 			1
 		6		2		
@@ -43,8 +43,6 @@ public class LevelScript : MonoBehaviour {
 			4
 		*/
         case 1:
-			//GUIText debugText = GameObject.Find ("DebugText").guiText;
-			//debugText.text = Application.persistentDataPath;
             Button1 = new GroupButton(pos1, 1);
             Button1.addCategory(4,5,2,28242);
             Button4 = new GroupButton(pos4, 4);
@@ -54,7 +52,6 @@ public class LevelScript : MonoBehaviour {
 			GameObject.Find("Scripts").GetComponent<Product_DB>().StartStackKnown(0, 9);
 			GameObject.Find("Scripts").GetComponent<Product_DB>().StartStackUnknown(12,15);
 			currentItem = GameObject.Find("Scripts").GetComponent<Product_DB>().next_Item();
-			//GameObject.Find("GUIProductImg").guiTexture.texture = (Texture2D) Resources.Load("Sample_pictures/"+currentItem.get_IMG());
             pName.color = Color.black;
             pName.fontSize = (int)(Screen.width/15);
             pName.anchor = TextAnchor.MiddleCenter;
@@ -96,8 +93,6 @@ public class LevelScript : MonoBehaviour {
 		pName.guiText.text = "";
 
 		GroupButton.deleteGroupButtons();
-		//Application.LoadLevel("Statistics");
-		
     }
 }
 

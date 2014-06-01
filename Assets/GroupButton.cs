@@ -300,13 +300,4 @@ public class GroupButton : MonoBehaviour {
         }
     }
 
-    /*void OnTriggerExit2D(Collider2D other) {
-        GUIText debugText = GameObject.Find ("DebugText").guiText;
-        debugText.text = other.guiTexture.name;
-    }
-    void OnTriggerStay2D(Collider2D other) {
-        GUIText debugText = GameObject.Find ("DebugText").guiText;
-        debugText.text = "Entered!";
-    	}*/
-
 }

@@ -50,8 +50,6 @@ public class Clock_Script : MonoBehaviour {
     {
 		LevelScript.Deinitialize();
 		GameObject.Find ("PlayerBalance").GetComponent <Scoring_Money> ().Deinitialize();
-
-        //Debug.Log("Time is Up!");
     }
 
     void OnGUI()
