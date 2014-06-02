@@ -91,18 +91,18 @@ public class Product_DB : MonoBehaviour {
 		else if(MyStreak >= 25)
 			decision = 0.60;
 
-		Debug.Log (r);
-		Debug.Log (MyStreak);
+//		Debug.Log (r);
+//		Debug.Log (MyStreak);
 		if(r < decision){
 			temp = pop_unknown();
-			Debug.Log ("unknown");
+//			Debug.Log ("unknown");
 		}
 		else{
 			temp = pop_known ();
-			Debug.Log ("known");
+//			Debug.Log ("known");
 		}
 
-		Debug.Log ("Sample_pictures/"+temp.get_IMG ());
+//		Debug.Log ("Sample_pictures/"+temp.get_IMG ());
 		
 			/*
 		product = new GameObject();

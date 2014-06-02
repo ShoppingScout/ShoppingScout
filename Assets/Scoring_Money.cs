@@ -42,13 +42,11 @@ public class Scoring_Money : MonoBehaviour
 		currentMoney = 0;
 		
 		streak = 1;
-		timeLeft = 30.0f;
-		
+
 		arID = new int[50];
 		arResponses = new int[50];
 		itemCount = 0;
 		
-//		topStreak = PlayerPrefs.GetInt ("TopStreak");
 		topStreak = 0;
 		num_correct = 0;
 		num_wrong = 0;
@@ -63,31 +61,18 @@ public class Scoring_Money : MonoBehaviour
 		myMultiplier = 1 +  PlayerPrefs.GetInt("startMultBonusLevel",0) * PlayerPrefs.GetFloat("startMultBonusFactor",0) ;
 		int roundNum = PlayerPrefs.GetInt("RoundNum") + 1;
 		PlayerPrefs.SetInt ("RoundNum", roundNum);
-		UnityEngine.Debug.Log("roundNum = " + PlayerPrefs.GetInt ("RoundNum"));
+//		UnityEngine.Debug.Log("roundNum = " + PlayerPrefs.GetInt ("RoundNum"));
 		
 		GUITexture statBox = GameObject.Find ("StatBox").guiTexture;
 		statBox.enabled = false;
 		GUIText statText = GameObject.Find ("Stats").guiText;
 		statText.text = "";
 	}
-	
-	/*void Update ()
-	{
-		timeLeft -= Time.deltaTime;
-		if (timeLeft < 0) {
-			timeLeft = 0;
-			Application.LoadLevel("Statistics");
-		}
-	}*/
+
 	
 	public void Deinitialize() {
-		//		PlayerPrefs.SetInt ("Balance",  overallBalance + balance);
-		//		GUIText debugText = GameObject.Find ("DebugText").guiText;
-		//		debugText.text = "FINAL: " + PlayerPrefs.GetInt ("Balance") + "\nTopStreak: " + PlayerPrefs.GetInt("TopStreak")
-		//			+ "\nNumber Correct: " + num_correct + "\nNumber Wrong: " + num_wrong + "\nMoney Gained: " + currentMoney;
 		WriteToFile();
 		ShowStats();
-		//testingFile();
 	}
 	
 	
@@ -110,10 +95,8 @@ public class Scoring_Money : MonoBehaviour
 			
 			balance = balance + (int) (5 * myMultiplier);
 			PlayerPrefs.SetInt ("Balance", balance);
-			GUIText debugText = GameObject.Find ("DebugText").guiText;
-			debugText.text = "" + myMultiplier;
 			streak++;
-		} // if key up/correct answer
+		}
 		
 		else {
 			currentMoney  -= 5;
@@ -123,22 +106,16 @@ public class Scoring_Money : MonoBehaviour
 			myMultiplier = 1;
 			streak = 1;
 			PlayerPrefs.SetInt ("Balance", balance);
-		} // if key down/incorrect answer
+		}
 	}
 	
 	
 	public void Check_Answer (string inputAns)
 	{
 		int answer = Convert.ToInt32 (inputAns);
-		GUIText debugText = GameObject.Find ("DebugText").guiText;
-		
-		//		debugText.text = "masterIndex: " + currentItem.get_myIndex() + "\ncurrent.answer: " + currentItem.get_ctg(0) + "\nresult: " + answer;
-		//		debugText.text = "responses1:" + LevelScript.currentItem.get_responses(0)
-		//			+ "\nresponse2: " + LevelScript.currentItem.get_responses(1) + "\nresponse3: " + LevelScript.currentItem.get_responses(2);
-		
+
 		if (LevelScript.currentItem.get_ctg(myDepth) == 0) {
 			Inc_Balance (true);
-			//			LevelScript.currentItem.set_responses(answer);
 			roundUnk++;
 			SaveResponses(answer);
 			GameObject.Find("Game Object Clock").GetComponent<Clock_Script>().addTime(.3f +  PlayerPrefs.GetInt("answerTimeBonusLevel",0) * PlayerPrefs.GetFloat("answerTimeBonusFactor",0));
@@ -147,7 +124,6 @@ public class Scoring_Money : MonoBehaviour
 		
 		else if (LevelScript.currentItem.get_ctg(myDepth) == answer) {
 			Inc_Balance (true);
-			//			LevelScript.currentItem.set_responses(answer);
 			SaveResponses(answer);
 			GameObject.Find("Game Object Clock").GetComponent<Clock_Script>().addTime(.3f +  PlayerPrefs.GetInt("answerTimeBonusLevel",0) * PlayerPrefs.GetFloat("answerTimeBonusFactor",0));
 			StartCoroutine(GameObject.Find("center").GetComponent<CollisionAnswer>().flashAnswer(true));
@@ -155,7 +131,6 @@ public class Scoring_Money : MonoBehaviour
 		
 		else {
 			Inc_Balance (false);
-			//			LevelScript.currentItem.set_responses(answer);
 			SaveResponses(answer);
 			StartCoroutine(GameObject.Find("center").GetComponent<CollisionAnswer>().flashAnswer(false));
 		}
@@ -163,18 +138,15 @@ public class Scoring_Money : MonoBehaviour
 	
 	
 	
-	public void SaveResponses(int response)
+	void SaveResponses(int response)
 	{
 		arID[itemCount] = LevelScript.currentItem.get_PID();
 		arResponses[itemCount] = response;
 		itemCount++;
 	}
 	
-	public void WriteToFile()
-	{
-		//		GUIText debugText = GameObject.Find ("DebugText").guiText;
-		//		debugText.text = Application.persistentDataPath;
-		
+	void WriteToFile()
+	{	
 		StreamWriter _writer = null;
 		
 		FileInfo t = new FileInfo(Application.persistentDataPath + "/" + "responses.csv");
@@ -191,7 +163,7 @@ public class Scoring_Money : MonoBehaviour
 		_writer.Close ();
 	}
 	
-	public void ShowStats()
+	void ShowStats()
 	{
 		
 		GUITexture statBox = GameObject.Find ("StatBox").guiTexture;
@@ -205,10 +177,6 @@ public class Scoring_Money : MonoBehaviour
 		statText.text = "Total Money: " + PlayerPrefs.GetInt ("Balance") + "\nTopStreak: " + topStreak
 			+ "\nNumber Correct: " + num_correct + "\nNumber Wrong: " + num_wrong + "\nMoney Gained: " + currentMoney;
 
-//		PlayerPrefs.SetInt ("RoundImgs", num_correct + num_wrong);
-//		PlayerPrefs.SetInt ("RoundUNK", roundUnk);
-//		PlayerPrefs.SetInt ("SessionAcc", (num_correct/(num_correct+num_wrong))*100);
-//		statText.text = "roundImgs" + PlayerPrefs.GetInt("RoundImgs",0) + "\nSessionAcc: " + PlayerPrefs.GetInt("SessionAcc");
 		done = true;
 	}
 	
@@ -229,9 +197,5 @@ public class Scoring_Money : MonoBehaviour
 				Application.LoadLevel("Menu");
 			}
 		}
-	}
-	
-	public static void setBalance(int b){
-		balance = b;
 	}
 }

@@ -16,9 +16,6 @@ public class Main : MonoBehaviour {
     private GUIElement touchObject;
     private GUITexture curButton;
 
-    //used for outputing
-    //private GUIText debugText;
-
     private float curTouchPositionx;
     private float curTouchPositiony;
     private Vector3 resetPos;
@@ -28,9 +25,7 @@ public class Main : MonoBehaviour {
     private const float BUTTON_SLOPE = (0.07f) / (0.3f);
     private int SCREEN_WIDTH = Screen.width;
     private int SCREEN_HEIGHT = Screen.height;
-
-    // DEBUG
-    private bool DEBUG = true;
+	
     private int levelGroup = 1;
     public GameObject level;
     public static GroupButton groupie;

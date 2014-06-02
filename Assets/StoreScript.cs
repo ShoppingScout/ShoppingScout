@@ -12,10 +12,8 @@ public class StoreScript : MonoBehaviour {
     public bool paused = false;
     GUITexture RobotImg;
     GameObject playerBalance;
-    GameObject statBox;
     GameObject itemCost;
     int itemPrice;
-    Texture lastTexture;
     public static bool levelUpMenu = false;
     GUIText Stat1Bonus;
     GUIText Stat1BonusExplanation;
@@ -295,31 +293,6 @@ public class StoreScript : MonoBehaviour {
             break;
         }
     }
-
-    bool togglePause()
-    {
-        if (Time.timeScale == 0f) {
-            Time.timeScale = 1f;
-            return (false);
-        }
-        else {
-            Time.timeScale = 0f;
-            return(true);
-        }
-    }
-
-    bool toggleLevelUpMenu()
-    {
-        if (Time.timeScale == 0f) {
-            Time.timeScale = 1f;
-        }
-        else {
-            Time.timeScale = 0f;
-        }
-        return (!levelUpMenu);
-    }
-
-
 }
 
 

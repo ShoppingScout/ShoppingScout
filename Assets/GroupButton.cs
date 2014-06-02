@@ -16,9 +16,6 @@ public class GroupButton : MonoBehaviour {
     // Scale
     private Vector3 groupButtonScale = new Vector3(0.13f, 0.07f,1f);
 
-    // Debug
-    bool DEBUG = true;
-
     //Controller
     private static GameObject allButtons;
 

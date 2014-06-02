@@ -4,7 +4,7 @@ using System;
 using System.Runtime.InteropServices;
 
 public class CollisionAnswer : MonoBehaviour {
-    private Item currentItem;
+//    private Item currentItem;
     public static AndroidJavaClass Vibrate;
     public static AndroidJavaObject jo;
     public static AndroidJavaClass jc;
@@ -17,15 +17,14 @@ public class CollisionAnswer : MonoBehaviour {
                 jo = Vibrate.GetStatic<AndroidJavaObject>("test");
             }
             catch (Exception e) {
-                GUIText debugText = GameObject.Find ("DebugText").guiText;
-                debugText.text = e.Message;
+//                GUIText debugText = GameObject.Find ("DebugText").guiText;
+//                debugText.text = e.Message;
             }
         }
     }
     void OnTriggerEnter2D(Collider2D other) {
-        currentItem = LevelScript.currentItem;
-        GUIText debugText = GameObject.Find ("DebugText").guiText;
-        GameObject checker = GameObject.Find ("PlayerBalance");
+//        currentItem = LevelScript.currentItem;
+//        GUIText debugText = GameObject.Find ("DebugText").guiText;
         if (Main.middle) {
             Main.itemAnswer = Convert.ToInt32 (other.guiTexture.name);
 			other.guiTexture.texture = (Texture2D)Resources.Load("images/CategoryImages/"+other.guiTexture.name + "Border", typeof(Texture2D));
@@ -35,7 +34,7 @@ public class CollisionAnswer : MonoBehaviour {
                     jo.Call("vibrate2", 5);
                 }
                 catch (Exception e) {
-                    debugText.text = e.Message;
+//                    debugText.text = e.Message;
                 }
             }
         }
@@ -46,8 +45,6 @@ public class CollisionAnswer : MonoBehaviour {
 		other.guiTexture.texture = (Texture2D)Resources.Load("images/CategoryImages/"+other.guiTexture.name, typeof(Texture2D));
     }
     public IEnumerator flashAnswer(bool answer) {
-        Color green = new Color(19f/255,113f/255,43f/255, 0);
-        Color red = new Color(135f/255,15f/255,15f/255, 0);
         int flag;
         int flashFrames = 15;
         GameObject button = GameObject.Find("scorebox");

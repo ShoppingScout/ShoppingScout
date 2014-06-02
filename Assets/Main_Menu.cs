@@ -16,8 +16,6 @@ public class Main_Menu : MonoBehaviour {
 	public GUISkin pauseSkin;
 	// Use this for initialization
 	void Start () {
-//		logo = GameObject.Find ("Logo").guiTexture;
-//		logo.guiTexture.transform.localScale = new Vector3(0.1f, 0.1f, 0); // format the logo
 	}
 	
 	// Update is called once per frame
@@ -28,11 +26,11 @@ public class Main_Menu : MonoBehaviour {
 				CollisionAnswer.jo.Call("vibrate2", 75);
 				Application.Quit();
 			}
-	}		
+		}		
 	}
 	
 	void OnGUI () {
-		myGuiSkin.button.fontSize = SCREEN_WIDTH/15;
+		myGuiSkin.button.fontSize = SCREEN_WIDTH/20;
 
 		GUI.skin = myGuiSkin;
 		
@@ -41,15 +39,15 @@ public class Main_Menu : MonoBehaviour {
 			load_number = 1;
 		} 
 		
+		pauseSkin.button.fontSize = SCREEN_WIDTH/20;
+
 		GUI.skin = pauseSkin;
-		
-		
+
+
 		if (GUI.Button (new Rect (0.05f * SCREEN_WIDTH, 0.0075f * SCREEN_HEIGHT, 0.2f * SCREEN_WIDTH, 0.05f * SCREEN_HEIGHT), "Shop")) {
 			Application.LoadLevel("Shop");
 		} 
 
-		//pauseSkin.button.fontSize = SCREEN_WIDTH/20;
-		
 		if (GUI.Button (new Rect (0.7f * SCREEN_WIDTH, 0.0075f * SCREEN_HEIGHT, 0.25f * SCREEN_WIDTH, 0.05f * SCREEN_HEIGHT), "Tutorial")) {
 			Application.LoadLevel("Shop");
 		} 

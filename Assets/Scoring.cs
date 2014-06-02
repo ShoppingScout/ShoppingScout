@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+﻿/*using UnityEngine;
 using System.Collections;
 
 public class Scoring : MonoBehaviour {
@@ -64,3 +64,4 @@ public class Scoring : MonoBehaviour {
 		
 	}
 }
+*/

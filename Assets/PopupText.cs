@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+﻿/*using UnityEngine;
 using System.Collections;
 
 public class PopupText : MonoBehaviour {
@@ -37,3 +37,4 @@ public class PopupText : MonoBehaviour {
 	}
 	
 }
+*/
