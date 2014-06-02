@@ -333,6 +333,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   myGuiSkin: {fileID: 11400000, guid: 0541c735746d3a145a8bf6ee6cc16349, type: 2}
   shopGuiSkin: {fileID: 11400000, guid: e2d37b61a83bcdb498f48ebfeeb0e7d1, type: 2}
+  pauseSkin: {fileID: 11400000, guid: b59fdf4ad8fc9f040aa759d31f93c848, type: 2}
 --- !u!114 &1257805447
 MonoBehaviour:
   m_ObjectHideFlags: 0
