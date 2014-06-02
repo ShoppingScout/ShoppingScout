@@ -42,7 +42,7 @@ public class Main_Menu : MonoBehaviour {
 
 		GUI.skin = shopGuiSkin;
 
-		if (GUI.Button (new Rect (0.25f * SCREEN_WIDTH, 0.6f * SCREEN_HEIGHT, 0.50f * SCREEN_WIDTH, 0.1f * SCREEN_HEIGHT), "")) {
+		if (GUI.Button (new Rect (0.02f * SCREEN_WIDTH, 0.001f * SCREEN_HEIGHT, 0.23f * SCREEN_WIDTH, 0.05f * SCREEN_HEIGHT), "")) {
 			Application.LoadLevel("Shop");
 		} 
 		
