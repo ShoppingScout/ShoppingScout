@@ -47,7 +47,7 @@ public class LevelScript : MonoBehaviour {
             Button1.addCategory(4,5,2,28242);
             Button4 = new GroupButton(pos4, 4);
             Button4.addCategory(28347,6,23203,3);
-            GameObject.Find("Game Object Clock").GetComponent<Clock_Script>().SetStartTime(10 + PlayerPrefs.GetInt("startTimeBonusLevel",0) * PlayerPrefs.GetFloat("startTimeBonusFactor",0));
+            GameObject.Find("Game Object Clock").GetComponent<Clock_Script>().SetStartTime(15 + PlayerPrefs.GetInt("startTimeBonusLevel",0) * PlayerPrefs.GetFloat("startTimeBonusFactor",0));
 			depth = 1;
 			GameObject.Find("Scripts").GetComponent<Product_DB>().StartStackKnown(0, 9);
 			GameObject.Find("Scripts").GetComponent<Product_DB>().StartStackUnknown(12,15);

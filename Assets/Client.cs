@@ -12,7 +12,7 @@ public class Client : MonoBehaviour{
 	bool needsRunning;
 
 	void Awake(){
-		Network.Connect("192.168.1.5", 50000, "SSGame");
+		Network.Connect("172.17.4.160", 25000, "SSGame");
 		needsRunning = true;
 
 	}

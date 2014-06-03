@@ -156,7 +156,9 @@ public class Scoring_Money : MonoBehaviour
 			t.Delete ();
 			_writer=t.CreateText ();
 		}
-		
+
+		_writer.Write (PlayerPrefs.GetInt("TopStreak", 0) + "," + PlayerPrefs.GetInt("Balance", 0) + "," + PlayerPrefs.GetInt("PrevLvls", 0) + "," + PlayerPrefs.GetInt("FinalLvls", 0) + PlayerPrefs.GetInt("RoundImgs", 0) + "," + PlayerPrefs.GetInt("RoundUNK", 0) + "," + PlayerPrefs.GetInt("RoundNum", 0) + "\n");
+
 		for(int i = 0; i < itemCount; i++)
 			_writer.Write(arID[i] + "," + arResponses[i] + "\n");
 		

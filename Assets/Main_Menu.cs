@@ -44,6 +44,14 @@ public class Main_Menu : MonoBehaviour {
 		GUI.skin = pauseSkin;
 
 
+		if (GUI.Button (new Rect (0.05f * SCREEN_WIDTH, 0.8f * SCREEN_HEIGHT, 0.2f * SCREEN_WIDTH, 0.05f * SCREEN_HEIGHT), "Add $$!")) {
+			PlayerPrefs.SetInt ("Balance", 999999);
+		}
+
+		if (GUI.Button (new Rect (0.05f * SCREEN_WIDTH, 0.9f * SCREEN_HEIGHT, 0.2f * SCREEN_WIDTH, 0.05f * SCREEN_HEIGHT), "Clean")) {
+			PlayerPrefs.DeleteAll ();
+		}
+
 		if (GUI.Button (new Rect (0.05f * SCREEN_WIDTH, 0.0075f * SCREEN_HEIGHT, 0.2f * SCREEN_WIDTH, 0.05f * SCREEN_HEIGHT), "Shop")) {
 			Application.LoadLevel("Shop");
 		} 
