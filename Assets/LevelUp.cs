@@ -1,4 +1,4 @@
-/*using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 
@@ -15,6 +15,7 @@ public static class LevelUp : object {
 	
 	
 	static LevelUp(){
+		Debug.Log("Here");
 		resetID = 26;
 		levelBase = 150; levelConstant = 10;
 		startTimeBonusFactor = 5;
@@ -42,7 +43,6 @@ public static class LevelUp : object {
 			PlayerPrefs.SetInt ("level", level);
 			PlayerPrefs.SetInt ("resetID", resetID);
 			PlayerPrefs.SetInt ("LevelUp", 0);
-			Scoring_Money.setBalance(0);
 			
 		}
 	}
@@ -73,10 +73,9 @@ public static class LevelUp : object {
 		PlayerPrefs.SetInt ("level", level);
 		GUIText debugText = GameObject.Find ("DebugText").guiText;
 		//debugText.text = "here";
-		Scoring_Money.setBalance(balance);
 		
 	}
 	
 	
 	
-}*/
+}

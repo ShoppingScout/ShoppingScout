@@ -16,6 +16,7 @@ public class Main_Menu : MonoBehaviour {
 	public GUISkin pauseSkin;
 	// Use this for initialization
 	void Start () {
+		LevelUp.startStage();
 	}
 	
 	// Update is called once per frame
