@@ -26,7 +26,7 @@ public static class LevelUp : object {
 		PlayerPrefs.SetFloat ("answerTimeBonusFactor", answerTimeBonusFactor);
 		PlayerPrefs.SetFloat ("startMultBonusFactor", startMultBonusFactor);
 		PlayerPrefs.SetFloat ("streakMultBonusFactor", streakMultBonusFactor);
-		if (resetID != PlayerPrefs.GetInt("resetID", 0) || PlayerPrefs.GetInt("Balance", 0) > 25000){
+		if (resetID != PlayerPrefs.GetInt("resetID", 0)){
 			balance = 0;
 			level = 1;
 			startTimeBonusLevel = 0;

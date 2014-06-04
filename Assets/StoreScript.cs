@@ -14,6 +14,7 @@ public class StoreScript : MonoBehaviour {
     GameObject playerBalance;
     GameObject itemCost;
     int itemPrice;
+	int LEVEL_PRICE = 400;
     public static bool levelUpMenu = false;
     GUIText Stat1Bonus;
     GUIText Stat1BonusExplanation;
@@ -43,8 +44,8 @@ public class StoreScript : MonoBehaviour {
         playerBalance.guiText.text = "$ " + balance.ToString ();
         switch (currentRobotIndex) {
         case 0:
-            itemCost.guiText.text = " -" +  (PlayerPrefs.GetInt("startTimeBonusLevel",0)*1000 + 1000);
-            itemPrice = (PlayerPrefs.GetInt("startTimeBonusLevel",0)*1000 + 1000);
+            itemCost.guiText.text = " -" +  (PlayerPrefs.GetInt("startTimeBonusLevel",0)*LEVEL_PRICE + LEVEL_PRICE);
+            itemPrice = (PlayerPrefs.GetInt("startTimeBonusLevel",0)*LEVEL_PRICE + LEVEL_PRICE);
             break;
         default:
             itemCost.guiText.text = "Oops";
@@ -116,18 +117,18 @@ public class StoreScript : MonoBehaviour {
                 currentRobotIndex--;
                 switch (currentRobotIndex) {
                 case 0:
-                    itemCost.guiText.text = " -" +  (PlayerPrefs.GetInt("startTimeBonusLevel",0)*1000 + 1000);
-                    itemPrice = (PlayerPrefs.GetInt("startTimeBonusLevel",0)*1000 + 1000);
+                    itemCost.guiText.text = " -" +  (PlayerPrefs.GetInt("startTimeBonusLevel",0)*LEVEL_PRICE + LEVEL_PRICE);
+                    itemPrice = (PlayerPrefs.GetInt("startTimeBonusLevel",0)*LEVEL_PRICE + LEVEL_PRICE);
                     RobotImg.texture = (Texture2D)Resources.Load("images/Robots/Red"+ PlayerPrefs.GetInt("startTimeBonusLevel",0), typeof(Texture2D));
                     break;
                 case 1:
-                    itemCost.guiText.text = " -" +  (PlayerPrefs.GetInt("answerTimeBonusLevel",0)*1000 + 1000);
-                    itemPrice = (PlayerPrefs.GetInt("answerTimeBonusLevel",0)*1000 + 1000);
+                    itemCost.guiText.text = " -" +  (PlayerPrefs.GetInt("answerTimeBonusLevel",0)*LEVEL_PRICE + LEVEL_PRICE);
+                    itemPrice = (PlayerPrefs.GetInt("answerTimeBonusLevel",0)*LEVEL_PRICE + LEVEL_PRICE);
                     RobotImg.texture = (Texture2D)Resources.Load("images/Robots/Blue"+ PlayerPrefs.GetInt("answerTimeBonusLevel",0), typeof(Texture2D));
                     break;
                 case 2:
-                    itemCost.guiText.text = " -" +  (PlayerPrefs.GetInt("startMultBonusLevel",0)*1000 + 1000);
-                    itemPrice = (PlayerPrefs.GetInt("startMultBonusLevel",0)*1000 + 1000);
+                    itemCost.guiText.text = " -" +  (PlayerPrefs.GetInt("startMultBonusLevel",0)*LEVEL_PRICE + LEVEL_PRICE);
+                    itemPrice = (PlayerPrefs.GetInt("startMultBonusLevel",0)*LEVEL_PRICE + LEVEL_PRICE);
                     RobotImg.texture = (Texture2D)Resources.Load("images/Robots/Green"+ PlayerPrefs.GetInt("startMultBonusLevel",0), typeof(Texture2D));
                     break;
                 default:
@@ -141,18 +142,18 @@ public class StoreScript : MonoBehaviour {
                 currentRobotIndex++;
                 switch (currentRobotIndex) {
                 case 1:
-                    itemCost.guiText.text = " -" +  (PlayerPrefs.GetInt("answerTimeBonusLevel",0)*1000 + 1000);
-                    itemPrice = (PlayerPrefs.GetInt("answerTimeBonusLevel",0)*1000 + 1000);
+                    itemCost.guiText.text = " -" +  (PlayerPrefs.GetInt("answerTimeBonusLevel",0)*LEVEL_PRICE + LEVEL_PRICE);
+                    itemPrice = (PlayerPrefs.GetInt("answerTimeBonusLevel",0)*LEVEL_PRICE + LEVEL_PRICE);
                     RobotImg.texture = (Texture2D)Resources.Load("images/Robots/Blue"+ PlayerPrefs.GetInt("answerTimeBonusLevel",0), typeof(Texture2D));
                     break;
                 case 2:
-                    itemCost.guiText.text = " -" +  (PlayerPrefs.GetInt("startMultBonusLevel",0)*1000 + 1000);
-                    itemPrice = (PlayerPrefs.GetInt("startMultBonusLevel",0)*1000 + 1000);
+                    itemCost.guiText.text = " -" +  (PlayerPrefs.GetInt("startMultBonusLevel",0)*LEVEL_PRICE + LEVEL_PRICE);
+                    itemPrice = (PlayerPrefs.GetInt("startMultBonusLevel",0)*LEVEL_PRICE + LEVEL_PRICE);
                     RobotImg.texture = (Texture2D)Resources.Load("images/Robots/Green"+ PlayerPrefs.GetInt("startMultBonusLevel",0), typeof(Texture2D));
                     break;
                 case 3:
-                    itemCost.guiText.text = " -" +  (PlayerPrefs.GetInt("streakMultBonusLevel",0)*1000 + 1000);
-                    itemPrice = (PlayerPrefs.GetInt("streakMultBonusLevel",0)*1000 + 1000);
+                    itemCost.guiText.text = " -" +  (PlayerPrefs.GetInt("streakMultBonusLevel",0)*LEVEL_PRICE + LEVEL_PRICE);
+                    itemPrice = (PlayerPrefs.GetInt("streakMultBonusLevel",0)*LEVEL_PRICE + LEVEL_PRICE);
                     RobotImg.texture = (Texture2D)Resources.Load("images/Robots/Yellow"+ PlayerPrefs.GetInt("streakMultBonusLevel",0), typeof(Texture2D));
                     break;
                 default:
@@ -175,8 +176,8 @@ public class StoreScript : MonoBehaviour {
 
                         playerBalance.guiText.text = "$ " + PlayerPrefs.GetInt("Balance", 0);
                         PlayerPrefs.SetInt("startTimeBonusLevel", PlayerPrefs.GetInt("startTimeBonusLevel",0)+1);
-                        itemCost.guiText.text = " -" +  (PlayerPrefs.GetInt("startTimeBonusLevel",0)*1000 + 1000);
-                        itemPrice = (PlayerPrefs.GetInt("startTimeBonusLevel",0)*1000 + 1000);
+                        itemCost.guiText.text = " -" +  (PlayerPrefs.GetInt("startTimeBonusLevel",0)*LEVEL_PRICE + LEVEL_PRICE);
+                        itemPrice = (PlayerPrefs.GetInt("startTimeBonusLevel",0)*LEVEL_PRICE + LEVEL_PRICE);
                         RobotImg.texture = (Texture2D)Resources.Load("images/Robots/Red"+ PlayerPrefs.GetInt("startTimeBonusLevel",0), typeof(Texture2D));
                         Stat1Level.text = "Level: " + PlayerPrefs.GetInt("startTimeBonusLevel", 0) + "/6"    ;
                         Stat1Bonus.text = ""+PlayerPrefs.GetFloat("startTimeBonusFactor",0) * PlayerPrefs.GetInt("startTimeBonusLevel",0)+ " sec";
@@ -192,8 +193,8 @@ public class StoreScript : MonoBehaviour {
 
                         playerBalance.guiText.text = "$ " + PlayerPrefs.GetInt("Balance", 0);
                         PlayerPrefs.SetInt("answerTimeBonusLevel", PlayerPrefs.GetInt("answerTimeBonusLevel",0)+1);
-                        itemCost.guiText.text = " -" +  (PlayerPrefs.GetInt("answerTimeBonusLevel",0)*1000 + 1000);
-                        itemPrice = (PlayerPrefs.GetInt("answerTimeBonusLevel",0)*1000 + 1000);
+                        itemCost.guiText.text = " -" +  (PlayerPrefs.GetInt("answerTimeBonusLevel",0)*LEVEL_PRICE + LEVEL_PRICE);
+                        itemPrice = (PlayerPrefs.GetInt("answerTimeBonusLevel",0)*LEVEL_PRICE + LEVEL_PRICE);
                         RobotImg.texture = (Texture2D)Resources.Load("images/Robots/Blue"+ PlayerPrefs.GetInt("answerTimeBonusLevel",0), typeof(Texture2D));
                         Stat2Level.text = "Level: " + PlayerPrefs.GetInt("answerTimeBonusLevel", 0) + "/6"   ;
                         Stat2Bonus.text = ""+PlayerPrefs.GetFloat("answerTimeBonusFactor",0) * PlayerPrefs.GetInt("answerTimeBonusLevel",0)+ " sec";
@@ -210,8 +211,8 @@ public class StoreScript : MonoBehaviour {
 
                         playerBalance.guiText.text = "$ " + PlayerPrefs.GetInt("Balance", 0);
                         PlayerPrefs.SetInt("startMultBonusLevel", PlayerPrefs.GetInt("startMultBonusLevel",0)+1);
-                        itemCost.guiText.text = " -" +  (PlayerPrefs.GetInt("startMultBonusLevel",0)*1000 + 1000);
-                        itemPrice = (PlayerPrefs.GetInt("startMultBonusLevel",0)*1000 + 1000);
+                        itemCost.guiText.text = " -" +  (PlayerPrefs.GetInt("startMultBonusLevel",0)*LEVEL_PRICE + LEVEL_PRICE);
+                        itemPrice = (PlayerPrefs.GetInt("startMultBonusLevel",0)*LEVEL_PRICE + LEVEL_PRICE);
                         RobotImg.texture = (Texture2D)Resources.Load("images/Robots/Green"+ PlayerPrefs.GetInt("startMultBonusLevel",0), typeof(Texture2D));
                         Stat3Level.text = "Level: " + PlayerPrefs.GetInt("startMultBonusLevel", 0) + "/6"    ;
                         Stat3Bonus.text = ""+PlayerPrefs.GetFloat("startMultBonusFactor",0) * PlayerPrefs.GetInt("startMultBonusLevel",0)+"x";
@@ -228,8 +229,8 @@ public class StoreScript : MonoBehaviour {
 
                         playerBalance.guiText.text = "$ " + PlayerPrefs.GetInt("Balance", 0);
                         PlayerPrefs.SetInt("streakMultBonusLevel", PlayerPrefs.GetInt("streakMultBonusLevel",0)+1);
-                        itemCost.guiText.text = " -" +  (PlayerPrefs.GetInt("streakMultBonusLevel",0)*1000 + 1000);
-                        itemPrice = (PlayerPrefs.GetInt("streakMultBonusLevel",0)*1000 + 1000);
+                        itemCost.guiText.text = " -" +  (PlayerPrefs.GetInt("streakMultBonusLevel",0)*LEVEL_PRICE + LEVEL_PRICE);
+                        itemPrice = (PlayerPrefs.GetInt("streakMultBonusLevel",0)*LEVEL_PRICE + LEVEL_PRICE);
                         RobotImg.texture = (Texture2D)Resources.Load("images/Robots/Yellow"+ PlayerPrefs.GetInt("streakMultBonusLevel",0), typeof(Texture2D));
                         Stat4Level.text = "Level: " + PlayerPrefs.GetInt("streakMultBonusLevel", 0) + "/6"   ;
                         Stat4Bonus.text = ""+PlayerPrefs.GetFloat("streakMultBonusFactor",0) * PlayerPrefs.GetInt("streakMultBonusLevel",0)+"x";
