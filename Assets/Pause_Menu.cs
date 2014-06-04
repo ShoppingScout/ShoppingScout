@@ -26,7 +26,9 @@ public class Pause_Menu : MonoBehaviour {
 			if (Input.GetKey(KeyCode.Escape))
 			{
 				CollisionAnswer.jo.Call("vibrate2", 75);
-				togglePause();
+				if(paused){
+					paused = togglePause();
+				}
 				LevelScript.Deinitialize();
 				Application.LoadLevel("Menu");
 				return;
@@ -81,7 +83,18 @@ public class Pause_Menu : MonoBehaviour {
             return(true);
         }
     }
+	/*
+	bool togglePause(bool on)
+	{
+		if (on) {
+			Time.timeScale = 0f;
+			return(true);
+		}
 
-
+		else {
+			Time.timeScale = 1f;
+			return (false);
+		}
+	}
+	*/
 }
-

@@ -153,11 +153,14 @@ public class Scoring_Money : MonoBehaviour
 		if(!t.Exists)
 			_writer = t.CreateText();
 		else{
-			t.Delete ();
+			t.Delete ();	//DELETE ON SEND INSTEAD
 			_writer=t.CreateText ();
 		}
 
-		_writer.Write (PlayerPrefs.GetInt("TopStreak", 0) + "," + PlayerPrefs.GetInt("Balance", 0) + "," + PlayerPrefs.GetInt("PrevLvls", 0) + "," + PlayerPrefs.GetInt("FinalLvls", 0) + PlayerPrefs.GetInt("RoundImgs", 0) + "," + PlayerPrefs.GetInt("RoundUNK", 0) + "," + PlayerPrefs.GetInt("RoundNum", 0) + "\n");
+		_writer.Write (PlayerPrefs.GetInt("TopStreak", 0) + "," + PlayerPrefs.GetInt("Balance", 0) + ","
+		               + PlayerPrefs.GetInt("PrevLvls", 0) + "," + PlayerPrefs.GetInt("FinalLvls", 0) + PlayerPrefs.GetInt("RoundImgs", 0)
+		               + "," + PlayerPrefs.GetInt("RoundUNK", 0) + "," + PlayerPrefs.GetInt("RoundNum", 0)
+		               + "," + PlayerPrefs.GetInt("SessionAcc", 0) + "," + PlayerPrefs.GetInt("SessionNum", 0) + "\n");
 
 		for(int i = 0; i < itemCount; i++)
 			_writer.Write(arID[i] + "," + arResponses[i] + "\n");
@@ -179,6 +182,18 @@ public class Scoring_Money : MonoBehaviour
 		statText.text = "Total Money: " + PlayerPrefs.GetInt ("Balance") + "\nTopStreak: " + topStreak
 			+ "\nNumber Correct: " + num_correct + "\nNumber Wrong: " + num_wrong + "\nMoney Gained: " + currentMoney;
 
+		PlayerPrefs.SetInt ("SessionRound", PlayerPrefs.GetInt ("SessionRound") + 1);
+
+		float avg;
+		if(PlayerPrefs.GetInt ("SessionRound") > 1) {
+			avg = (PlayerPrefs.GetFloat("SessionAcc") + ((float)num_correct/(float)(num_correct + num_wrong)))/(float)2;
+		}
+		else
+			avg = (float)num_correct/(float)(num_correct + num_wrong);
+		PlayerPrefs.SetFloat ("SessionAcc", avg);
+
+		UnityEngine.Debug.Log ("please " + PlayerPrefs.GetFloat("SessionAcc"));
+		UnityEngine.Debug.Log ("roundnum" + PlayerPrefs.GetInt ("SessionRound"));
 		done = true;
 	}
 	

@@ -17,6 +17,7 @@ public class Main_Menu : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		LevelUp.startStage();
+		PlayerPrefs.SetInt ("SessionNum", PlayerPrefs.GetInt ("SessionNum") + 1);
 	}
 	
 	// Update is called once per frame
